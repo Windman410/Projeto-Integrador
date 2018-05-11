@@ -1,0 +1,52 @@
+  <html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:p="http://primefaces.org/ui">
+   
+  <h:head>
+           <title>Cadastrar Disciplina</title>
+  </h:head>
+   
+  <h:body>
+      <h:form>
+        <p:panel id="panel" header="Cadastrar Disciplina">
+        
+        <p:messages id="msgs" />
+ 
+        <h:panelGrid columns="2" cellpadding="8">
+            <p:outputLabel for="disciplina" value="Disciplina:" />
+            <p:inputText   id="disciplina" value="#{userView.disciplina}" required="true" label="Disciplina">
+                <f:validateLength minimum="2" />
+            </p:inputText>
+            
+ 
+            <p:outputLabel for="coddisciplina" value="Cód. Disciplina:" />
+            <p:inputText id="coddisciplina" value="#{userView.coddisciplina}" label="Cod Disciplina" required="true">
+                <f:validateLength minimum="2" />
+            </p:inputText>
+            
+            <p:outputLabel for="descricao" value="Descrição:" />
+            <p:inputTextarea id="descricao" value="#{userView.descricao}" label="Descrição" required="true">
+                <f:validateLength minimum="2" />
+            </p:inputTextarea>
+            
+            <p:outputLabel for="semestre" value="Semestre:" />
+            <p:inputText id="semestre" value="#{userView.semestre}" label="Semestre" required="true">
+                <f:validateLength minimum="2" />
+            </p:inputText>
+            
+            <p:outputLabel for="cargahoraria" value="Carga Horária:" />
+            <p:inputText id="cargahoraria" value="#{userView.cargahoraria}" label="Carga Horária" required="true">
+                <f:validateLength minimum="2" />
+            </p:inputText>
+ 
+        </h:panelGrid>
+ 
+        <p:commandButton value="Cancelar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
+        <p:commandButton value="Salvar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
+
+    </p:panel>
+    </h:form>     
+  </h:body>
+  </html>
+
