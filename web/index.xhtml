@@ -6,49 +6,62 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Sistema de Cadastro e Armazenamento de PCC'                                                      '''''''''''''''''''''''''''</title>
+
     </h:head>
     <h:body>
-        <p:fieldset legend="Cadastro de PCC">
-            <p:button outcome="CadastroPCC" value="Cadastrar PCC" icon="ui-icon-star"> </p:button>
+        <style>
+            
+        </style>
+
+        
+        <p:fieldset legend="Cadastro de PCC" >
+                <p:button outcome="CadastroPCC" value="Cadastrar PCC" icon="ui-icon-star"> </p:button>
                 <br/>
                 
-                <p:button value="Bookmark" icon="ui-icon-star">
-                     <f:param name="productId" value="10" />
-                </p:button>
+                <p:button outcome="CadastroCurso" value="Cadastrar Curso" icon="ui-icon-star"></p:button>
                 <br/>
                 
-                <p:button value="Bookmark" icon="ui-icon-star">
-                     <f:param name="productId" value="10" />
-                </p:button>
+                <p:button outcome="CadastroProfessor" value="Cadastrar Professor" icon="ui-icon-star"></p:button>
                 <br/>
                 
-                <p:button value="Bookmark" icon="ui-icon-star">
-                     <f:param name="productId" value="10" />
-                </p:button>
+                <p:button outcome="CadastroDisciplina" value="Cadastrar Disciplina" icon="ui-icon-star"></p:button>
                 <br/>
                 
-                <p:button value="Bookmark" icon="ui-icon-star">
-                     <f:param name="productId" value="10" />
-                </p:button>
+                <p:button outcome="CadastroCronogramaAtividades" value="Cadastrar Cronograma de Atividades" icon="ui-icon-star"></p:button>
                 <br/>
                 
-                <p:button value="Bookmark" icon="ui-icon-star">
-                     <f:param name="productId" value="10" />
-                </p:button>
+                <p:button outcome="CadastroPlanoEnsino" value="Cadastrar Plano de Ensino" icon="ui-icon-star"></p:button>
                 <br/>
                 
-                <p:button value="Bookmark" icon="ui-icon-star">
-                     <f:param name="productId" value="10" />
-                </p:button>
+                <p:button outcome="CadastroBibliografia" value="Cadastrar Bibliografia" icon="ui-icon-star"></p:button>
                 <br/>
             </p:fieldset>
+        
+        
+        <p:fieldset legend="Consulta de PCC">
+                <p:button outcome="ConsultarPPC" value="Consultar PCC" icon="ui-icon-star"> </p:button>
+                <br/>
+                
+                <p:button outcome="ConsultarCurso" value="Consultar Curso" icon="ui-icon-star"></p:button>
+                <br/>
+                
+                <p:button outcome="ConsultarPlanoEnsino" value="Consultar Plano de Ensino" icon="ui-icon-star"></p:button>
+                <br/>      
+        </p:fieldset>
+          
+        
+        <p:fieldset legend="Reuniões">
+                <p:button outcome="CadastroAta" value="Cadastrar Ata" icon="ui-icon-star"> </p:button>
+                <br/>
+                
+                <p:button outcome="ConsultarAta" value="Consultar Ata" icon="ui-icon-star"></p:button>
+                <br/>
+        </p:fieldset>
        
 <!-- <p:button outcome="productDetail" value="Bookmark" icon="ui-icon-star" disabled="true"> -->
-        <p:button value="Bookmark" icon="ui-icon-star" disabled="true">
-            <f:param name="productId" value="40" />
-        </p:button>
+        
         <br />
-        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+        <!--<h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />-->
     </h:body>
 </html>
 
