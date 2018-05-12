@@ -13,9 +13,12 @@ public class DisciplinaDAO implements DAO<DisciplinaBean> {
 
     @Override
     public void inserir(DisciplinaBean entidade) throws DadosException {
-            System.out.println("inside DAO");
-        Connection conexao = ConexaoBD.getConexao();
-            System.out.println("after conexao BD");
+        Connection conexao;
+        try {
+            conexao = ConexaoBD.getConexao();
+        } catch(DadosException e){
+            throw new DadosException(e.getMessage());
+        }
         String sql = "INSERT INTO tb_disciplinas (nome, cod, descricao, semestre, cargaHoraria) VALUES (?, ?, ?, ?, ?)";
         
         try {

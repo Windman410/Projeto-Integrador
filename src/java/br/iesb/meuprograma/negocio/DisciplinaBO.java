@@ -45,16 +45,11 @@ public class DisciplinaBO implements BO<DisciplinaBean>{
 
     @Override
     public void inserir(DisciplinaBean entidade) throws NegocioException {
-            System.out.println("inside BO");
-        validar (entidade);
-            System.out.println("after validar");
-        DisciplinaDAO dao = new DisciplinaDAO();
-            System.out.println("after DAO");
         try {
-            dao.inserir(entidade);
-            System.out.println("after DAO inserir");
+            //validar(entidade);
+            DisciplinaDAO dao = new DisciplinaDAO();
+                dao.inserir(entidade);
         } catch (DadosException ex) {
-            System.out.println("erro DAO inserir");
             throw new NegocioException("Erro ao inserir!\n"+ ex.getMessage(), ex);
         }
     }
@@ -62,7 +57,7 @@ public class DisciplinaBO implements BO<DisciplinaBean>{
     @Override
     public void alterar(DisciplinaBean entidade) throws NegocioException {
         consultar(entidade.getCod());
-        validar (entidade);
+        validar(entidade);
         DisciplinaDAO dao = new DisciplinaDAO();
         try {
             dao.alterar(entidade);

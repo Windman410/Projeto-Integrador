@@ -18,14 +18,6 @@ public class DisciplinaBean implements Serializable{
     private int semestre;
     private int cargaHoraria;
     
-    public DisciplinaBean(){
-        nome = "";
-        cod = -1;
-        descricao = "";
-        semestre = -2;
-        cargaHoraria = -2;
-    }
-    
     public int getId() {
         return id;
     }
@@ -79,26 +71,17 @@ public class DisciplinaBean implements Serializable{
         return nome;}
     
     public void cadastrarDisciplina() {
-        System.out.println("in the Bean");
-        FacesContext context = FacesContext.getCurrentInstance();
         DisciplinaBO bo = new DisciplinaBO(); 
         
-        System.out.println("after BO");
         try{
-            System.out.println("inside try");
             bo.inserir(this);
-            System.out.println("after inserir");
-            System.out.println("Sucesso, Dados inseridos com sucesso");
-            context.addMessage(null, new FacesMessage("Sucesso", "Dados inseridos com sucesso!")); 
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Sucesso", "Dados inseridos com sucesso!")); 
         }catch(NegocioException ex){
             if(ex.getCause() != null){
-                System.out.println("Erro" + ex.getMessage());
-                context.addMessage(null, new FacesMessage("Erro", ex.getMessage())); 
- ;
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erro", ex.getMessage()));
             }else{
-                System.out.println("Erro" + ex.getMessage());
-                context.addMessage(null, new FacesMessage("Erro", ex.getMessage())); 
- ;}
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erro", ex.getMessage())); 
+            }
         }
     }                                        
     
