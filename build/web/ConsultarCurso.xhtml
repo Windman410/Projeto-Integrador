@@ -1,37 +1,50 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
        xmlns:h="http://java.sun.com/jsf/html"
        xmlns:f="http://java.sun.com/jsf/core"
-       xmlns:p="http://primefaces.org/ui">
-   
+       xmlns:p="http://primefaces.org/ui"> 
   <h:head>
-   
-  </h:head>
-   
+      <title>Consultar Curso</title>
+  </h:head>  
   <h:body>
        <h:form>
+           <p:panel id="panel" header="Consultar Curso">
             <p:dataTable var="usuario" value="#{UsuarioMB.usuarios}">
-                  <p:column headerText="Id">
+                  <p:column headerText="Tipo do Curso">
                        <h:outputText value="#{usuario.id}" />
-                  </p:column>
-   
-                  <p:column headerText="Nome">
+                  </p:column>  
+                  <p:column headerText="Modalidade">
                        <h:outputText value="#{usuario.nome}" />
                   </p:column>
-   
-                  <p:column headerText="Senha">
+                  <p:column headerText="Denominação">
                        <h:outputText value="#{usuario.senha}" />
                   </p:column>
-   
-                  <p:column headerText="Descrição">
-                       <h:outputText value="#{usuario.descricao}" />
+                  <p:column headerText="Habilitação">
+                       <h:outputText value="#{usuario.senha}" />
                   </p:column>
-                  
-                  <p:column headerText="Data de Cadastro">
-                       <h:outputText value="#{usuario.dataCadastro}" />
-                  </p:column>               
+                  <p:column headerText="Local de Oferta">
+                       <h:outputText value="#{usuario.nome}" />
+                  </p:column>
+                  <p:column headerText="Turnos">
+                       <h:outputText value="#{usuario.senha}" />
+                  </p:column>
+                  <p:column headerText="Carga Horária">
+                       <h:outputText value="#{usuario.senha}" />
+                  </p:column>
+                  <p:column headerText="Regime Letivo">
+                       <h:outputText value="#{usuario.senha}" />
+                  </p:column>
+                  <p:column headerText="Períodos">
+                       <h:outputText value="#{usuario.senha}" />
+                  </p:column>
+                  <p:column headerText="Professor">
+                       <h:outputText value="#{usuario.senha}" />
+                  </p:column>                   
             </p:dataTable>
-   
-   
+               <p:commandButton value="Cancelar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
+               <p:commandButton value="Visualizar detalhes" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
+               <p:commandButton value="Editar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
+               <p:commandButton value="Imprimir" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
+           </p:panel>
        </h:form>
   </h:body>
   </html>
