@@ -1,16 +1,83 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:p="http://primefaces.org/ui">
+   
+  <h:head>
+               <title>Cadastrar Professor</title>
+  </h:head>
+   
+  <h:body>
+       
+      <h:form id="form">
+          <p:panel id="panel" header="Cadastrar Professor">
+             
+    <p:growl id="msgs" showDetail="true" />
+ 
+    <p:tabView>
+        <p:tab title="Dados Pessoais">
+            <h:panelGrid columns="6" cellpadding="8">
+                <h:outputLabel for="disciplina" value="Nome:" />
+                <h:inputText   id="disciplina" value="#{userView.disciplina}" required="true" label="Disciplina">
+                    <f:validateLength minimum="2" />
+                </h:inputText>
+            
+                <h:outputLabel for="coddisciplina" value="CPF:" />
+                <h:inputText id="coddisciplina" value="#{userView.coddisciplina}" label="Cod Disciplina" required="true">
+                    <f:validateLength minimum="2" />
+                </h:inputText>
+            
+                <h:outputLabel for="descricao" value="Maior Titulação:" />
+                <h:inputText id="descricao" value="#{userView.descricao}" label="Descrição" required="true">
+                    <f:validateLength minimum="2" />
+                </h:inputText>
+
+                <h:outputLabel for="semestre" value="Área de Formação:" />
+                <h:inputText id="semestre" value="#{userView.semestre}" label="Semestre" required="true">
+                    <f:validateLength minimum="2" />
+                </h:inputText>
+            
+                <h:outputLabel for="cargahoraria" value="Currículo Lattes:" />
+                <h:inputText id="cargahoraria" value="#{userView.cargahoraria}" label="Carga Horária" required="true">
+                    <f:validateLength minimum="2" />
+                </h:inputText>
+                
+                <h:outputLabel for="cargahoraria22" value="Data de Atualização:" />
+                <h:inputText id="cargahoraria22" value="#{userView.cargahoraria22}" label="Carga Horária" required="true">
+                    <f:validateLength minimum="2" />
+                </h:inputText>
+                
+            </h:panelGrid>
+        </p:tab>
+        
+        <p:tab title="Atuação IES">
+            <h:panelGrid columns="6" cellpadding="8">
+
+                   
+                
+                
+            </h:panelGrid>
+        </p:tab>
+        
+        
+        <p:tab title="Atuação Profissional">
+            <h:panelGrid columns="6" cellpadding="8">
+            
+            
+            </h:panelGrid>
+        </p:tab>
+        
+        <p:tab title="Publicações">
+            <h:panelGrid columns="6" cellpadding="8">
+            
+            
+            </h:panelGrid>
+        </p:tab>
+    </p:tabView>
+    
+        <p:commandButton value="Cancelar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
+        <p:commandButton value="Salvar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
+    </p:panel>
+    </h:form>
+  </h:body>
+  </html>

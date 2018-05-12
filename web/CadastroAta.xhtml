@@ -1,16 +1,49 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:p="http://primefaces.org/ui">
+   
+  <h:head>
+           <title>Cadastrar Ata de Reunião</title>
+  </h:head>
+   
+  <h:body>
+      <h:form>
+        <p:panel id="panel" header="Cadastrar Ata de Reunião">
+        
+        <p:messages id="msgs" />
+ 
+        <h:panelGrid columns="6" cellpadding="8">
+            <h:outputLabel for="disciplina23" value="Data da Reunião:" />
+            <h:inputText   id="disciplina23" value="#{userView.disciplina23}" required="true" label="Disciplina">
+                <f:validateLength minimum="2" />
+            </h:inputText>
+            
+ 
+            <h:outputLabel for="coddisciplina12" value="Local da Reunião:" />
+            <h:inputText id="coddisciplina12" value="#{userView.coddisciplina12}" label="Cod Disciplina" required="true">
+                <f:validateLength minimum="2" />
+            </h:inputText>
+            
+            <h:outputLabel for="semestre32" value="Participantes:" />
+            <h:inputText id="semestre32" value="#{userView.semestre32}" label="Semestre" required="true">
+                <f:validateLength minimum="2" />
+            </h:inputText>
+            
+            <h:outputLabel for="descricao11" value="Deliberações:" />
+            <h:inputTextarea id="descricao11" value="#{userView.descricao11}" label="Descrição" required="true">
+                <f:validateLength minimum="2" />
+            </h:inputTextarea>
+   
+ 
+        </h:panelGrid>
+ 
+        <p:commandButton value="Cancelar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
+        <p:commandButton value="Salvar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
+
+    </p:panel>
+    </h:form>     
+  </h:body>
+  </html>
+
+

@@ -13,32 +13,31 @@
         
         <p:messages id="msgs" />
  
-        <h:panelGrid columns="2" cellpadding="8">
-            <p:outputLabel for="disciplina" value="Disciplina:" />
-            <p:inputText   id="disciplina" value="#{userView.disciplina}" required="true" label="Disciplina">
+        <h:panelGrid columns="4" cellpadding="8">
+            <h:outputLabel for="disciplina" value="Disciplina:" />
+            <h:inputText   id="disciplina" value="#{userView.disciplina}" required="true" label="Disciplina">
                 <f:validateLength minimum="2" />
-            </p:inputText>
-            
+            </h:inputText>
  
-            <p:outputLabel for="coddisciplina" value="Cód. Disciplina:" />
-            <p:inputText id="coddisciplina" value="#{userView.coddisciplina}" label="Cod Disciplina" required="true">
+            <h:outputLabel for="coddisciplina" value="Cód. Disciplina:" />
+            <h:inputText id="coddisciplina" value="#{userView.coddisciplina}" label="Cod Disciplina" required="true">
                 <f:validateLength minimum="2" />
-            </p:inputText>
+            </h:inputText>
+                        
+            <h:outputLabel for="semestre" value="Semestre:" />
+            <h:inputText id="semestre" value="#{userView.semestre}" label="Semestre" required="true">
+                <f:validateLength minimum="2" />
+            </h:inputText>
             
-            <p:outputLabel for="descricao" value="Descrição:" />
-            <p:inputTextarea id="descricao" value="#{userView.descricao}" label="Descrição" required="true">
+            <h:outputLabel for="cargahoraria" value="Carga Horária:" />
+            <h:inputText id="cargahoraria" value="#{userView.cargahoraria}" label="Carga Horária" required="true">
                 <f:validateLength minimum="2" />
-            </p:inputTextarea>
+            </h:inputText>
             
-            <p:outputLabel for="semestre" value="Semestre:" />
-            <p:inputText id="semestre" value="#{userView.semestre}" label="Semestre" required="true">
+            <h:outputLabel for="descricao" value="Descrição:" />
+            <h:inputTextarea id="descricao" value="#{userView.descricao}" label="Descrição" required="true">
                 <f:validateLength minimum="2" />
-            </p:inputText>
-            
-            <p:outputLabel for="cargahoraria" value="Carga Horária:" />
-            <p:inputText id="cargahoraria" value="#{userView.cargahoraria}" label="Carga Horária" required="true">
-                <f:validateLength minimum="2" />
-            </p:inputText>
+            </h:inputTextarea>
  
         </h:panelGrid>
  
