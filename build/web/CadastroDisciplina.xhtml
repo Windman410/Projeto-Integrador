@@ -8,7 +8,9 @@
   </h:head>
    
   <h:body>
-      <h:form>
+      
+      <h:form id="disciplinaForm">
+        <p:growl id="growl" showDetail="true" sticky="true" />  
         <p:panel id="panel" header="Cadastrar Disciplina">
         
         <p:messages id="msgs" />
@@ -16,34 +18,36 @@
         <h:panelGrid columns="4" cellpadding="8">
             
             <h:outputLabel for="disciplina" value="Disciplina:" />
-            <h:inputText   id="disciplina" value="#{userView.disciplina}" required="true" label="Disciplina">
+            <h:inputText   id="disciplina" value="#{DisciplinaBean.nome}" required="true" label="Disciplina">
                 <f:validateLength minimum="2" />
             </h:inputText>
  
             <h:outputLabel for="coddisciplina" value="Cód. Disciplina:" />
-            <h:inputText id="coddisciplina" value="#{userView.coddisciplina}" label="Cod Disciplina" required="true">
+            <h:inputText id="coddisciplina" value="#{DisciplinaBean.cod}" label="Cod Disciplina" required="true">
                 <f:validateLength minimum="2" />
             </h:inputText>
                         
             <h:outputLabel for="semestre" value="Semestre:" />
-            <h:inputText id="semestre" value="#{userView.semestre}" label="Semestre" required="true">
+            <h:inputText id="semestre" value="#{DisciplinaBean.semestre}" label="Semestre" required="true">
                 <f:validateLength minimum="2" />
             </h:inputText>
             
             <h:outputLabel for="cargahoraria" value="Carga Horária:" />
-            <h:inputText id="cargahoraria" value="#{userView.cargahoraria}" label="Carga Horária" required="true">
+            <h:inputText id="cargahoraria" value="#{DisciplinaBean.cargaHoraria}" label="Carga Horária" required="true">
                 <f:validateLength minimum="2" />
             </h:inputText>
             
             <h:outputLabel for="descricao" value="Descrição:" />
-            <h:inputTextarea id="descricao" value="#{userView.descricao}" label="Descrição" required="true">
+            <h:inputTextarea id="descricao" value="#{DisciplinaBean.descricao}" label="Descrição" required="true">
                 <f:validateLength minimum="2" />
             </h:inputTextarea>
  
         </h:panelGrid>
  
         <p:commandButton value="Cancelar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
-        <p:commandButton value="Salvar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
+        <p:commandButton value="Salvar" update="growl" actionListener="#{DisciplinaBean.cadastrarDisciplina()}" process="@this"  icon="ui-icon-check">
+        
+        </p:commandButton>
 
     </p:panel>
     </h:form>     
