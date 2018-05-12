@@ -4,34 +4,49 @@
        xmlns:p="http://primefaces.org/ui">
    
   <h:head>
-   
+      <title>Consultar PCC</title>
   </h:head>
    
   <h:body>
        <h:form>
+           <p:panel id="panel" header="Consultar PCC">
+            <p:messages id="msgs" />
+ 
+            
+               <p:fieldset >   
+                   <h:outputLabel  value="Curso:"/>
+                    <h:selectOneMenu value="#{MBArtista.artista.pais}">
+                        <f:selectItem itemLabel="Selecione o Curso" />
+                        <f:selectItems value="#{MBPais.listaPaises}" var="pais"
+                            itemLabel="#{pais.nome}" />
+                    </h:selectOneMenu>
+                </p:fieldset>
+               <br/>
+               
+               
             <p:dataTable var="usuario" value="#{UsuarioMB.usuarios}">
-                  <p:column headerText="Id">
+                  <p:column headerText="Curso">
                        <h:outputText value="#{usuario.id}" />
-                  </p:column>
-   
-                  <p:column headerText="Nome">
+                  </p:column>   
+                  <p:column headerText="Disciplina">
                        <h:outputText value="#{usuario.nome}" />
-                  </p:column>
-   
-                  <p:column headerText="Senha">
+                  </p:column>  
+                  <p:column headerText="Professor">
                        <h:outputText value="#{usuario.senha}" />
                   </p:column>
-   
-                  <p:column headerText="Descrição">
-                       <h:outputText value="#{usuario.descricao}" />
+                  <p:column headerText="Ano">
+                       <h:outputText value="#{usuario.senha}" />
                   </p:column>
-                  
-                  <p:column headerText="Data de Cadastro">
-                       <h:outputText value="#{usuario.dataCadastro}" />
-                  </p:column>               
+                  <p:column headerText="Semestre">
+                       <h:outputText value="#{usuario.senha}" />
+                  </p:column>
             </p:dataTable>
-   
-   
+               
+               <p:commandButton value="Cancelar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
+               <p:commandButton value="Visualizar detalhes" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
+               <p:commandButton value="Editar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
+               <p:commandButton value="Imprimir" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
+           </p:panel>
        </h:form>
   </h:body>
   </html>
