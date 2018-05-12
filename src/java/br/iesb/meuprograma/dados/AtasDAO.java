@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class AtasDAO implements DAO<Atas>{
+public class AtasDAO implements DAO<AtasBean>{
     
     
     @Override
-    public void inserir(Atas entidade) throws DadosException {
+    public void inserir(AtasBean entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "INSERT INTO tb_atas (data, local, participantes, deliberacoes) VALUES (?, ?, ?, ?)";
         
@@ -30,7 +30,7 @@ public class AtasDAO implements DAO<Atas>{
     }
 
     @Override
-    public void alterar(Atas entidade) throws DadosException {
+    public void alterar(AtasBean entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "UPDATE tb_atas SET data=?, local=?, participantes=?, deliberacoes=? WHERE id_atas=?";
         try {
@@ -48,7 +48,7 @@ public class AtasDAO implements DAO<Atas>{
     }
 
     @Override
-    public void excluir(Atas entidade) throws DadosException {
+    public void excluir(AtasBean entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "DELETE FROM tb_atas WHERE id_atas=?";
         
@@ -63,10 +63,10 @@ public class AtasDAO implements DAO<Atas>{
     }
 
     @Override
-    public Atas consultar(int id) throws DadosException {
+    public AtasBean consultar(int id) throws DadosException {
          Connection conexao = ConexaoBD.getConexao();
                 String sql = "SELECT * FROM tb_atas WHERE id_atas=?";
-                Atas atas = new Atas();
+                AtasBean atas = new AtasBean();
         
         try {
             PreparedStatement comando = conexao.prepareStatement(sql);
@@ -88,17 +88,17 @@ public class AtasDAO implements DAO<Atas>{
     }
 
     @Override
-    public List<Atas> listar() throws DadosException {
+    public List<AtasBean> listar() throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "SELECT * FROM tb_atas";
-        List <Atas> lista = new ArrayList<>();
+        List <AtasBean> lista = new ArrayList<>();
                 
         try {
             Statement comando = conexao.createStatement();
             ResultSet resultado = comando.executeQuery(sql);
             
             while (resultado.next()){
-                Atas atas = new Atas();
+                AtasBean atas = new AtasBean();
                 atas.setId(resultado.getInt(1));
                 atas.setData(resultado.getInt(2));
                 atas.setLocal(resultado.getString(3));
