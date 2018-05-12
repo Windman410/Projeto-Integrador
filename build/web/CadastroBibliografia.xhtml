@@ -1,16 +1,66 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:p="http://primefaces.org/ui">
+   
+  <h:head>
+           <title>Cadastrar Bibliografia</title>
+  </h:head>
+   
+  <h:body>
+      <h:form>
+        <p:panel id="panel" header="Cadastrar Bibliografia">
+        
+        <p:messages id="msgs" />
+ 
+        <h:panelGrid columns="6" cellpadding="8">
+            
+            <h:outputLabel value="Curso:"/>
+                    <h:selectOneMenu value="#{MBArtista.artista.pais}">
+                        <f:selectItem itemLabel="Selecione o Curso" />
+                        <f:selectItems value="#{MBPais.listaPaises}" var="pais"
+                            itemLabel="#{pais.nome}" />
+                    </h:selectOneMenu>
+                    
+                    <h:outputLabel value="Disciplina:"/>
+                    <h:selectOneMenu value="#{MBArtista.artista.pais}">
+                        <f:selectItem itemLabel="Selecione a Disciplina" />
+                        <f:selectItems value="#{MBPais.listaPaises}" var="pais"
+                            itemLabel="#{pais.nome}" />
+                    </h:selectOneMenu>
+            
+            
+                    <h:outputLabel for="disciplina" value="Título:" />
+                    <h:inputText   id="disciplina" value="#{userView.disciplina}" required="true" label="Disciplina">
+                        <f:validateLength minimum="2" />
+                    </h:inputText>
+
+                    <h:outputLabel for="coddisciplina" value="Autor:" />
+                    <h:inputText id="coddisciplina" value="#{userView.coddisciplina}" label="Cod Disciplina" required="true">
+                        <f:validateLength minimum="2" />
+                    </h:inputText>
+            
+                    <h:outputLabel for="descricao" value="Ano:" />
+                    <h:inputText id="descricao" value="#{userView.descricao}" label="Descrição" required="true">
+                        <f:validateLength minimum="2" />
+                    </h:inputText>
+
+                    <h:outputLabel for="semestre" value="ISBN:" />
+                    <h:inputText id="semestre" value="#{userView.semestre}" label="Semestre" required="true">
+                        <f:validateLength minimum="2" />
+                    </h:inputText>
+
+                    <h:outputLabel for="cargahoraria" value="Editora:" />
+                    <h:inputText id="cargahoraria" value="#{userView.cargahoraria}" label="Carga Horária" required="true">
+                        <f:validateLength minimum="2" />
+                    </h:inputText>
+ 
+        </h:panelGrid>
+ 
+        <p:commandButton value="Cancelar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
+        <p:commandButton value="Salvar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
+
+    </p:panel>
+    </h:form>     
+  </h:body>
+  </html>

@@ -1,16 +1,146 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:p="http://primefaces.org/ui">
+   
+  <h:head>
+               <title>Cadastrar Plano de Ensino</title>
+  </h:head>
+   
+  <h:body>
+       
+      <h:form id="form">
+          <p:panel id="panel" header="Cadastrar Plano de Ensino">
+             
+    <p:growl id="msgs" showDetail="true" />
+ 
+    <h:panelGrid columns="6" cellpadding="8">
+        <h:outputLabel value="Curso:"></h:outputLabel>
+                    <h:selectOneMenu value="#{MBArtista.artista.pais}">
+                        <f:selectItem itemLabel="Selecione o Curso" />
+                        <f:selectItems value="#{MBPais.listaPaises}" var="pais"
+                            itemLabel="#{pais.nome}" />
+                    </h:selectOneMenu>
+        
+                    <h:outputLabel for="coddisciplina1" value="Ano:" />
+                    <h:inputText id="coddisciplina1" value="#{userView.coddisciplina1}" label="Cod Disciplina" required="true">
+                        <f:validateLength minimum="2" />
+                    </h:inputText>
+                    
+                    <h:outputLabel for="coddisciplina21" value="Semestre:" />
+                    <h:inputText id="coddisciplina21" value="#{userView.coddisciplina21}" label="Cod Disciplina" required="true">
+                        <f:validateLength minimum="2" />
+                    </h:inputText>
+                    
+                    <h:outputLabel value="Disciplina:"/>
+                    <h:selectOneMenu value="#{MBArtista.artista.pais}">
+                        <f:selectItem itemLabel="Selecione a Disciplina" />
+                        <f:selectItems value="#{MBPais.listaPaises}" var="pais"
+                            itemLabel="#{pais.nome}" />
+                    </h:selectOneMenu>
+                    
+                    <h:outputLabel for="coddisciplina212" value="Carga Horária Semestral:" />
+                    <h:inputText id="coddisciplina212" value="#{userView.coddisciplina212}" label="Cod Disciplina" required="true">
+                        <f:validateLength minimum="2" />
+                    </h:inputText>
+                    
+                    <h:outputLabel for="coddisciplina421" value="Período do Curso:" />
+                    <h:inputText id="coddisciplina421" value="#{userView.coddisciplina421}" label="Cod Disciplina" required="true">
+                        <f:validateLength minimum="2" />
+                    </h:inputText>
+                    
+                    <h:outputLabel value="Professor:"/>
+                    <h:selectOneMenu value="#{MBArtista.artista.pais}">
+                        <f:selectItem itemLabel="Selecione o Professor" />
+                        <f:selectItems value="#{MBPais.listaPaises}" var="pais"
+                            itemLabel="#{pais.nome}" />
+                    </h:selectOneMenu>
+    </h:panelGrid>
+    
+    
+    
+    <p:tabView>
+        <p:tab title="Ementa">
+            <h:panelGrid columns="1" cellpadding="10"> 
+            <h:inputTextarea rows="10" cols="100" id="cargahoraria" value="#{userView.cargahoraria}" label="Carga Horária" required="true">
+                <f:validateLength minimum="2" />
+            </h:inputTextarea>    
+            </h:panelGrid>
+        </p:tab>
+        
+        <p:tab title="Competências e Habilidades">
+            <h:panelGrid columns="1" cellpadding="10"> 
+            <h:inputTextarea rows="10" cols="100" id="cargahoraria22" value="#{userView.cargahoraria22}" label="Carga Horária" required="true">
+                <f:validateLength minimum="2" />
+            </h:inputTextarea>    
+            </h:panelGrid>
+        </p:tab>
+        
+        <p:tab title="Metodologia de Ensino">
+            <h:panelGrid columns="1" cellpadding="10"> 
+            <h:inputTextarea rows="10" cols="100" id="cargahoraria33" value="#{userView.cargahoraria33}" label="Carga Horária" required="true">
+                <f:validateLength minimum="2" />
+            </h:inputTextarea>    
+            </h:panelGrid>
+        </p:tab>
+        
+        <p:tab title="Cronograma de Atividades">
+            <p:dataTable var="usuario" value="#{UsuarioMB.usuarios}">
+                  <p:column headerText="Aula">
+                       <h:outputText value="#{usuario.id}" />
+                  </p:column>
+   
+                  <p:column headerText="Conteúdo">
+                       <h:outputText value="#{usuario.nome}" />
+                  </p:column>                               
+            </p:dataTable>
+        </p:tab>
+        <p:tab title="Avaliação">
+            <h:panelGrid columns="1" cellpadding="10"> 
+                <h:inputTextarea rows="10" cols="100"  id="cargahoraria83" value="#{userView.cargahoraria83}" label="Carga Horária" required="true">
+                <f:validateLength minimum="2" />
+            </h:inputTextarea>    
+            </h:panelGrid>
+        </p:tab>
+        
+        <p:tab title="Bibliografia">
+            <p:dataTable var="usuarioss" value="#{UsuarioMB.usuarios}">
+                  <p:column headerText="Curso">
+                       <h:outputText value="#{usuario.id}" />
+                  </p:column>
+   
+                  <p:column headerText="Disciplina">
+                       <h:outputText value="#{usuario.nome}" />
+                  </p:column>
+   
+                  <p:column headerText="Título">
+                       <h:outputText value="#{usuario.senha}" />
+                  </p:column>
+   
+                  <p:column headerText="Autor">
+                       <h:outputText value="#{usuario.descricao}" />
+                  </p:column>
+                  
+                  <p:column headerText="Ano">
+                       <h:outputText value="#{usuario.dataCadastro11}" />
+                  </p:column>
+                
+                  <p:column headerText="ISBN">
+                       <h:outputText value="#{usuario.dataCadastro1}" />
+                  </p:column>
+                
+                  <p:column headerText="Editora">
+                       <h:outputText value="#{usuario.dataCadastro}" />
+                  </p:column>
+                  
+            </p:dataTable>
+        </p:tab>
+</p:tabView>
+        <p:commandButton value="Cancelar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
+        <p:commandButton value="Salvar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
+    </p:panel>
+          
+    </h:form>
+    
+  </h:body>
+  </html>
