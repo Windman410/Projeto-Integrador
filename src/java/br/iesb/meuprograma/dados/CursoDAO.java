@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-public class CursoDAO implements DAO<Curso>{
+public class CursoDAO implements DAO<CursoBean>{
 
     @Override
-    public void inserir(Curso entidade) throws DadosException {
+    public void inserir(CursoBean entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "INSERT INTO tb_curso (tipo, modalidade, denominacao, habilitacao, localOferta, matutino, vespertino, noturno, vagasTurno, cargaHoraria, regimeLetivo, periodo, nomeProfessor, cpf, titulacao, tempoDedicacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
@@ -35,13 +35,12 @@ public class CursoDAO implements DAO<Curso>{
             comando.executeUpdate();
             conexao.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro DAO", JOptionPane.ERROR_MESSAGE);
             throw new DadosException("Erro ao inserir!" + ex.getMessage(), ex);
         }
     }
 
     @Override
-    public void alterar(Curso entidade) throws DadosException {
+    public void alterar(CursoBean entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "UPDATE tb_curso SET tipo=?, modalidade=?, denominacao=?, habilitacao=?, localOferta=?, matutino=?, vespertino=?, noturno=?, vagasTurno=?, cargaHoraria=?, regimeLetivo=?, periodo=?, nomeProfessor=?, cpf=?, titulacao=?, tempoDedicacao=? WHERE id_curso=?";
         
@@ -72,7 +71,7 @@ public class CursoDAO implements DAO<Curso>{
     }
 
     @Override
-    public void excluir(Curso entidade) throws DadosException {
+    public void excluir(CursoBean entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "DELETE FROM tb_curso WHERE id_curso=?";
         
@@ -88,10 +87,10 @@ public class CursoDAO implements DAO<Curso>{
     }
 
     @Override
-    public Curso consultar(int id) throws DadosException {
+    public CursoBean consultar(int id) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "SELECT * FROM tb_curso WHERE id_curso=?";
-        Curso curso = new Curso();
+        CursoBean curso = new CursoBean();
         try{
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setInt(1, id);
@@ -125,16 +124,16 @@ public class CursoDAO implements DAO<Curso>{
     }
 
     @Override
-    public List<Curso> listar() throws DadosException {
+    public List<CursoBean> listar() throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
                 String sql = "SELECT * FROM tb_curso";
-                List <Curso> lista = new ArrayList<>();
+                List <CursoBean> lista = new ArrayList<>();
                 
                  try{
             Statement comando = conexao.createStatement();
             ResultSet resultado = comando.executeQuery(sql);
             while(resultado.next()){
-                Curso curso = new Curso();
+                CursoBean curso = new CursoBean();
                 curso.setId(resultado.getInt(1));
                 curso.setTipo(resultado.getString(2));
                 curso.setModalidade(resultado.getString(3));

@@ -4,76 +4,92 @@
        xmlns:p="http://primefaces.org/ui">
    
   <h:head>
-               <title>Cadastrar Curso</title>
+      <title>Cadastrar Curso</title>
   </h:head>
    
   <h:body>
-       <h:form>
+        <h:form>
+        <p:growl id="growl" showDetail="true" sticky="true" />  
         <p:panel id="panel" header="Cadastrar Curso">
-        
-        <p:messages id="msgs" />
- 
+        <p:messages id="msgs" /> 
         <h:panelGrid columns="6" cellpadding="8" >
-             
-                    <h:outputLabel for="disciplina" value="Tipo do Curso:" />
-                    <h:inputText   id="disciplina" value="#{userView.disciplina}" required="true" label="Disciplina">
-                        <f:validateLength minimum="2" />
-                    </h:inputText>
-
-                    <h:outputLabel for="coddisciplina" value="Modalidade:" />
-                    <h:inputText id="coddisciplina" value="#{userView.coddisciplina}" label="Cod Disciplina" required="true">
-                        <f:validateLength minimum="2" />
-                    </h:inputText>
+            <h:outputLabel for="disciplina" value="Tipo do Curso:" />
+            <h:inputText   id="disciplina" value="#{CursoBean.tipo}" required="true" label="Disciplina">
             
-                    <h:outputLabel for="semestre" value="Denominação:" />
-                    <h:inputText id="semestre" value="#{userView.semestre}" label="Semestre" required="true">
-                        <f:validateLength minimum="2" />
-                    </h:inputText>
+            </h:inputText>
 
-                    <h:outputLabel for="semestre2" value="Habilitação:" />
-                    <h:inputText id="semestre2" value="#{userView.semestre2}" label="Semestre" required="true">
-                        <f:validateLength minimum="2" />
-                    </h:inputText>
+            <h:outputLabel for="coddisciplina" value="Modalidade:" />
+            <h:inputText id="coddisciplina" value="#{CursoBean.modalidade}" label="Cod Disciplina" required="true">
+            
+            </h:inputText>
 
-                    <h:outputLabel for="cargahoraria" value="Local de Oferta:" />
-                    <h:inputText id="cargahoraria" value="#{userView.cargahoraria}" label="Carga Horária" required="true">
-                        <f:validateLength minimum="2" />
-                    </h:inputText>
-                    
-                    <h:outputLabel for="turnos" value="Turnos:" />
-                        <h:selectManyCheckbox id="turnos" value="#{checkboxView.selectedConsoles}">
-                            <f:selectItem itemLabel="Matutino" itemValue="Matutino" />
-                            <f:selectItem itemLabel="Vespertino" itemValue="Vespertino" />
-                            <f:selectItem itemLabel="Noturno" itemValue="Noturno" />
-                        </h:selectManyCheckbox>
-                    
-                    <h:outputLabel for="cargahoraria1" value="Carga Horária:" />
-                    <h:inputText id="cargahoraria1" value="#{userView.cargahoraria1}" label="Carga Horária" required="true">
-                        <f:validateLength minimum="2" />
-                    </h:inputText>
-                    
-                    <h:outputLabel for="regime" value="Regime Letivo:" />
-                    <h:inputText id="regime" value="#{userView.regime}" label="Regime Letivo" required="true">
-                        <f:validateLength minimum="2" />
-                    </h:inputText>
-                    
-                    <h:outputLabel for="cargahoraria11" value="Períodos:" />
-                    <h:inputText id="cargahoraria11" value="#{userView.cargahoraria11}" label="Períodos" required="true">
-                        <f:validateLength minimum="2" />
-                    </h:inputText>
-                    
-                    <h:outputLabel value="Professor:"/>
-                    <h:selectOneMenu value="#{MBArtista.artista.pais}">
-                        <f:selectItem itemLabel="Selecione o professor" />
-                        <f:selectItems value="#{MBPais.listaProfessores}" var="professores"
-                            itemLabel="#{professores.nome}" />
-                    </h:selectOneMenu>
- 
+            <h:outputLabel for="semestre" value="Denominação:" />
+            <h:inputText id="semestre" value="#{CursoBean.denominacao}" label="Semestre" required="true">
+            
+            </h:inputText>
+
+            <h:outputLabel for="semestre2" value="Habilitação:" />
+            <h:inputText id="semestre2" value="#{CursoBean.habilitacao}" label="Semestre" required="true">
+            
+            </h:inputText>
+
+            <h:outputLabel for="cargahoraria" value="Local de Oferta:" />
+            <h:inputText id="cargahoraria" value="#{CursoBean.localOferta}" label="Carga Horária" required="true">
+            
+            </h:inputText>
+
+            <h:outputLabel for="turnos" value="Turnos:" />
+            <p:panel>
+                <p:selectBooleanCheckbox value="#{CursoBean.matutino}"/>
+                <h:outputLabel value="Matutino:" />
+                <br/>
+                <p:selectBooleanCheckbox value="#{CursoBean.vespertino}"/>
+                <h:outputLabel value="Vespertino:" />
+                <br/>
+                <p:selectBooleanCheckbox value="#{CursoBean.noturno}"/>
+                <h:outputLabel value="Noturno:" />
+            </p:panel>    
+
+            <h:outputLabel for="cargahoraria1" value="Carga Horária:" />
+            <h:inputText id="cargahoraria1" value="#{CursoBean.cargaHoraria}" label="Carga Horária" required="true">
+            
+            </h:inputText>
+
+            <h:outputLabel for="regime" value="Regime Letivo:" />
+            <h:inputText id="regime" value="#{CursoBean.regimeLetivo}" label="Regime Letivo" required="true">
+                
+            </h:inputText>
+
+            <h:outputLabel for="cargahoraria11" value="Períodos:" />
+            <h:inputText id="cargahoraria11" value="#{CursoBean.periodo}" label="Períodos" required="true">
+                
+            </h:inputText>
+
+            <h:outputLabel value="Professor:"/>
+            <!--<h:selectOneMenu value="#{MBArtista.artista.pais}">
+                <f:selectItem itemLabel="Selecione o professor" />
+                <f:selectItems value="#{MBPais.listaProfessores}" var="professores"
+                    itemLabel="#{professores.nome}" />
+            </h:selectOneMenu>
+            -->
+            <h:inputText id="E" value="#{CursoBean.nomeProfessor}" label="E" required="true">
+                
+            </h:inputText>
+            
+            <h:outputLabel for="cpf" value="Cpf Professor:" />
+            <h:inputText id="cpf" value="#{CursoBean.cpf}" label="Cpf Professor" required="true"/>
+            
+            <h:outputLabel for="titulacao" value="Tirulação Professor:" />
+            <h:inputText id="titulacao" value="#{CursoBean.titulacao}" label="Tirulação Professor" required="true"/>
+            
+            <h:outputLabel for="dedicacao" value="Dedicação Professor" />
+            <h:inputText id="dedicacao" value="#{CursoBean.tempoDedicacao}" label="Dedicação Professor" required="true"/>
+            
         </h:panelGrid>
  
-        <p:commandButton value="Cancelar" update="panel"  actionListener="#{userView.save}" icon="ui-icon-check" />
-        <p:commandButton value="Salvar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
-
+        <p:commandButton value="Voltar" update="panel" action="index" ajax="false" icon="ui-icon-check" />
+        <p:commandButton value="Salvar" update="growl" actionListener="#{CursoBean.cadastrarCurso()}" icon="ui-icon-check"/>
+        
     </p:panel>
     </h:form>     
   </h:body>

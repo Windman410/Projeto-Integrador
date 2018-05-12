@@ -2,13 +2,12 @@ package br.iesb.meuprograma.negocio;
 import br.iesb.meuprograma.dados.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 
-public class CursoBO implements BO<Curso>{
+public class CursoBO implements BO<CursoBean>{
 
     @Override
-    public void validar(Curso entidade) throws NegocioException {
+    public void validar(CursoBean entidade) throws NegocioException {
         if(entidade.getTipo().isEmpty()){
             throw new NegocioException("O campo Tipo de Curso é Obrigatório");
         }
@@ -46,7 +45,7 @@ public class CursoBO implements BO<Curso>{
     }
 
     @Override
-    public void inserir(Curso entidade) throws NegocioException {
+    public void inserir(CursoBean entidade) throws NegocioException {
         validar(entidade);
         CursoDAO dao = new CursoDAO(); 
         try {
@@ -57,7 +56,7 @@ public class CursoBO implements BO<Curso>{
     }
 
     @Override
-    public void alterar(Curso entidade) throws NegocioException {
+    public void alterar(CursoBean entidade) throws NegocioException {
         consultar(entidade.getId());
         validar(entidade);
         CursoDAO dao = new CursoDAO(); 
@@ -70,7 +69,7 @@ public class CursoBO implements BO<Curso>{
     }
 
     @Override
-    public void excluir(Curso entidade) throws NegocioException {
+    public void excluir(CursoBean entidade) throws NegocioException {
         consultar(entidade.getId());
         CursoDAO dao = new CursoDAO(); 
         try {
@@ -81,8 +80,8 @@ public class CursoBO implements BO<Curso>{
     }
 
     @Override
-    public Curso consultar(int id) throws NegocioException {
-        Curso curso = new Curso();
+    public CursoBean consultar(int id) throws NegocioException {
+        CursoBean curso = new CursoBean();
         CursoDAO dao = new CursoDAO(); 
         try {
             curso = dao.consultar(id);
@@ -96,8 +95,8 @@ public class CursoBO implements BO<Curso>{
     }
 
     @Override
-    public List<Curso> listar() throws NegocioException {
-        List<Curso> lista = new ArrayList<>();
+    public List<CursoBean> listar() throws NegocioException {
+        List<CursoBean> lista = new ArrayList<>();
         CursoDAO dao = new CursoDAO();
         try{
             lista = dao.listar();

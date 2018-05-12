@@ -6,11 +6,11 @@
             <file>file:/C:/Users/mamãe/Documents/NetBeansProjects/Projeto%20Integrador/web/index.xhtml</file>
             <file>file:/C:/Users/mamãe/Documents/NetBeansProjects/Projeto%20Integrador/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/mamãe/Documents/NetBeansProjects/Projeto%20Integrador/web/welcomePrimefaces.xhtml</file>
-            <file>file:/C:/Users/mamãe/Documents/NetBeansProjects/Projeto%20Integrador/src/java/br/iesb/meuprograma/negocio/DisciplinaBO.java</file>
+            <file>file:/C:/Users/mamãe/Documents/NetBeansProjects/Projeto%20Integrador/src/java/br/iesb/meuprograma/dados/Atas.java</file>
+            <file>file:/C:/Users/mamãe/Documents/NetBeansProjects/Projeto%20Integrador/web/CadastroCurso.xhtml</file>
             <file>file:/C:/Users/mamãe/Documents/NetBeansProjects/Projeto%20Integrador/web/CadastroDisciplina.xhtml</file>
-            <file>file:/C:/Users/mamãe/Documents/NetBeansProjects/Projeto%20Integrador/src/java/br/iesb/meuprograma/dados/DisciplinaDAO.java</file>
             <file>file:/C:/Users/mamãe/Documents/NetBeansProjects/Projeto%20Integrador/src/java/br/iesb/meuprograma/dados/DisciplinaBean.java</file>
-            <file>file:/C:/Users/mamãe/Documents/NetBeansProjects/Projeto%20Integrador/src/java/br/iesb/meuprograma/dados/ConexaoBD.java</file>
+            <file>file:/C:/Users/mamãe/Documents/NetBeansProjects/Projeto%20Integrador/src/java/br/iesb/meuprograma/dados/CursoBean.java</file>
         </group>
     </open-files>
 </project-private>
