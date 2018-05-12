@@ -8,7 +8,8 @@
   </h:head>
    
   <h:body>
-      <h:form>
+      <h:form id="formBibliografia">
+        <p:growl id="growl" showDetail="true" sticky="true" />
         <p:panel id="panel" header="Cadastrar Bibliografia">
         
         <p:messages id="msgs" />
@@ -16,49 +17,49 @@
         <h:panelGrid columns="6" cellpadding="8">
             
             <h:outputLabel value="Curso:"/>
-                    <h:selectOneMenu value="#{MBArtista.artista.pais}">
+            <h:selectOneMenu value="#{CursoBean.denominacao}">
                         <f:selectItem itemLabel="Selecione o Curso" />
-                        <f:selectItems value="#{MBPais.listaPaises}" var="pais"
-                            itemLabel="#{pais.nome}" />
+                        <f:selectItems value="#{CursoBean.denominacao}" var="cursos"
+                                       itemLabel="#{CursoBean.denominacao}" />
                     </h:selectOneMenu>
                     
                     <h:outputLabel value="Disciplina:"/>
-                    <h:selectOneMenu value="#{MBArtista.artista.pais}">
+                    <h:selectOneMenu value="#{DisciplinaBean.nome}">
                         <f:selectItem itemLabel="Selecione a Disciplina" />
-                        <f:selectItems value="#{MBPais.listaPaises}" var="pais"
-                            itemLabel="#{pais.nome}" />
+                        <f:selectItems value="#{DisciplinaBean.nome}" var="disciplinas"
+                                       itemLabel="#{DisciplinaBean.nome}" />
                     </h:selectOneMenu>
             
             
-                    <h:outputLabel for="disciplina" value="Título:" />
-                    <h:inputText   id="disciplina" value="#{userView.disciplina}" required="true" label="Disciplina">
-                        <f:validateLength minimum="2" />
+                    <h:outputLabel for="titulo" value="Título:" />
+                    <h:inputText   id="titulo" value="#{BibliografiaBean.titulo}" required="true" label="Título">
+                        
                     </h:inputText>
 
-                    <h:outputLabel for="coddisciplina" value="Autor:" />
-                    <h:inputText id="coddisciplina" value="#{userView.coddisciplina}" label="Cod Disciplina" required="true">
-                        <f:validateLength minimum="2" />
+                    <h:outputLabel for="autor" value="Autor:" />
+                    <h:inputText id="autor" value="#{BibliografiaBean.autor}" label="Autor" required="true">
+                        
                     </h:inputText>
             
-                    <h:outputLabel for="descricao" value="Ano:" />
-                    <h:inputText id="descricao" value="#{userView.descricao}" label="Descrição" required="true">
-                        <f:validateLength minimum="2" />
+                    <h:outputLabel for="ano" value="Ano:" />
+                    <h:inputText id="ano" value="#{BibliografiaBean.ano}" label="Ano" required="true">
+                        
                     </h:inputText>
 
-                    <h:outputLabel for="semestre" value="ISBN:" />
-                    <h:inputText id="semestre" value="#{userView.semestre}" label="Semestre" required="true">
-                        <f:validateLength minimum="2" />
+                    <h:outputLabel for="isbn" value="ISBN:" />
+                    <h:inputText id="isbn" value="#{BibliografiaBean.isbn}" label="ISBN" required="true">
+                        
                     </h:inputText>
 
-                    <h:outputLabel for="cargahoraria" value="Editora:" />
-                    <h:inputText id="cargahoraria" value="#{userView.cargahoraria}" label="Carga Horária" required="true">
-                        <f:validateLength minimum="2" />
+                    <h:outputLabel for="Editora" value="Editora:" />
+                    <h:inputText id="editora" value="#{BibliografiaBean.editora}" label="Editora" required="true">
+                        
                     </h:inputText>
  
         </h:panelGrid>
  
         <p:commandButton value="Cancelar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
-        <p:commandButton value="Salvar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
+        <p:commandButton value="Salvar" update="growl" actionListener="#{BibliografiaBean.cadastrarBibliografia()}" icon="ui-icon-check" />
 
     </p:panel>
     </h:form>     
