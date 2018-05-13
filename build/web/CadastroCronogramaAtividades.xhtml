@@ -7,9 +7,8 @@
            <title>Cronograma de Atividades</title>
   </h:head>
    
-  <h:body>
-      <h:form>
-            <p:panel id="panel" header="Consultar Cronograma de Atividades ">
+  <h:body>      
+            <p:panel header="Consultar Cronograma de Atividades ">
               <p:dataTable var="usuario" value="#{UsuarioMB.usuarios}">
                     <p:column headerText="Aula">
                          <h:outputText value="#{usuario.id}" />
@@ -19,27 +18,27 @@
                     </p:column>            
               </p:dataTable>
              </p:panel>
-            <p:panel id="panell" header="Cadastrar Cronograma de Atividades ">
+             
+    <h:form id="cronogramaForm">
+                <p:growl id="growl" showDetail="true" sticky="true" />
+                <p:panel id="panel" header="Cadastrar Cronograma de Atividades ">
+                
                 <p:messages id="msgs" />
+                
         <h:panelGrid columns="4" cellpadding="8">
-
-                    <h:outputLabel for="disciplina" value="Aula:" />
-                    <h:inputText   id="disciplina" value="#{userView.disciplina}" required="true" label="Disciplina">
-                        <f:validateLength minimum="2" />
+                    <h:outputLabel for="aula" value="Aula:" />
+                    <h:inputText   id="aula" value="#{CronogramaBean.aula}" required="true" label="Aula">
                     </h:inputText>
 
-
-                    <h:outputLabel for="coddisciplina133" value="Conteúdo:" />
-                    <h:inputText id="coddisciplina133" value="#{userView.coddisciplina133}" label="Cod Disciplina" required="true">
-                        <f:validateLength minimum="2" />
+                    <h:outputLabel for="conteudo" value="Conteúdo:" />
+                    <h:inputText id="conteudo" value="#{CronogramaBean.conteudo}" label="Conteúdo" required="true">
                     </h:inputText>
-
         </h:panelGrid>
  
         <p:commandButton value="Cancelar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
-        <p:commandButton value="Salvar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
+        <p:commandButton value="Salvar" update="growl" actionListener="#{CronogramaBean.cadastrarCronograma()}" icon="ui-icon-check" />
 
-    </p:panel>
+                </p:panel>
     </h:form>     
   </h:body>
   </html>
