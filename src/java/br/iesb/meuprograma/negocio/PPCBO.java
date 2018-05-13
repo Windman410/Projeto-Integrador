@@ -3,12 +3,11 @@ package br.iesb.meuprograma.negocio;
 import br.iesb.meuprograma.dados.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 
-public class PPCBO implements BO<PPC>{
+public class PPCBO implements BO<PPCBean>{
 
     @Override
-    public void validar(PPC entidade) throws NegocioException {
+    public void validar(PPCBean entidade) throws NegocioException {
         if(entidade.getPerfilCurso().isEmpty()){
             throw new NegocioException("O campo Perfil do Curso é Obrigatório");
         }
@@ -58,20 +57,19 @@ public class PPCBO implements BO<PPC>{
     }
 
     @Override
-    public void inserir(PPC entidade) throws NegocioException {
+    public void inserir(PPCBean entidade) throws NegocioException {
         validar(entidade);
         DAO dao = new PPCDAO();
         try{
             dao.inserir(entidade);
         }catch(DadosException ex){
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro BO", JOptionPane.ERROR_MESSAGE);
             throw new NegocioException("Erro ao Inserir o Objeto",ex);
         }
     }
 
     @Override
-    public void alterar(PPC entidade) throws NegocioException {
-        PPC ppc = consultar(entidade.getID());
+    public void alterar(PPCBean entidade) throws NegocioException {
+        PPCBean ppc = consultar(entidade.getID());
         validar(entidade);
         DAO dao = new PPCDAO();
         try{
@@ -82,8 +80,8 @@ public class PPCBO implements BO<PPC>{
     }
 
     @Override
-    public void excluir(PPC entidade) throws NegocioException {
-        PPC ppc = consultar(entidade.getID());
+    public void excluir(PPCBean entidade) throws NegocioException {
+        PPCBean ppc = consultar(entidade.getID());
         DAO dao = new PPCDAO();
         try{
             dao.excluir(entidade);
@@ -93,9 +91,9 @@ public class PPCBO implements BO<PPC>{
     }
 
     @Override
-    public PPC consultar(int id) throws NegocioException {
+    public PPCBean consultar(int id) throws NegocioException {
         PPCDAO dao = new PPCDAO();
-        PPC ppc = new PPC();
+        PPCBean ppc = new PPCBean();
         try{
             ppc = dao.consultar(id);
             if(ppc.getID() == 0){
@@ -108,8 +106,8 @@ public class PPCBO implements BO<PPC>{
     }
 
     @Override
-    public List<PPC> listar() throws NegocioException {
-        List<PPC> lista = new ArrayList<PPC>();
+    public List<PPCBean> listar() throws NegocioException {
+        List<PPCBean> lista = new ArrayList<PPCBean>();
         PPCDAO dao = new PPCDAO();        
         try{
             lista = dao.listar();

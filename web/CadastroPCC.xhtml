@@ -11,6 +11,7 @@
    
   <h:body>
       <h:form>
+        <p:growl id="growl" showDetail="true" sticky="true" />  
         <p:panel id="panel" header="Cadastrar PCC">
         
         <p:messages id="msgs" />
@@ -18,56 +19,60 @@
         <h:panelGrid columns="2" >
             
             <h:outputLabel value="Curso:"/>
-                    <h:selectOneMenu value="#{MBArtista.artista.pais}">
-                        <f:selectItem itemLabel="Selecione o Curso" />
-                        <f:selectItems value="#{MBPais.listaPaises}" var="pais"
-                            itemLabel="#{pais.nome}" />
+            <h:selectOneMenu value="#{PPCBean.cursoPPC}">
+                <f:selectItems value="#{CursoBean.carregarCurso()}" var="pais"
+                               itemLabel="#{CursoBean.denominacao}" />
                     </h:selectOneMenu>                                           
             
                     <h:outputLabel for="disciplina" value="Perfil do Curso:" />
-                    <h:inputTextarea  cols="60"  id="disciplina" value="#{userView.disciplina}" required="true" label="Disciplina">
-                        <f:validateLength minimum="10" />
+                    <h:inputTextarea  cols="60"  id="disciplina" value="#{PPCBean.perfilCurso}" label="Disciplina">
+
                     </h:inputTextarea>
 
                     <h:outputLabel for="coddisciplina" value="Perfil do Egresso:" />
-                    <h:inputTextarea cols="60" id="coddisciplina" value="#{userView.coddisciplina}" label="Cod Disciplina" required="true"  >
-                        <f:validateLength minimum="2" />
+                    <h:inputTextarea cols="60" id="coddisciplina" value="#{PPCBean.perfilEgresso}" label="Cod Disciplina"  >
+
                     </h:inputTextarea>
             
                     <h:outputLabel for="descricao" value="Formas de Acesso ao curso:" />
-                    <h:inputTextarea cols="60" id="descricao" value="#{userView.descricao}" label="Descrição" required="true">
-                        <f:validateLength minimum="2" />
+                    <h:inputTextarea cols="60" id="descricao" value="#{PPCBean.formaAcesso}" label="Descrição" >
+                    
                     </h:inputTextarea>
 
                     <h:outputLabel for="semestre" value="Representação gráfica de um Perfil de Formação:" />
-                    <h:inputTextarea cols="60" id="semestre" value="#{userView.semestre}" label="Semestre" required="true">
-                        <f:validateLength minimum="2" />
+                    <h:inputTextarea cols="60" id="semestre" value="#{PPCBean.representacao}" label="Semestre" >
+                    
                     </h:inputTextarea>
 
                     <h:outputLabel for="cargahoraria" value="Sistemas de Avaliação de Processos de Ensino de Aprendizagem:" />
-                    <h:inputTextarea cols="60" id="cargahoraria" value="#{userView.cargahoraria}" label="Carga Horária" required="true">
-                        <f:validateLength minimum="2" />
+                    <h:inputTextarea cols="60" id="cargahoraria" value="#{PPCBean.avaliacaoProcesso}" label="Carga Horária" >
+                    
                     </h:inputTextarea>
                     
-                    <h:outputLabel for="cargahorariaaa" value="Trabalho de Conclusão do Curso:" />
-                    <h:inputText id="cargahorariaaa" value="#{userView.cargahorariaaa}" label="Carga Horária" required="true">
-                        <f:validateLength minimum="2" />
+                    <h:outputLabel for="projeto" value="Sistemas de Avaliação do Projeto do Curso:" />
+                    <h:inputTextarea cols="60" id="projeto" value="#{PPCBean.avaliacaoProjeto}" label="Carga Horária" >
+                    
+                    </h:inputTextarea>
+                    
+                    <h:outputLabel for="cargahorariaaa" value="Horas de Trabalho de Conclusão do Curso:" />
+                    <h:inputText id="cargahorariaaa" value="#{PPCBean.horasTCC}" label="Carga Horária" >
+                    
                     </h:inputText>
                     
                     <h:outputLabel for="cargahorariaa" value="Horas de estágio curricular:" />
-                    <h:inputText id="cargahorariaa" value="#{userView.cargahorariaa}" label="Carga Horária" required="true">
-                        <f:validateLength minimum="2" />
+                    <h:inputText id="cargahorariaa" value="#{PPCBean.horasEstagio}" label="Carga Horária" >
+                    
                     </h:inputText>
                     
                     <h:outputLabel for="cargahoraria1" value="Política de Atendimento a pessoas com deficiência e/ou mobilidade reduzida:" />
-                    <h:inputTextarea cols="60" id="cargahoraria1" value="#{userView.cargahoraria1}" label="Carga Horária" required="true">
-                        <f:validateLength minimum="2" />
+                    <h:inputTextarea cols="60" id="cargahoraria1" value="#{PPCBean.politicaDeAtendimento}" label="Carga Horária" >
+                        
                     </h:inputTextarea>
  
         </h:panelGrid>
  
-        <p:commandButton value="Cancelar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
-        <p:commandButton value="Salvar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
+        <p:commandButton value="Voltar" update="panel" action="index" ajax="false" icon="ui-icon-check" />
+        <p:commandButton value="Salvar" update="growl" actionListener="#{PPCBean.cadastrarPPC()}" icon="ui-icon-check" />
 
     </p:panel>
     </h:form>     

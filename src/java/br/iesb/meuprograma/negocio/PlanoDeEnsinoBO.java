@@ -3,10 +3,10 @@ import br.iesb.meuprograma.dados.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlanoDeEnsinoBO implements BO<PlanoDeEnsino>{
+public class PlanoDeEnsinoBO implements BO<PlanoDeEnsinoBean>{
 
     @Override
-    public void validar(PlanoDeEnsino entidade) throws NegocioException {
+    public void validar(PlanoDeEnsinoBean entidade) throws NegocioException {
         if(entidade.getCurso().isEmpty()){
             throw new NegocioException("O campo  Curso é Obrigatório");
         }
@@ -49,7 +49,7 @@ public class PlanoDeEnsinoBO implements BO<PlanoDeEnsino>{
     }
 
     @Override
-    public void inserir(PlanoDeEnsino entidade) throws NegocioException {
+    public void inserir(PlanoDeEnsinoBean entidade) throws NegocioException {
         validar(entidade);
         PlanoDeEnsinoDAO dao = new PlanoDeEnsinoDAO(); 
         try {
@@ -60,7 +60,7 @@ public class PlanoDeEnsinoBO implements BO<PlanoDeEnsino>{
     }
 
     @Override
-    public void alterar(PlanoDeEnsino entidade) throws NegocioException {
+    public void alterar(PlanoDeEnsinoBean entidade) throws NegocioException {
         consultar(entidade.getId());
         validar(entidade);
         PlanoDeEnsinoDAO dao = new PlanoDeEnsinoDAO();  
@@ -72,7 +72,7 @@ public class PlanoDeEnsinoBO implements BO<PlanoDeEnsino>{
     }
 
     @Override
-    public void excluir(PlanoDeEnsino entidade) throws NegocioException {
+    public void excluir(PlanoDeEnsinoBean entidade) throws NegocioException {
         consultar(entidade.getId());
         PlanoDeEnsinoDAO dao = new PlanoDeEnsinoDAO();  
         try {
@@ -83,8 +83,8 @@ public class PlanoDeEnsinoBO implements BO<PlanoDeEnsino>{
     }
 
     @Override
-    public PlanoDeEnsino consultar(int id) throws NegocioException {
-        PlanoDeEnsino planodeensino = new PlanoDeEnsino();
+    public PlanoDeEnsinoBean consultar(int id) throws NegocioException {
+        PlanoDeEnsinoBean planodeensino = new PlanoDeEnsinoBean();
         PlanoDeEnsinoDAO dao = new PlanoDeEnsinoDAO(); 
         try {
             planodeensino = dao.consultar(id);
@@ -98,8 +98,8 @@ public class PlanoDeEnsinoBO implements BO<PlanoDeEnsino>{
     }
 
     @Override
-    public List<PlanoDeEnsino> listar() throws NegocioException {
-        List<PlanoDeEnsino> lista = new ArrayList<>();
+    public List<PlanoDeEnsinoBean> listar() throws NegocioException {
+        List<PlanoDeEnsinoBean> lista = new ArrayList<>();
         PlanoDeEnsinoDAO dao = new PlanoDeEnsinoDAO();
         try{
             lista = dao.listar();

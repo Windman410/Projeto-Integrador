@@ -37,8 +37,8 @@
  
         </h:panelGrid>
  
-        <p:commandButton value="Cancelar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
-        <p:commandButton value="Salvar" update="growl" actionListener="#{AtasBean.cadastrarAta()}" icon="ui-icon-check" />
+        <p:commandButton value="Voltar" update="panel" action="index" ajax="false" icon="ui-icon-check" />
+        <p:commandButton value="Salvar" update="growl" actionListener="#{AtasBean.cadastrarAtas()}" icon="ui-icon-check" />
 
     </p:panel>
     </h:form>     

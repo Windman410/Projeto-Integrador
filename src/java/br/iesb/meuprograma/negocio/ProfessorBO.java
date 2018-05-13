@@ -3,12 +3,11 @@ package br.iesb.meuprograma.negocio;
 import br.iesb.meuprograma.dados.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 
-public class ProfessorBO implements BO<Professor>{
+public class ProfessorBO implements BO<ProfessorBean>{
 
     @Override
-    public void validar(Professor entidade) throws NegocioException {
+    public void validar(ProfessorBean entidade) throws NegocioException {
         if(entidade.getNome().isEmpty()){
             throw new NegocioException("O campo Nome é Obrigatório");
         }
@@ -49,7 +48,7 @@ public class ProfessorBO implements BO<Professor>{
     }
 
     @Override
-    public void inserir(Professor entidade) throws NegocioException {
+    public void inserir(ProfessorBean entidade) throws NegocioException {
         validar(entidade);
         DAO dao = new ProfessorDAO();
         try{
@@ -60,7 +59,7 @@ public class ProfessorBO implements BO<Professor>{
     }
 
     @Override
-    public void alterar(Professor entidade) throws NegocioException {
+    public void alterar(ProfessorBean entidade) throws NegocioException {
         consultar(entidade.getId());
         validar(entidade);
         DAO dao = new ProfessorDAO();
@@ -72,7 +71,7 @@ public class ProfessorBO implements BO<Professor>{
     }
 
     @Override
-    public void excluir(Professor entidade) throws NegocioException {
+    public void excluir(ProfessorBean entidade) throws NegocioException {
         consultar(entidade.getId());
         DAO dao = new ProfessorDAO();
         try{
@@ -83,9 +82,9 @@ public class ProfessorBO implements BO<Professor>{
     }
 
     @Override
-    public Professor consultar(int id) throws NegocioException {
+    public ProfessorBean consultar(int id) throws NegocioException {
         ProfessorDAO dao = new ProfessorDAO();
-        Professor professor = new Professor();
+        ProfessorBean professor = new ProfessorBean();
         try{
             professor = dao.consultar(id);
             if(professor.getId() == 0){
@@ -98,8 +97,8 @@ public class ProfessorBO implements BO<Professor>{
     }
 
     @Override
-    public List<Professor> listar() throws NegocioException {
-        List<Professor> lista = new ArrayList<>();
+    public List<ProfessorBean> listar() throws NegocioException {
+        List<ProfessorBean> lista = new ArrayList<>();
         ProfessorDAO professor = new ProfessorDAO();        
         try{
             lista = professor.listar();

@@ -1,14 +1,14 @@
 package br.iesb.meuprograma.negocio;
-import br.iesb.meuprograma.dados.Cronograma;
+import br.iesb.meuprograma.dados.CronogramaBean;
 import br.iesb.meuprograma.dados.CronogramaDAO;
 import br.iesb.meuprograma.dados.DadosException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CronogramaBO implements BO<Cronograma>{
+public class CronogramaBO implements BO<CronogramaBean>{
 
     @Override
-    public void validar(Cronograma entidade) throws NegocioException {
+    public void validar(CronogramaBean entidade) throws NegocioException {
         if(entidade.getAula()== -1){
             throw new NegocioException("O campo Aula é obrigatório!");
         }else {
@@ -19,7 +19,7 @@ public class CronogramaBO implements BO<Cronograma>{
     }
 
     @Override
-    public void inserir(Cronograma entidade) throws NegocioException {
+    public void inserir(CronogramaBean entidade) throws NegocioException {
         validar (entidade);
         CronogramaDAO dao = new CronogramaDAO();
         try {
@@ -30,7 +30,7 @@ public class CronogramaBO implements BO<Cronograma>{
     }
 
     @Override
-    public void alterar(Cronograma entidade) throws NegocioException {
+    public void alterar(CronogramaBean entidade) throws NegocioException {
         consultar(entidade.getId());
         validar(entidade);
         CronogramaDAO dao = new CronogramaDAO();
@@ -42,7 +42,7 @@ public class CronogramaBO implements BO<Cronograma>{
     }
 
     @Override
-    public void excluir(Cronograma entidade) throws NegocioException {
+    public void excluir(CronogramaBean entidade) throws NegocioException {
         consultar(entidade.getId());
         CronogramaDAO dao = new CronogramaDAO();
         try{
@@ -53,9 +53,9 @@ public class CronogramaBO implements BO<Cronograma>{
     }
 
     @Override
-    public Cronograma consultar(int id) throws NegocioException {
+    public CronogramaBean consultar(int id) throws NegocioException {
         CronogramaDAO dao = new CronogramaDAO();
-        Cronograma cronograma = new Cronograma();
+        CronogramaBean cronograma = new CronogramaBean();
         
         try{
             cronograma = dao.consultar(id);
@@ -69,8 +69,8 @@ public class CronogramaBO implements BO<Cronograma>{
     }
 
     @Override
-    public List<Cronograma> listar() throws NegocioException {
-        List<Cronograma> lista = new ArrayList<>();
+    public List<CronogramaBean> listar() throws NegocioException {
+        List<CronogramaBean> lista = new ArrayList<>();
         CronogramaDAO dao = new CronogramaDAO();       
         try{
             lista = dao.listar();

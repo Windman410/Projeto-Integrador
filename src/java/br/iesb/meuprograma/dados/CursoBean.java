@@ -2,6 +2,7 @@ package br.iesb.meuprograma.dados;
 import br.iesb.meuprograma.negocio.CursoBO;
 import br.iesb.meuprograma.negocio.NegocioException;
 import java.io.Serializable;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;  
 import javax.faces.bean.RequestScoped;  
@@ -168,6 +169,18 @@ public class CursoBean implements Serializable{
     public String toString(){
         return denominacao;
     }
+    
+    public List<CursoBean> carregarCurso(){
+    CursoBO bo = new CursoBO();
+        try {
+            List<CursoBean> lista = bo.listar();
+            return lista;
+        } catch (NegocioException ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erro: " + ex.getMessage()));
+            return null;
+        }
+    }
+    
     
     public void cadastrarCurso() {
         CursoBO bo = new CursoBO(); 

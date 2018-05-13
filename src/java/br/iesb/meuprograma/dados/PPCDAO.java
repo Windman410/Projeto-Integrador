@@ -12,16 +12,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author mamãe
  */
-public class PPCDAO implements DAO<PPC>{
+public class PPCDAO implements DAO<PPCBean>{
 
     @Override
-    public void inserir(PPC entidade) throws DadosException {
+    public void inserir(PPCBean entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "INSERT INTO tb_ppc (cursoPPC,perfilCurso,perfilEgresso,formaAcesso,representacao,avaliacaoProcesso,avaliacaoProjeto,horasTCC,horasEstagio,politicaDeAtendimento) VALUES(?,?,?,?,?,?,?,?,?,?)";
         try {            
@@ -44,7 +43,7 @@ public class PPCDAO implements DAO<PPC>{
     }
 
     @Override
-    public void alterar(PPC entidade) throws DadosException {
+    public void alterar(PPCBean entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "UPDATE tb_ppc SET cursoPPC=?, perfilCurso=?, perfilEgresso=?, formaAcesso=?, representacao=?, avaliacaoProcesso=?, avaliacaoProjeto=?, horasTCC=?, horasEstagio=?, politicaDeAtendimento=? WHERE id_ppc=?";
         try {
@@ -68,7 +67,7 @@ public class PPCDAO implements DAO<PPC>{
     }
 
     @Override
-    public void excluir(PPC entidade) throws DadosException {
+    public void excluir(PPCBean entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "DELETE FROM tb_ppc WHERE id_ppc=?";
         
@@ -83,10 +82,10 @@ public class PPCDAO implements DAO<PPC>{
     }
 
     @Override
-    public PPC consultar(int id) throws DadosException {
+    public PPCBean consultar(int id) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "SELECT * FROM tb_ppc WHERE id_ppc=?";
-        PPC ppc = new PPC();
+        PPCBean ppc = new PPCBean();
         try {
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setInt(1, id);
@@ -113,15 +112,15 @@ public class PPCDAO implements DAO<PPC>{
     }
 
     @Override
-    public List<PPC> listar() throws DadosException {
+    public List<PPCBean> listar() throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "SELECT * FROM tb_ppc";
-        ArrayList<PPC> listaPPC = new ArrayList<PPC>();
+        ArrayList<PPCBean> listaPPC = new ArrayList<PPCBean>();
         try {
             Statement comando = conexao.createStatement();
             ResultSet resultado = comando.executeQuery(sql);
             while (resultado.next()){
-                PPC ppc = new PPC();
+                PPCBean ppc = new PPCBean();
                 ppc.setID(resultado.getInt(1));
                 ppc.setCursoPPC(resultado.getString(2));
                 ppc.setPerfilCurso(resultado.getString(3));

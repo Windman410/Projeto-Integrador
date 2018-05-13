@@ -3,6 +3,7 @@ package br.iesb.meuprograma.dados;
 import br.iesb.meuprograma.negocio.CronogramaBO;
 import br.iesb.meuprograma.negocio.NegocioException;
 import java.io.Serializable;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -43,6 +44,18 @@ public class CronogramaBean implements Serializable{
     public String toString(){
         return "Aula: " + aula + "  Conteudo: " + conteudo;
     }
+    
+    public List<CronogramaBean> carregaCronograma(){
+    CronogramaBO bo = new CronogramaBO();
+        try {
+            List<CronogramaBean> lista = bo.listar();
+            return lista;
+        } catch (NegocioException ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erro: " + ex.getMessage()));
+            return null;
+        }
+    }
+    
     
     public void cadastrarCronograma() {
         CronogramaBO bo = new CronogramaBO(); 

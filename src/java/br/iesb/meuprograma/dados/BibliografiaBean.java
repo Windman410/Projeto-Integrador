@@ -2,6 +2,7 @@ package br.iesb.meuprograma.dados;
 import br.iesb.meuprograma.negocio.BibliografiaBO;
 import br.iesb.meuprograma.negocio.NegocioException;
 import java.io.Serializable;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -86,6 +87,17 @@ public class BibliografiaBean implements Serializable{
     @Override
     public String toString(){
         return titulo;
+    }
+    
+    public List<BibliografiaBean> carregarBibliografia(){
+    BibliografiaBO bo = new BibliografiaBO();
+        try {
+            List<BibliografiaBean> lista = bo.listar();
+            return lista;
+        } catch (NegocioException ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erro: " + ex.getMessage()));
+            return null;
+        }
     }
     
     public void cadastrarBibliografia() {

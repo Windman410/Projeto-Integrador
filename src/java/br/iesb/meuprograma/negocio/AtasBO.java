@@ -4,12 +4,12 @@ import br.iesb.meuprograma.dados.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AtasBO implements BO<Atas>{
+public class AtasBO implements BO<AtasBean>{
 
     
     
     @Override
-    public void validar(Atas entidade) throws NegocioException {
+    public void validar(AtasBean entidade) throws NegocioException {
          if(entidade.getData()== -1){
             throw new NegocioException("O campo Data é obrigatório!");
         }else {
@@ -28,7 +28,7 @@ public class AtasBO implements BO<Atas>{
     }
 
     @Override
-    public void inserir(Atas entidade) throws NegocioException {
+    public void inserir(AtasBean entidade) throws NegocioException {
         validar (entidade);
         AtasDAO dao = new AtasDAO();
         try {
@@ -39,7 +39,7 @@ public class AtasBO implements BO<Atas>{
     }
 
     @Override
-    public void alterar(Atas entidade) throws NegocioException {
+    public void alterar(AtasBean entidade) throws NegocioException {
         consultar(entidade.getId());
         validar(entidade);
         DAO dao = new AtasDAO();
@@ -51,7 +51,7 @@ public class AtasBO implements BO<Atas>{
     }
 
     @Override
-    public void excluir(Atas entidade) throws NegocioException {
+    public void excluir(AtasBean entidade) throws NegocioException {
         consultar(entidade.getId());
         DAO dao = new AtasDAO();
         try{
@@ -62,9 +62,9 @@ public class AtasBO implements BO<Atas>{
     }
 
     @Override
-    public Atas consultar(int id) throws NegocioException {
+    public AtasBean consultar(int id) throws NegocioException {
         AtasDAO dao = new AtasDAO();
-        Atas atas = new Atas();
+        AtasBean atas = new AtasBean();
         
         try{
             atas = dao.consultar(id);
@@ -78,8 +78,8 @@ public class AtasBO implements BO<Atas>{
     }
 
     @Override
-    public List<Atas> listar() throws NegocioException {
-        List<Atas> lista = new ArrayList<>();
+    public List<AtasBean> listar() throws NegocioException {
+        List<AtasBean> lista = new ArrayList<>();
         AtasDAO dao = new AtasDAO();       
         try{
             lista = dao.listar();

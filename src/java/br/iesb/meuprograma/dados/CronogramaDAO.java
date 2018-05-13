@@ -7,10 +7,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CronogramaDAO implements DAO<Cronograma>{
+public class CronogramaDAO implements DAO<CronogramaBean>{
 
     @Override
-    public void inserir(Cronograma entidade) throws DadosException {
+    public void inserir(CronogramaBean entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "INSERT INTO tb_cronograma (aula, conteudo) VALUES (?, ?)";
         try {
@@ -25,7 +25,7 @@ public class CronogramaDAO implements DAO<Cronograma>{
     }
 
     @Override
-    public void alterar(Cronograma entidade) throws DadosException {
+    public void alterar(CronogramaBean entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "UPDATE tb_cronograma SET aula=?, conteudo=? WHERE id_cronograma=?";
         try {
@@ -41,7 +41,7 @@ public class CronogramaDAO implements DAO<Cronograma>{
     }
 
     @Override
-    public void excluir(Cronograma entidade) throws DadosException {
+    public void excluir(CronogramaBean entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "DELETE FROM tb_cronograma WHERE id_cronograma=?";
         
@@ -56,10 +56,10 @@ public class CronogramaDAO implements DAO<Cronograma>{
     }
 
     @Override
-    public Cronograma consultar(int id) throws DadosException {
+    public CronogramaBean consultar(int id) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
                 String sql = "SELECT * FROM tb_cronograma WHERE id_cronograma=?";
-                Cronograma cronograma = new Cronograma();
+                CronogramaBean cronograma = new CronogramaBean();
         
         try {
             PreparedStatement comando = conexao.prepareStatement(sql);
@@ -79,17 +79,17 @@ public class CronogramaDAO implements DAO<Cronograma>{
     }
 
     @Override
-    public List<Cronograma> listar() throws DadosException {
+    public List<CronogramaBean> listar() throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "SELECT * FROM tb_cronograma";
-        List <Cronograma> lista = new ArrayList<>();
+        List <CronogramaBean> lista = new ArrayList<>();
                 
         try {
             Statement comando = conexao.createStatement();
             ResultSet resultado = comando.executeQuery(sql);
             
             while (resultado.next()){
-                Cronograma cronograma = new Cronograma();
+                CronogramaBean cronograma = new CronogramaBean();
                 cronograma.setId(resultado.getInt(1));
                 cronograma.setAula(resultado.getInt(2));
                 cronograma.setConteudo(resultado.getString(3));

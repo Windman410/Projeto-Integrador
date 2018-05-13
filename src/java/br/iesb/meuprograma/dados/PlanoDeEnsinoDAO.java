@@ -6,10 +6,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-public class PlanoDeEnsinoDAO implements DAO<PlanoDeEnsino>{
+public class PlanoDeEnsinoDAO implements DAO<PlanoDeEnsinoBean>{
 
     @Override
-    public void inserir(PlanoDeEnsino entidade) throws DadosException {
+    public void inserir(PlanoDeEnsinoBean entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "INSERT INTO tb_planoensino (curso, ano, semestre, disciplina, cargaHoraria, periodoCurso, professor, ementa, competenciasHabilidades, metodologiaEnsino, avaliacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
@@ -34,7 +34,7 @@ public class PlanoDeEnsinoDAO implements DAO<PlanoDeEnsino>{
     }
 
     @Override
-    public void alterar(PlanoDeEnsino entidade) throws DadosException {
+    public void alterar(PlanoDeEnsinoBean entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "UPDATE tb_planoensino SET curso=?, ano=?, semestre=?, disciplina=?, cargaHoraria=?, periodoCurso=?, professor=?, ementa=?, competenciasHabilidades=?, metodologiaEnsino=?, avaliacao=? WHERE id_plano=?";
         try {
@@ -59,7 +59,7 @@ public class PlanoDeEnsinoDAO implements DAO<PlanoDeEnsino>{
     }
 
     @Override
-    public void excluir(PlanoDeEnsino entidade) throws DadosException {
+    public void excluir(PlanoDeEnsinoBean entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "DELETE FROM tb_planoensino WHERE id_plano=?";
         try {
@@ -73,10 +73,10 @@ public class PlanoDeEnsinoDAO implements DAO<PlanoDeEnsino>{
     }
 
     @Override
-    public PlanoDeEnsino consultar(int id) throws DadosException {
+    public PlanoDeEnsinoBean consultar(int id) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "SELECT * FROM tb_planoensino WHERE id_plano=?";
-        PlanoDeEnsino planodeensino = new PlanoDeEnsino();
+        PlanoDeEnsinoBean planodeensino = new PlanoDeEnsinoBean();
         
         try {
             PreparedStatement comando = conexao.prepareStatement(sql);
@@ -103,16 +103,16 @@ public class PlanoDeEnsinoDAO implements DAO<PlanoDeEnsino>{
     }
 
     @Override
-    public List<PlanoDeEnsino> listar() throws DadosException {
+    public List<PlanoDeEnsinoBean> listar() throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "SELECT * FROM tb_planoensino";
-        List <PlanoDeEnsino> lista = new ArrayList<>();
+        List <PlanoDeEnsinoBean> lista = new ArrayList<>();
         
         try{
             Statement comando = conexao.createStatement();
             ResultSet resultado = comando.executeQuery(sql);
             while(resultado.next()){
-                PlanoDeEnsino planodeensino = new PlanoDeEnsino();
+                PlanoDeEnsinoBean planodeensino = new PlanoDeEnsinoBean();
                 planodeensino.setId(resultado.getInt(1));
                 planodeensino.setCurso(resultado.getString(2));
                 planodeensino.setAno(resultado.getInt(3));

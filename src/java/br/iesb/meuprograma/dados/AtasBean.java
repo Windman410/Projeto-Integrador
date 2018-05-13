@@ -1,11 +1,15 @@
 package br.iesb.meuprograma.dados;
 import br.iesb.meuprograma.negocio.AtasBO;
+import br.iesb.meuprograma.negocio.DisciplinaBO;
 import br.iesb.meuprograma.negocio.NegocioException;
 import java.io.Serializable;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 @ManagedBean(name = "AtasBean")
 @SessionScoped
@@ -59,7 +63,18 @@ public class AtasBean implements Serializable{
     public Integer toInteger(){ 
         return data;}
     
-    public void cadastrarAta() {
+    public List<AtasBean> carregarAtas(){
+    AtasBO bo = new AtasBO();
+        try {
+            List<AtasBean> lista = bo.listar();
+            return lista;
+        } catch (NegocioException ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erro: " + ex.getMessage()));
+            return null;
+        }
+    }
+    
+    public void cadastrarAtas() {
         AtasBO bo = new AtasBO(); 
         
         try{

@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-public class ProfessorDAO implements DAO<Professor> {
+public class ProfessorDAO implements DAO<ProfessorBean> {
 
     @Override
-    public void inserir(Professor entidade) throws DadosException {
+    public void inserir(ProfessorBean entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "INSERT INTO tb_professor (nome,cpf,maiorTitulacao,areaFormacao,curriculo,dataAtualizacao,matricula,dataAdimissao,horasNDE"
                 + ",horasOrientacaoTCC,horasCordenacaoCurso,horasCordenacaoOutrosCurso,horasPesquisa,horasExtraClasseCurso,horasExtraClasseOutrosCurso"
@@ -69,7 +69,7 @@ public class ProfessorDAO implements DAO<Professor> {
     }
 
     @Override
-    public void alterar(Professor entidade) throws DadosException {
+    public void alterar(ProfessorBean entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "UPDATE tb_professor SET nome=?,cpf=?,maiorTitulacao=?,areaFormacao=?,curriculo=?,dataAtualizacao=?,matricula=?,dataAdimissao=?,horasNDE=?"
                 + ",horasOrientacaoTCC=?,horasCordenacaoCurso=?,horasCordenacaoOutrosCurso=?,horasPesquisa=?,horasExtraClasseCurso=?,horasExtraClasseOutrosCurso=?"
@@ -130,7 +130,7 @@ public class ProfessorDAO implements DAO<Professor> {
     }
 
     @Override
-    public void excluir(Professor entidade) throws DadosException {
+    public void excluir(ProfessorBean entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "DELETE FROM tb_professor WHERE id_professor=?";
         
@@ -145,10 +145,10 @@ public class ProfessorDAO implements DAO<Professor> {
     }
 
     @Override
-    public Professor consultar(int id) throws DadosException {
+    public ProfessorBean consultar(int id) throws DadosException {
                 Connection conexao = ConexaoBD.getConexao();
                 String sql = "SELECT * FROM tb_professor WHERE id_professor=?";
-                Professor professor = new Professor();
+                ProfessorBean professor = new ProfessorBean();
         
         try {
             PreparedStatement comando = conexao.prepareStatement(sql);
@@ -206,17 +206,17 @@ public class ProfessorDAO implements DAO<Professor> {
     }
 
     @Override
-    public List<Professor> listar() throws DadosException {
+    public List<ProfessorBean> listar() throws DadosException {
                 Connection conexao = ConexaoBD.getConexao();
                 String sql = "SELECT * FROM tb_professor";
-                List <Professor> lista = new ArrayList<>();
+                List <ProfessorBean> lista = new ArrayList<>();
                 
         try {
             Statement comando = conexao.createStatement();
             ResultSet resultado = comando.executeQuery(sql);
             
             while (resultado.next()){
-                Professor professor = new Professor();
+                ProfessorBean professor = new ProfessorBean();
                 professor.setId(resultado.getInt(1));
                 professor.setNome(resultado.getString(2));
                 professor.setCpf(resultado.getLong(3));
