@@ -14,6 +14,7 @@
         
         <p:messages id="msgs" />
  
+        <p:panel>
         <h:panelGrid columns="6" cellpadding="8">
             
             <h:outputLabel value="Curso:"/>
@@ -54,6 +55,8 @@
                     </h:inputText>
  
         </h:panelGrid>
+            </p:panel>
+        <br/>
         <p:commandButton value="Voltar" update="panel" action="index" ajax="false" icon="ui-icon-check" />
         <p:commandButton value="Salvar" update="growl" actionListener="#{BibliografiaBean.cadastrarBibliografia()}" icon="ui-icon-check" />
     </p:panel>
