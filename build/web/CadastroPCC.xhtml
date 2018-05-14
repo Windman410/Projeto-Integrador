@@ -15,7 +15,8 @@
         <p:panel id="panel" header="Cadastrar PCC">
         
         <p:messages id="msgs" />
- 
+        
+        <p:panel>
         <h:panelGrid columns="2" >
             
             <h:outputLabel value="Curso:"/>
@@ -70,6 +71,8 @@
                     </h:inputTextarea>
  
         </h:panelGrid>
+            </p:panel>
+            <br/>
  
         <p:commandButton value="Voltar" update="panel" action="index" ajax="false" icon="ui-icon-check" />
         <p:commandButton value="Salvar" update="growl" actionListener="#{PPCBean.cadastrarPPC()}" icon="ui-icon-check" />
