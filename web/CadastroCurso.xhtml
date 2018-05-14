@@ -11,8 +11,9 @@
         <h:form>
         <p:growl id="growl" showDetail="true" sticky="true" />  
         <p:panel id="panel" header="Cadastrar Curso">
-        <p:messages id="msgs" /> 
-        <h:panelGrid columns="6" cellpadding="8" >
+        <p:messages id="msgs" />
+        <p:panel>
+        <h:panelGrid columns="6" cellpadding="6" >
             <h:outputLabel for="disciplina" value="Tipo do Curso:" />
             <h:inputText   id="disciplina" value="#{CursoBean.tipo}"  label="Disciplina">
             
@@ -87,6 +88,8 @@
             <h:inputText id="dedicacao" value="#{CursoBean.tempoDedicacao}" label="Dedicação Professor"/>
             
         </h:panelGrid>
+            </p:panel>
+            <br/>
  
         <p:commandButton value="Voltar" update="panel" action="index" ajax="false" icon="ui-icon-check" />
         <p:commandButton value="Salvar" update="growl" actionListener="#{CursoBean.cadastrarCurso()}" icon="ui-icon-check"/>
