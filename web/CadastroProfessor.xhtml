@@ -10,65 +10,254 @@
   <h:body>
        
       <h:form id="form">
+          <p:growl id="growl" showDetail="true" sticky="true" />
           <p:panel id="panel" header="Cadastrar Professor">
              
     <p:growl id="msgs" showDetail="true" />
  
     <p:tabView>
+        
         <p:tab title="Dados Pessoais">
+            <p:panel>
             <h:panelGrid columns="6" cellpadding="8">
-                <h:outputLabel for="disciplina" value="Nome:" />
-                <h:inputText   id="disciplina" value="#{userView.disciplina}" required="true" label="Disciplina">
-                    <f:validateLength minimum="2" />
+                <h:outputLabel for="nome" value="Nome:" />
+                <h:inputText   id="nome" value="#{ProfessorBean.nome}" required="true" label="Nome">
                 </h:inputText>
             
-                <h:outputLabel for="coddisciplina" value="CPF:" />
-                <h:inputText id="coddisciplina" value="#{userView.coddisciplina}" label="Cod Disciplina" required="true">
-                    <f:validateLength minimum="2" />
+                <h:outputLabel for="cpf" value="CPF:" />
+                <h:inputText id="cpf" value="#{ProfessorBean.cpf}" label="CPF" required="true">
                 </h:inputText>
             
-                <h:outputLabel for="descricao" value="Maior Titulação:" />
-                <h:inputText id="descricao" value="#{userView.descricao}" label="Descrição" required="true">
-                    <f:validateLength minimum="2" />
+                <h:outputLabel for="maiorTitulacao" value="Maior Titulação:" />
+                <h:inputText id="maiorTitulacao" value="#{ProfessorBean.maiorTitulacao}" label="Maior Titulação" required="true">
                 </h:inputText>
 
-                <h:outputLabel for="semestre" value="Área de Formação:" />
-                <h:inputText id="semestre" value="#{userView.semestre}" label="Semestre" required="true">
-                    <f:validateLength minimum="2" />
+                <h:outputLabel for="area" value="Área de Formação:" />
+                <h:inputText id="area" value="#{ProfessorBean.areaFormacao}" label="Área de Formação" required="true">
                 </h:inputText>
             
-                <h:outputLabel for="cargahoraria" value="Currículo Lattes:" />
-                <h:inputText id="cargahoraria" value="#{userView.cargahoraria}" label="Carga Horária" required="true">
-                    <f:validateLength minimum="2" />
+                <h:outputLabel for="curriculo" value="Currículo Lattes:" />
+                <h:inputText id="curriculo" value="#{ProfessorBean.curriculo}" label="Currículo" required="true">
                 </h:inputText>
                 
-                <h:outputLabel for="cargahoraria22" value="Data de Atualização:" />
-                <h:inputText id="cargahoraria22" value="#{userView.cargahoraria22}" label="Carga Horária" required="true">
-                    <f:validateLength minimum="2" />
+                <h:outputLabel for="dataAtualizacao" value="Data de Atualização:" />
+                <h:inputText id="dataAtualizacao" value="#{ProfessorBean.dataAtualizacao}" label="Data de Atualização" required="true">
                 </h:inputText>
                 
             </h:panelGrid>
+                </p:panel>
         </p:tab>
         
         <p:tab title="Atuação IES">
-            <h:panelGrid columns="6" cellpadding="8">
-
-                   
+            <p:panel>
+            <h:panelGrid columns="4" cellpadding="8">
+                <h:outputLabel for="matricula" value="Matrícula:" />
+                <h:inputText id="matricula" value="#{ProfessorBean.matricula}" label="Matrícula" required="true">
+                </h:inputText>
                 
-                
+                <h:outputLabel for="dataAdmissao" value="Data de Admissão:" />
+                <h:inputText id="dataAdmissao" value="#{ProfessorBean.dataAdimissao}" label="Data de Admissão" required="true">
+                </h:inputText>   
             </h:panelGrid>
+            </p:panel><br/>    
+            <p:panel header="Quantidade de Horas das Atividades">
+                    <h:panelGrid columns="6" cellpadding="2">
+                        
+                        <h:inputText size="2" id="horasNDE" value="#{ProfessorBean.horasNDE}" label="Horas NDE" required="true"/>
+                        <h:outputLabel for="horasNDE" value="Horas NDE:" />
+                        
+                        <h:inputText size="2" id="TCC" value="#{ProfessorBean.horasOrientacaoTCC}" label="Orientação TCC" required="true"/>
+                        <h:outputLabel for="TCC" value="Orientação TCC:" />
+                        
+                        <h:inputText size="2" id="coordCurso" value="#{ProfessorBean.horasCordenacaoCurso}" label="Coordenação de Curso" required="true"/>
+                        <h:outputLabel for="coordCurso" value="Coordenação de Curso:" />
+                        
+                        <h:inputText size="2" id="coordOutrosCursos" value="#{ProfessorBean.horasCordenacaoOutrosCurso}" label="Coordenação de outtos Cursos" required="true"/>
+                        <h:outputLabel for="coordOutrosCursos" value="Coordenação de outros Cursos:" />
+                        
+                        <h:inputText size="2" id="pesquisa" value="#{ProfessorBean.horasPesquisa}" label="Pesquisa (Semestre Atual)" required="true"/>
+                        <h:outputLabel for="pesquisa" value="Pesquisa (Semestre Atual):" />
+                        
+                        <h:inputText size="2" id="extraClasse" value="#{ProfessorBean.horasExtraClasseCurso}" label="Atividade Extra Classe no Curso" required="true"/>
+                        <h:outputLabel for="extraClasse" value="Atividade Extra Classe no Curso:" />
+                        
+                        <h:inputText size="2" id="extraClasseOutros" value="#{ProfessorBean.horasExtraClasseOutrosCurso}" label="Atividade Extra Classe em outros Cursos" required="true"/>
+                        <h:outputLabel for="extraClasseOutros" value="Atividade Extra Classe em outros Cursos:" />
+                        
+                        <h:inputText size="2" id="horasCurso" value="#{ProfessorBean.horasCurso}" label="Quantidade de Horas de Curso" required="true"/>
+                        <h:outputLabel for="horasCurso" value="Quantidade de Horas de Curso:" />
+                        
+                        <h:inputText size="2" id="horasCursoOutros" value="#{ProfessorBean.horasOutrosCurso}" label="Quantidade de Horas em outros Cursos" required="true"/>
+                        <h:outputLabel for="horasCursoOutros" value="Quantidade de Horas em outros Cursos:" />
+                        
+                    
+                    </h:panelGrid>
+                </p:panel>
+            <br/>
+            <p:panel>
+                <p:panelGrid columns="4" >
+                <p:dataTable>                   
+                  <p:column headerText="Disciplina">
+                       <h:outputText value="#{usuario.id}" />
+                  </p:column>  
+                  <p:column headerText="Carga Horária">
+                       <h:outputText value="#{usuario.nome}" />
+                  </p:column>
+                </p:dataTable>
+                    
+                <p:dataTable>
+                  <p:column headerText="Curso">
+                       <h:outputText value="#{usuario.id}" />
+                  </p:column>  
+                  <p:column headerText="Disciplina">
+                       <h:outputText value="#{usuario.nome}" />
+                  </p:column>
+                  <p:column headerText="Carga Horária">
+                       <h:outputText value="#{usuario.nome}" />
+                  </p:column>  
+                </p:dataTable>    
+                </p:panelGrid>    
+            </p:panel>
         </p:tab>
-        
-        
+               
         <p:tab title="Atuação Profissional">
-            <h:panelGrid columns="6" cellpadding="8">
+            <h:panelGrid columns="2">
+                <p:panel>
+            <h:panelGrid columns="8" cellpadding="2">               
+                <p:selectBooleanCheckbox value="#{ProfessorBean.membroNDE}"/>
+                <h:outputLabel value="Membro NDE:" />
+                <br/>
+                <p:selectBooleanCheckbox value="#{ProfessorBean.membroColegiado}"/>
+                <h:outputLabel value="Membro Colegiado:" />
+                <br/>
+                <p:selectBooleanCheckbox value="#{ProfessorBean.experienciaPedagogia}"/>
+                <h:outputLabel value="Experiência/Formação/Capacitação Pedagógica:" />                      
+            </h:panelGrid>
+                </p:panel>    
+            <br/><br/>
+            <p:panel header="Tempo de Vínculo Ininterrupto do Docente com o Curso">
+            <h:panelGrid columns="4" cellpadding="2">
+                <h:outputLabel for="dataInicial" value="Data Inicial:" />
+                <h:inputText id="dataInicial" value="#{ProfessorBean.tempoVinculoCurso}" label="Data Inicial" required="true">
+                </h:inputText>
+                
+                <h:outputLabel for="tempoTotal" value="Tempo Total:" />
+                <h:inputText id="tempoTotal" value="#{ProfessorBean.tempoVinculoCurso}" label="Tempo Total" required="true">
+                </h:inputText>   
+            </h:panelGrid>
+            </p:panel>
             
+            <p:panel header="Tempo de Experiência com Magistério Superior">
+            <h:panelGrid columns="4" cellpadding="2">
+                <h:outputLabel for="expMagisterio" value="Data Inicial:" />
+                <h:inputText id="expMagisterio" value="#{ProfessorBean.experienciaMagisterioSuperior}" label="Tempo de Experiência com Magistério Superior" required="true">
+                </h:inputText>
+                
+                <h:outputLabel for="tempoTotal" value="Tempo Total:" />
+                <h:inputText id="tempoTotal" value="#{ProfessorBean.tempoVinculoCurso}" label="Tempo Total" required="true">
+                </h:inputText>   
+            </h:panelGrid>
+            </p:panel>
             
+            <p:panel header="Experiência em Cursos à Distância">
+            <h:panelGrid columns="4" cellpadding="2">
+                <h:outputLabel for="cursoDistancia" value="Data Inicial:" />
+                <h:inputText id="cursoDistancia" value="#{ProfessorBean.experienciaCursoDistancia}" label="Data Inicial" required="true">
+                </h:inputText>
+                
+                <h:outputLabel for="tempoTotal" value="Tempo Total:" />
+                <h:inputText id="tempoTotal" value="#{ProfessorBean.tempoVinculoCurso}" label="Tempo Total" required="true">
+                </h:inputText>   
+            </h:panelGrid>
+            </p:panel>
+            
+            <p:panel header="Participação em Eventos">
+            <h:panelGrid columns="4" cellpadding="2">
+                <h:inputText id="participacaoEventos" size="2" value="#{ProfessorBean.participacaoEventos}" label="Quantidade" required="true"/>
+                <h:outputLabel for="participacaoEventos" value="Quantidade" />
+            </h:panelGrid>
+            </p:panel>
+            
+            <p:panel header="Tempo de Experiência Profissional">
+            <h:panelGrid columns="4" cellpadding="2">
+                <h:outputLabel for="dataInicial" value="Data Inicial:" />
+                <h:inputText id="dataInicial" value="#{ProfessorBean.experienciaProfissional}" label="Data Inicial" required="true">
+                </h:inputText>
+                
+                <h:outputLabel for="tempoTotal" value="Tempo Total:" />
+                <h:inputText id="tempoTotal" value="#{ProfessorBean.tempoVinculoCurso}" label="Tempo Total" required="true">
+                </h:inputText>   
+            </h:panelGrid>
+            </p:panel>                       
             </h:panelGrid>
         </p:tab>
         
         <p:tab title="Publicações">
-            <h:panelGrid columns="6" cellpadding="8">
+            <h:panelGrid columns="2" cellpadding="8">
+                
+            <p:panel header="Artigos Publicados em Periódicos Científicos">
+            <h:panelGrid columns="4" cellpadding="2">
+                <h:outputLabel for="artigosCientificosArea" value="Na área (QTD):" />
+                <h:inputText id="artigosCientificosArea" value="#{ProfessorBean.artigoCientificoArea}" label="Na área (QTD)" required="true">
+                </h:inputText>
+                
+                <h:outputLabel for="artigosCientificosOutraArea" value="Em outras áreas (QTD):" />
+                <h:inputText id="artigosCientificosOutraArea" value="#{ProfessorBean.artigoCientificoOutrasArea}" label="Em outras áreas (QTD)" required="true">
+                </h:inputText>   
+            </h:panelGrid>
+            </p:panel>
+                
+            <p:panel header="Trabalhos publicados em Anais">
+            <h:panelGrid columns="4" cellpadding="2">
+                <h:outputLabel for="dataInicial" value="Completos (QTD):" />
+                <h:inputText id="dataInicial" value="#{ProfessorBean.trabalhoAnaisArea}" label="Completos" required="true">
+                </h:inputText>
+                
+                <h:outputLabel for="tempoTotal" value="Resumos (QTD):" />
+                <h:inputText id="tempoTotal" value="#{ProfessorBean.trabalhoAnaisOutrasArea}" label="Resumos" required="true">
+                </h:inputText>   
+            </h:panelGrid>
+            </p:panel>
+                
+            <p:panel header="Livros ou Capítulos">
+            <h:panelGrid columns="4" cellpadding="2">
+                <h:outputLabel for="livrosArea" value="Livros publicados na Área (QTD):" />
+                <h:inputText id="livrosArea" value="#{ProfessorBean.livrosCapitulosArea}" label="Livros publicados na Área (QTD)" required="true">
+                </h:inputText>
+                
+                <h:outputLabel for="livrosOutrasAreas" value="Livros publicados em outras Áreas (QTD):" />
+                <h:inputText id="livrosOutrasAreas" value="#{ProfessorBean.livrosCapitulosOutrasArea}" label="Livros publicados em outras Áreas (QTD)" required="true">
+                </h:inputText>   
+            </h:panelGrid>
+            </p:panel>
+                
+            <p:panel header="Propriedade Intelectual">
+            <h:panelGrid columns="4" cellpadding="2">
+                <h:outputLabel for="depositadopropriedadeIntelectualArea" value="Depositado (QTD):" />
+                <h:inputText id="depositadopropriedadeIntelectualArea" value="#{ProfessorBean.propriedadeIntelectualArea}" label="Depositado" required="true">
+                </h:inputText>
+                
+                <h:outputLabel for="registradopropriedadeIntelectualOutraArea" value="Registrado (QTD):" />
+                <h:inputText id="registradopropriedadeIntelectualOutraArea" value="#{ProfessorBean.propriedadeIntelectualOutrasArea}" label="Registtrado" required="true">
+                </h:inputText>   
+            </h:panelGrid>
+            </p:panel>    
+                
+            <p:panel header="Outras Publicações">
+            <h:panelGrid columns="2" cellpadding="2">
+                <h:outputLabel for="lva" value="Traduções de Livros, Capítulos de Livros ou Artigos Publicados (QTD):" />
+                <h:inputText id="lva" value="#{ProfessorBean.traducoesPublicadas}" label="Traduções de Livros, Capítulos de Livros ou Artigos Publicados (QTD)" required="true">
+                </h:inputText>
+                
+                <h:outputLabel for="pptac" value="Projetos e/ou Produções Técnicas Artísticas e Culturais (QTD):" />
+                <h:inputText id="pptac" value="#{ProfessorBean.projetoTecnicaArtisticaCultural}" label="Projetos e/ou Produções Técnicas Artísticas e Culturais (QTD)" required="true">
+                </h:inputText>
+                
+                <h:outputLabel for="pdp" value="Produção Didático-Pedagógico relevante, publicação ou não (QTD):" />
+                <h:inputText id="pdp" value="#{ProfessorBean.producoesDidaticoPedagogico}" label="Produção Didático-Pedagógico relevante, publicação ou não (QTD)" required="true">
+                </h:inputText>
+            </h:panelGrid>
+            </p:panel>    
             
             
             </h:panelGrid>
@@ -76,7 +265,7 @@
     </p:tabView>
     
         <p:commandButton value="Cancelar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
-        <p:commandButton value="Salvar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
+        <p:commandButton value="Salvar" update="growl" actionListener="#{ProfessorBean.cadastrarProfessor()}" icon="ui-icon-check" />
     </p:panel>
     </h:form>
   </h:body>
