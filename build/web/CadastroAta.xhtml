@@ -11,7 +11,7 @@
            <p:panel id="panel" header="Cadastrar Ata de Reunião">
         
         <p:messages id="msgs" />
- 
+        <p:panel>
         <h:panelGrid columns="6" cellpadding="8">
             <h:outputLabel for="data" value="Data da Reunião:" />
             <h:inputText   id="data" value="#{AtasBean.data}" required="true" label="Data">
@@ -36,6 +36,8 @@
    
  
         </h:panelGrid>
+            </p:panel>
+        <br/>
  
         <p:commandButton value="Voltar" update="panel" action="index" ajax="false" icon="ui-icon-check" />
         <p:commandButton value="Salvar" update="growl" actionListener="#{AtasBean.cadastrarAtas()}" icon="ui-icon-check" />
@@ -44,5 +46,3 @@
     </h:form>     
   </h:body>
   </html>
-
-
