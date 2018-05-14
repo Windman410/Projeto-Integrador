@@ -1,4 +1,4 @@
-  <html xmlns="http://www.w3.org/1999/xhtml"
+    <html xmlns="http://www.w3.org/1999/xhtml"
        xmlns:h="http://java.sun.com/jsf/html"
        xmlns:f="http://java.sun.com/jsf/core"
        xmlns:p="http://primefaces.org/ui">
@@ -15,6 +15,7 @@
         
         <p:messages id="msgs" />
  
+        <p:panel>
         <h:panelGrid columns="4" cellpadding="8">
             
             <h:outputLabel for="disciplina" value="Nome da Disciplina:" />
@@ -43,6 +44,8 @@
             </h:inputTextarea>
  
         </h:panelGrid>
+            </p:panel>
+            <br/>
         
         <p:commandButton value="Voltar" update="panel" action="index" ajax="false" icon="ui-icon-check" />
         <p:commandButton value="Salvar" update="growl" actionListener="#{DisciplinaBean.cadastrarDisciplina()}" icon="ui-icon-check">
@@ -53,4 +56,3 @@
     </h:form>     
   </h:body>
   </html>
-
