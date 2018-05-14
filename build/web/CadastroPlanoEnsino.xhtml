@@ -13,6 +13,7 @@
         <p:growl id="growl" showDetail="true" sticky="true" />  
         <p:panel id="panel" header="Cadastrar Plano de Ensino">
  
+            <p:panel>
         <h:panelGrid columns="6" cellpadding="8">
             <h:outputLabel value="Curso:"></h:outputLabel>
             <h:selectOneMenu value="#{PlanoDeEnsinoBean.curso}">
@@ -52,6 +53,8 @@
                                itemLabel="#{ProfessorBean.nome}" />
             </h:selectOneMenu>
         </h:panelGrid>
+                </p:panel>
+            <br/>
 
 
     
@@ -133,7 +136,7 @@
         </p:tab>
 </p:tabView>
         <p:commandButton value="Voltar" update="panel" action="index" ajax="false" icon="ui-icon-check" />
-        <p:commandButton value="Salvar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
+        <p:commandButton value="Salvar" update="growl" actionListener="#{PlanoDeEnsinoBean.cadastrarPlanoDeEnsino()}" icon="ui-icon-check" />
     </p:panel>
           
     </h:form>
