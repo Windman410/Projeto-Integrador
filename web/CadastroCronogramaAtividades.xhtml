@@ -25,7 +25,7 @@
                 <p:panel id="panel" header="Cadastrar Cronograma de Atividades ">
                 
                 <p:messages id="msgs" />
-                
+                <p:panel>
         <h:panelGrid columns="4" cellpadding="8">
                     <h:outputLabel for="aula" value="Aula:" />
                     <h:inputText   id="aula" value="#{CronogramaBean.aula}" label="Aula">
@@ -35,6 +35,8 @@
                     <h:inputText id="conteudo" value="#{CronogramaBean.conteudo}" label="Conteúdo">
                     </h:inputText>
         </h:panelGrid>
+                </p:panel>
+                <br/>
  
         <p:commandButton value="Voltar" update="panel" action="index" ajax="false" icon="ui-icon-check" />
         <p:commandButton value="Salvar" update="growl" actionListener="#{CronogramaBean.cadastrarCronograma()}" icon="ui-icon-check" />
