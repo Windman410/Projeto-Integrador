@@ -1,13 +1,15 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml"
        xmlns:h="http://java.sun.com/jsf/html"
        xmlns:f="http://java.sun.com/jsf/core"
-       xmlns:p="http://primefaces.org/ui">
-   
+       xmlns:p="http://primefaces.org/ui">  
   <h:head>
-               <title>Cadastrar Plano de Ensino</title>
-               <h:outputStylesheet library="css" name="style.css"/>
+           <meta charset="UTF-8"/>
+           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+           <title>Cadastrar Plano de Ensino</title>
+           <h:outputStylesheet library="css" name="style.css"/>
+           <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet"/> 
   </h:head>
-   
   <h:body>
         <header>          
             <nav>
@@ -15,19 +17,27 @@
                 <li><a class="active" href="index.xhtml">Início</a></li>
                 <li style="float:right"><a class="active" href="sobre.xhtml">Sobre</a></li>
             </ul>
-            </nav>               
+            </nav>
+            <h1 class="head">Sistema de Cadastro e Armazenamento de PCC</h1>
         </header>
-              <p class="head">Sistema de Cadastro e Armazenamento de PCC</p>    
+                  
     <h:form id="form">
         <p:growl id="growl" showDetail="true" sticky="true" />  
         <p:panel id="panel" header="Cadastrar Plano de Ensino">
  
             <p:panel>
-        <h:panelGrid columns="6" cellpadding="8">
+        <h:panelGrid columns="4" cellpadding="8">
             <h:outputLabel value="Curso:"></h:outputLabel>
             <h:selectOneMenu value="#{PlanoDeEnsinoBean.curso}">
                 <f:selectItems value="#{CursoBean.carregarCurso()}" 
                                itemLabel="#{CursoBean.denominacao}" />
+            </h:selectOneMenu>
+            
+            
+            <h:outputLabel value="Disciplina:"/>
+            <h:selectOneMenu value="#{PlanoDeEnsinoBean.disciplina}">
+                <f:selectItems value="#{DisciplinaBean.carregarDisciplina()}" 
+                               itemLabel="#{DisciplinaBean.nome}" />
             </h:selectOneMenu>
 
             <h:outputLabel for="coddisciplina1" value="Ano:" />
@@ -39,12 +49,6 @@
             <h:inputText id="coddisciplina21" value="#{PlanoDeEnsinoBean.semestre}" label="Cod Disciplina" required="true">
                 
             </h:inputText>
-
-            <h:outputLabel value="Disciplina:"/>
-            <h:selectOneMenu value="#{PlanoDeEnsinoBean.disciplina}">
-                <f:selectItems value="#{DisciplinaBean.carregarDisciplina()}" 
-                               itemLabel="#{DisciplinaBean.nome}" />
-            </h:selectOneMenu>
 
             <h:outputLabel for="coddisciplina212" value="Carga Horária Semestral:" />
             <h:inputText id="coddisciplina212" value="#{PlanoDeEnsinoBean.cargaHoraria}" label="Cod Disciplina" required="true">
@@ -68,28 +72,29 @@
 
     
     <p:tabView>
+        
         <p:tab title="Ementa">
-            <h:panelGrid columns="1" cellpadding="10"> 
+             
                 <h:inputTextarea rows="10" cols="100" id="cargahoraria" value="#{PlanoDeEnsinoBean.ementa}" label="Carga Horária" required="true">
                 
             </h:inputTextarea>    
-            </h:panelGrid>
+            
         </p:tab>
         
         <p:tab title="Competências e Habilidades">
-            <h:panelGrid columns="1" cellpadding="10"> 
+             
                 <h:inputTextarea rows="10" cols="100" id="cargahoraria22" value="#{PlanoDeEnsinoBean.competenciasHabilidades}" label="Carga Horária" required="true">
                 
             </h:inputTextarea>    
-            </h:panelGrid>
+            
         </p:tab>
         
         <p:tab title="Metodologia de Ensino">
-            <h:panelGrid columns="1" cellpadding="10"> 
+             
                 <h:inputTextarea rows="10" cols="100" id="cargahoraria33" value="#{PlanoDeEnsinoBean.metodologia}" label="Carga Horária" required="true">
                 
             </h:inputTextarea>    
-            </h:panelGrid>
+            
         </p:tab>
         
         <p:tab title="Cronograma de Atividades">
@@ -104,11 +109,11 @@
             </p:dataTable>
         </p:tab>
         <p:tab title="Avaliação">
-            <h:panelGrid columns="1" cellpadding="10"> 
+            
                 <h:inputTextarea rows="10" cols="100"  id="cargahoraria83" value="#{PlanoDeEnsinoBean.avaliacao}" label="Carga Horária" required="true">
                 
                 </h:inputTextarea>    
-            </h:panelGrid>
+            
         </p:tab>
         
         <p:tab title="Bibliografia">

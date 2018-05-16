@@ -1,13 +1,15 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml"
        xmlns:h="http://java.sun.com/jsf/html"
        xmlns:f="http://java.sun.com/jsf/core"
-       xmlns:p="http://primefaces.org/ui">
-   
+       xmlns:p="http://primefaces.org/ui">  
   <h:head>
-               <title>Cadastrar Professor</title>
-               <h:outputStylesheet library="css" name="style.css"/>
+           <meta charset="UTF-8"/>
+           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+           <title>Cadastrar Professor</title>
+           <h:outputStylesheet library="css" name="style.css"/>
+           <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet"/> 
   </h:head>
-   
   <h:body>
         <header>          
             <nav>
@@ -15,9 +17,10 @@
                 <li><a class="active" href="index.xhtml">Início</a></li>
                 <li style="float:right"><a class="active" href="sobre.xhtml">Sobre</a></li>
             </ul>
-            </nav>               
+            </nav>
+            <h1 class="head">Sistema de Cadastro e Armazenamento de PCC</h1>
         </header>
-              <p class="head">Sistema de Cadastro e Armazenamento de PCC</p>     
+                  
       <h:form id="form">
           <p:growl id="growl" showDetail="true" sticky="true" />
           <p:panel id="panel" header="Cadastrar Professor">
@@ -28,38 +31,32 @@
         
         <p:tab title="Dados Pessoais">
             <p:panel>
-            <h:panelGrid columns="6" cellpadding="8">
+            <h:panelGrid columns="4" cellpadding="8">
                 <h:outputLabel for="nome" value="Nome:" />
                 <h:inputText   id="nome" value="#{ProfessorBean.nome}" required="true" label="Nome">
-                </h:inputText>
-            
+                </h:inputText>           
                 <h:outputLabel for="cpf" value="CPF:" />
                 <h:inputText id="cpf" value="#{ProfessorBean.cpf}" label="CPF" required="true">
-                </h:inputText>
-            
+                </h:inputText>         
                 <h:outputLabel for="maiorTitulacao" value="Maior Titulação:" />
                 <h:inputText id="maiorTitulacao" value="#{ProfessorBean.maiorTitulacao}" label="Maior Titulação" required="true">
                 </h:inputText>
-
                 <h:outputLabel for="area" value="Área de Formação:" />
                 <h:inputText id="area" value="#{ProfessorBean.areaFormacao}" label="Área de Formação" required="true">
-                </h:inputText>
-            
+                </h:inputText>           
                 <h:outputLabel for="curriculo" value="Currículo Lattes:" />
                 <h:inputText id="curriculo" value="#{ProfessorBean.curriculo}" label="Currículo" required="true">
-                </h:inputText>
-                
+                </h:inputText>              
                 <h:outputLabel for="dataAtualizacao" value="Data de Atualização:" />
                 <h:inputText id="dataAtualizacao" value="#{ProfessorBean.dataAtualizacao}" label="Data de Atualização" required="true">
-                </h:inputText>
-                
+                </h:inputText>               
             </h:panelGrid>
                 </p:panel>
         </p:tab>
         
         <p:tab title="Atuação IES">
             <p:panel>
-            <h:panelGrid columns="4" cellpadding="8">
+            <h:panelGrid columns="2" cellpadding="8">
                 <h:outputLabel for="matricula" value="Matrícula:" />
                 <h:inputText id="matricula" value="#{ProfessorBean.matricula}" label="Matrícula" required="true">
                 </h:inputText>
@@ -70,7 +67,7 @@
             </h:panelGrid>
             </p:panel><br/>    
             <p:panel header="Quantidade de Horas das Atividades">
-                    <h:panelGrid columns="6" cellpadding="2">
+                    <h:panelGrid columns="4" cellpadding="8">
                         
                         <h:inputText size="2" id="horasNDE" value="#{ProfessorBean.horasNDE}" label="Horas NDE" required="true"/>
                         <h:outputLabel for="horasNDE" value="Horas NDE:" />
@@ -104,7 +101,7 @@
                 </p:panel>
             <br/>
             <p:panel>
-                <p:panelGrid columns="4" >
+                <h:panelGrid columns="2" cellpadding="8">
                 <p:dataTable>                   
                   <p:column headerText="Disciplina">
                        <h:outputText value="#{usuario.id}" />
@@ -125,14 +122,13 @@
                        <h:outputText value="#{usuario.nome}" />
                   </p:column>  
                 </p:dataTable>    
-                </p:panelGrid>    
+                </h:panelGrid>    
             </p:panel>
         </p:tab>
                
         <p:tab title="Atuação Profissional">
-            <h:panelGrid columns="2">
                 <p:panel>
-            <h:panelGrid columns="8" cellpadding="2">               
+            <h:panelGrid columns="8" cellpadding="8">               
                 <p:selectBooleanCheckbox value="#{ProfessorBean.membroNDE}"/>
                 <h:outputLabel value="Membro NDE:" />
                 <br/>
@@ -143,9 +139,9 @@
                 <h:outputLabel value="Experiência/Formação/Capacitação Pedagógica:" />                      
             </h:panelGrid>
                 </p:panel>    
-            <br/><br/>
+            <br/>
             <p:panel header="Tempo de Vínculo Ininterrupto do Docente com o Curso">
-            <h:panelGrid columns="4" cellpadding="2">
+            <h:panelGrid columns="4" cellpadding="8">
                 <h:outputLabel for="dataInicial" value="Data Inicial:" />
                 <h:inputText id="dataInicial" value="#{ProfessorBean.tempoVinculoCurso}" label="Data Inicial" required="true">
                 </h:inputText>
@@ -157,7 +153,7 @@
             </p:panel>
             
             <p:panel header="Tempo de Experiência com Magistério Superior">
-            <h:panelGrid columns="4" cellpadding="2">
+            <h:panelGrid columns="4" cellpadding="8">
                 <h:outputLabel for="expMagisterio" value="Data Inicial:" />
                 <h:inputText id="expMagisterio" value="#{ProfessorBean.experienciaMagisterioSuperior}" label="Tempo de Experiência com Magistério Superior" required="true">
                 </h:inputText>
@@ -169,9 +165,21 @@
             </p:panel>
             
             <p:panel header="Experiência em Cursos à Distância">
-            <h:panelGrid columns="4" cellpadding="2">
+            <h:panelGrid columns="4" cellpadding="8">
                 <h:outputLabel for="cursoDistancia" value="Data Inicial:" />
                 <h:inputText id="cursoDistancia" value="#{ProfessorBean.experienciaCursoDistancia}" label="Data Inicial" required="true">
+                </h:inputText>
+                
+                <h:outputLabel for="tempoTotal" value="Tempo Total:" />
+                <h:inputText id="tempoTotal" value="#{ProfessorBean.tempoVinculoCurso}" label="Tempo Total" required="true">
+                </h:inputText>   
+            </h:panelGrid>
+            </p:panel>
+                        
+            <p:panel header="Tempo de Experiência Profissional">
+            <h:panelGrid columns="4" cellpadding="2">
+                <h:outputLabel for="dataInicial" value="Data Inicial:" />
+                <h:inputText id="dataInicial" value="#{ProfessorBean.experienciaProfissional}" label="Data Inicial" required="true">
                 </h:inputText>
                 
                 <h:outputLabel for="tempoTotal" value="Tempo Total:" />
@@ -187,25 +195,13 @@
             </h:panelGrid>
             </p:panel>
             
-            <p:panel header="Tempo de Experiência Profissional">
-            <h:panelGrid columns="4" cellpadding="2">
-                <h:outputLabel for="dataInicial" value="Data Inicial:" />
-                <h:inputText id="dataInicial" value="#{ProfessorBean.experienciaProfissional}" label="Data Inicial" required="true">
-                </h:inputText>
-                
-                <h:outputLabel for="tempoTotal" value="Tempo Total:" />
-                <h:inputText id="tempoTotal" value="#{ProfessorBean.tempoVinculoCurso}" label="Tempo Total" required="true">
-                </h:inputText>   
-            </h:panelGrid>
-            </p:panel>                       
-            </h:panelGrid>
         </p:tab>
         
         <p:tab title="Publicações">
-            <h:panelGrid columns="2" cellpadding="8">
+            <h:panelGrid columns="1" cellpadding="8">
                 
             <p:panel header="Artigos Publicados em Periódicos Científicos">
-            <h:panelGrid columns="4" cellpadding="2">
+            <h:panelGrid columns="2" cellpadding="8">
                 <h:outputLabel for="artigosCientificosArea" value="Na área (QTD):" />
                 <h:inputText id="artigosCientificosArea" value="#{ProfessorBean.artigoCientificoArea}" label="Na área (QTD)" required="true">
                 </h:inputText>
@@ -217,7 +213,7 @@
             </p:panel>
                 
             <p:panel header="Trabalhos publicados em Anais">
-            <h:panelGrid columns="4" cellpadding="2">
+            <h:panelGrid columns="2" cellpadding="8">
                 <h:outputLabel for="dataInicial" value="Completos (QTD):" />
                 <h:inputText id="dataInicial" value="#{ProfessorBean.trabalhoAnaisArea}" label="Completos" required="true">
                 </h:inputText>
@@ -229,7 +225,7 @@
             </p:panel>
                 
             <p:panel header="Livros ou Capítulos">
-            <h:panelGrid columns="4" cellpadding="2">
+            <h:panelGrid columns="2" cellpadding="8">
                 <h:outputLabel for="livrosArea" value="Livros publicados na Área (QTD):" />
                 <h:inputText id="livrosArea" value="#{ProfessorBean.livrosCapitulosArea}" label="Livros publicados na Área (QTD)" required="true">
                 </h:inputText>
@@ -241,7 +237,7 @@
             </p:panel>
                 
             <p:panel header="Propriedade Intelectual">
-            <h:panelGrid columns="4" cellpadding="2">
+            <h:panelGrid columns="2" cellpadding="8">
                 <h:outputLabel for="depositadopropriedadeIntelectualArea" value="Depositado (QTD):" />
                 <h:inputText id="depositadopropriedadeIntelectualArea" value="#{ProfessorBean.propriedadeIntelectualArea}" label="Depositado" required="true">
                 </h:inputText>
@@ -253,7 +249,7 @@
             </p:panel>    
                 
             <p:panel header="Outras Publicações">
-            <h:panelGrid columns="2" cellpadding="2">
+            <h:panelGrid columns="2" cellpadding="8">
                 <h:outputLabel for="lva" value="Traduções de Livros, Capítulos de Livros ou Artigos Publicados (QTD):" />
                 <h:inputText id="lva" value="#{ProfessorBean.traducoesPublicadas}" label="Traduções de Livros, Capítulos de Livros ou Artigos Publicados (QTD)" required="true">
                 </h:inputText>
@@ -278,5 +274,5 @@
     </p:panel>
     </h:form>
   </h:body>
-    
+    <footer class="footer">iesb - centro universitário </footer>
   </html>

@@ -1,13 +1,15 @@
-  <html xmlns="http://www.w3.org/1999/xhtml"
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml"
        xmlns:h="http://java.sun.com/jsf/html"
        xmlns:f="http://java.sun.com/jsf/core"
-       xmlns:p="http://primefaces.org/ui">
-   
+       xmlns:p="http://primefaces.org/ui">  
   <h:head>
+           <meta charset="UTF-8"/>
+           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
            <title>Cadastrar Disciplina</title>
            <h:outputStylesheet library="css" name="style.css"/>
+           <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet"/> 
   </h:head>
-   
   <h:body>
         <header>          
             <nav>
@@ -15,9 +17,10 @@
                 <li><a class="active" href="index.xhtml">Início</a></li>
                 <li style="float:right"><a class="active" href="sobre.xhtml">Sobre</a></li>
             </ul>
-            </nav>               
+            </nav>
+            <h1 class="head">Sistema de Cadastro e Armazenamento de PCC</h1>
         </header>
-              <p class="head">Sistema de Cadastro e Armazenamento de PCC</p>
+              
       <h:form id="disciplinaForm">
         <p:growl id="growl" showDetail="true" sticky="true" />  
         <p:panel id="panel" header="Cadastrar Disciplina">
@@ -25,32 +28,22 @@
         <p:messages id="msgs" />
  
         <p:panel>
-        <h:panelGrid columns="4" cellpadding="8">
+        <h:panelGrid columns="2" cellpadding="8">
             
             <h:outputLabel for="disciplina" value="Nome da Disciplina:" />
-            <h:inputText   id="disciplina" value="#{DisciplinaBean.nome}" label="Disciplina">
-                <f:validateLength minimum="2" />
-            </h:inputText>
+            <h:inputText   id="disciplina" value="#{DisciplinaBean.nome}" label="Disciplina"/>
  
             <h:outputLabel for="coddisciplina" value="Cód. Disciplina:" />
-            <h:inputText id="coddisciplina" value="#{DisciplinaBean.cod}" label="Cod Disciplina" required="true">
-                
-            </h:inputText>
-                        
+            <h:inputText id="coddisciplina" value="#{DisciplinaBean.cod}" label="Cod Disciplina" required="true"/>
+
             <h:outputLabel for="semestre" value="Semestre:" />
-            <h:inputText id="semestre" value="#{DisciplinaBean.semestre}" label="Semestre" required="true">
-                
-            </h:inputText>
+            <h:inputText id="semestre" value="#{DisciplinaBean.semestre}" label="Semestre" required="true"/>
             
             <h:outputLabel for="cargahoraria" value="Carga Horária:" />
-            <h:inputText id="cargahoraria" value="#{DisciplinaBean.cargaHoraria}" label="Carga Horária" required="true">
-                
-            </h:inputText>
+            <h:inputText id="cargahoraria" value="#{DisciplinaBean.cargaHoraria}" label="Carga Horária" required="true"/>
             
             <h:outputLabel for="descricao" value="Descrição:" />
-            <h:inputTextarea id="descricao" value="#{DisciplinaBean.descricao}" label="Descrição" required="true">
-                
-            </h:inputTextarea>
+            <h:inputTextarea cols="60" rows="3" id="descricao" value="#{DisciplinaBean.descricao}" label="Descrição" required="true"/>
  
         </h:panelGrid>
             </p:panel>

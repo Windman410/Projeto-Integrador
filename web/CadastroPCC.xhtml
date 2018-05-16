@@ -1,13 +1,14 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml"
        xmlns:h="http://java.sun.com/jsf/html"
        xmlns:f="http://java.sun.com/jsf/core"
-       xmlns:p="http://primefaces.org/ui">
-   
+       xmlns:p="http://primefaces.org/ui">  
   <h:head>
+           <meta charset="UTF-8"/>
+           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
            <title>Cadastrar PCC</title>
            <h:outputStylesheet library="css" name="style.css"/>
+           <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet"/> 
   </h:head>
    
   <h:body>
@@ -17,9 +18,10 @@
                 <li><a class="active" href="index.xhtml">Início</a></li>
                 <li style="float:right"><a class="active" href="sobre.xhtml">Sobre</a></li>
             </ul>
-            </nav>               
+            </nav>
+            <h1 class="head">Sistema de Cadastro e Armazenamento de PCC</h1>
         </header>
-              <p class="head">Sistema de Cadastro e Armazenamento de PCC</p>
+              
       <h:form>
         <p:growl id="growl" showDetail="true" sticky="true" />  
         <p:panel id="panel" header="Cadastrar PCC">
@@ -27,58 +29,40 @@
         <p:messages id="msgs" />
         
         <p:panel>
-        <h:panelGrid columns="2" >
+        <h:panelGrid columns="2" cellpadding="8">
             
             <h:outputLabel value="Curso:"/>
-            <h:selectOneMenu value="#{PPCBean.cursoPPC}">
-                <f:selectItems value="#{CursoBean.carregarCurso()}" var="pais"
+            <h:selectOneMenu  value="#{PPCBean.cursoPPC}">
+                <f:selectItems  value="#{CursoBean.carregarCurso()}" var="pais"
                                itemLabel="#{CursoBean.denominacao}" />
                     </h:selectOneMenu>                                           
             
                     <h:outputLabel for="disciplina" value="Perfil do Curso:" />
-                    <h:inputTextarea  cols="60"  id="disciplina" value="#{PPCBean.perfilCurso}" label="Disciplina">
-
-                    </h:inputTextarea>
+                    <h:inputTextarea  cols="60"  id="disciplina" value="#{PPCBean.perfilCurso}" label="Disciplina"/>
 
                     <h:outputLabel for="coddisciplina" value="Perfil do Egresso:" />
-                    <h:inputTextarea cols="60" id="coddisciplina" value="#{PPCBean.perfilEgresso}" label="Cod Disciplina"  >
-
-                    </h:inputTextarea>
+                    <h:inputTextarea cols="60" id="coddisciplina" value="#{PPCBean.perfilEgresso}" label="Cod Disciplina"/>
             
                     <h:outputLabel for="descricao" value="Formas de Acesso ao curso:" />
-                    <h:inputTextarea cols="60" id="descricao" value="#{PPCBean.formaAcesso}" label="Descrição" >
-                    
-                    </h:inputTextarea>
+                    <h:inputTextarea cols="60" id="descricao" value="#{PPCBean.formaAcesso}" label="Descrição"/>
 
                     <h:outputLabel for="semestre" value="Representação gráfica de um Perfil de Formação:" />
-                    <h:inputTextarea cols="60" id="semestre" value="#{PPCBean.representacao}" label="Semestre" >
-                    
-                    </h:inputTextarea>
+                    <h:inputTextarea cols="60" id="semestre" value="#{PPCBean.representacao}" label="Semestre"/>
 
-                    <h:outputLabel for="cargahoraria" value="Sistemas de Avaliação de Processos de Ensino de Aprendizagem:" />
-                    <h:inputTextarea cols="60" id="cargahoraria" value="#{PPCBean.avaliacaoProcesso}" label="Carga Horária" >
-                    
-                    </h:inputTextarea>
+                    <h:outputLabel for="cargahoraria" value="Sistemas de Avaliação de Processos de Ensino de Aprendizagem:"/>
+                    <h:inputTextarea cols="60" id="cargahoraria" value="#{PPCBean.avaliacaoProcesso}" label="Carga Horária"/>
                     
                     <h:outputLabel for="projeto" value="Sistemas de Avaliação do Projeto do Curso:" />
-                    <h:inputTextarea cols="60" id="projeto" value="#{PPCBean.avaliacaoProjeto}" label="Carga Horária" >
-                    
-                    </h:inputTextarea>
-                    
-                    <h:outputLabel for="cargahorariaaa" value="Horas de Trabalho de Conclusão do Curso:" />
-                    <h:inputText id="cargahorariaaa" value="#{PPCBean.horasTCC}" label="Carga Horária" >
-                    
-                    </h:inputText>
-                    
+                    <h:inputTextarea cols="60" id="projeto" value="#{PPCBean.avaliacaoProjeto}" label="Carga Horária"/>
+
+                    <h:outputLabel for="cargahorariaaa" value="Horas de Trabalho de Conclusão do Curso:"/>
+                    <h:inputText id="cargahorariaaa" value="#{PPCBean.horasTCC}" label="Carga Horária"/>
+
                     <h:outputLabel for="cargahorariaa" value="Horas de estágio curricular:" />
-                    <h:inputText id="cargahorariaa" value="#{PPCBean.horasEstagio}" label="Carga Horária" >
-                    
-                    </h:inputText>
+                    <h:inputText id="cargahorariaa" value="#{PPCBean.horasEstagio}" label="Carga Horária"/>
                     
                     <h:outputLabel for="cargahoraria1" value="Política de Atendimento a pessoas com deficiência e/ou mobilidade reduzida:" />
-                    <h:inputTextarea cols="60" id="cargahoraria1" value="#{PPCBean.politicaDeAtendimento}" label="Carga Horária" >
-                        
-                    </h:inputTextarea>
+                    <h:inputTextarea cols="60" id="cargahoraria1" value="#{PPCBean.politicaDeAtendimento}" label="Carga Horária"/>
  
         </h:panelGrid>
             </p:panel>
