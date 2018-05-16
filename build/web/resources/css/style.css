@@ -1,33 +1,17 @@
 @charset "utf-8";
-*{margin: 0 auto;word-wrap:break-word;box-sizing:border-box;}
-body{font-size:22px;font-family: 'Roboto', sans-serif; background-color:#FAFAFA;margin:3%;}
+*{margin:0;padding:0;word-wrap:break-word;box-sizing:border-box;}
+body{font-size:22px;font-family: 'Roboto', sans-serif; background-color:#FAFAFA;margin:1rem;}
 button{height:auto;}
-
-.head{background-color:#F2F2F2;padding:15px;text-align:center;color:#585858;}
-.footer{background-color:#F2F2F2;text-align:center;padding:10px;margin-top:7px;color:#585858;}
+.head{background-color:#2E2E2E;padding:2%;text-align:center;color:#F2F2F2;}
+.footer{background-color:#2E2E2E;text-align:center;padding:10px;margin-top:7px;color:#F2F2F2;}
 .left {background-color:#FAFAFA;float:left;width:50%;padding:0 20px;margin-top:7px;margin-left:2%;}
 .right {background-color:#FAFAFA;float:left;width:44%;padding:15px;margin-top:7px;margin-left:1%;text-align:center;}
-
-.ui-button.ui-state-default {
-color:#fff;width:100%;margin-top:1%;background-color:#084B8A!important;
-}
-.ui-button.ui-state-hover {
-background-color:#0080FF !important;
-}
-.ui-button.ui-state-active {
-background-color:#B0C4DE !important;
-}
-
-.salvar.ui-state-default {
-color:#fff;float:right;width:auto;background-color:#01DF01!important;
-}
-.cancelar.ui-state-default {
-color:#fff;width:auto;background-color:#FF0000!important;
-}
-.consul.ui-state-default{width:auto;background-color:#0B3861!important;}
-
-
-
+.ui-button.ui-state-default {color:#fff;width:100%;margin-top:1%;background-color:#6E6E6E!important;}
+.ui-button.ui-state-hover {background-color:#2E2E2E!important;}
+.ui-button.ui-state-active {background-color:#B0C4DE !important;}
+.salvar.ui-state-default {color:#fff;float:right;width:auto;background-color:#088A08!important;}
+.cancelar.ui-state-default {color:#fff;width:auto;background-color:#FF0000!important;}
+.consul.ui-state-default{width:auto;background-color:#088A08!important;}
 
 ul {
     list-style-type: none;
@@ -35,7 +19,7 @@ ul {
     padding: 0;
     overflow: hidden;
     border: 1px solid #e7e7e7;
-    background-color: #f3f3f3;
+    background-color:#2E2E2E;
 }
 
 li {
@@ -56,5 +40,31 @@ li a:hover:not(.active) {
 
 li a.active {
     color: white;
-    background-color: #4CAF50;
+    background-color:#088A08;
 }
+li a.active:hover {
+    background-color:#A4A4A4;
+}
+
+
+
+
+
+
+textarea, form {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    margin-top:1%;
+}
+
+
+input, select, output, label{width:100%;margin-top:1%;}
+
+
+
+
+
+ 
