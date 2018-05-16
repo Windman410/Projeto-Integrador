@@ -5,9 +5,19 @@
    
   <h:head>
            <title>Cadastrar Bibliografia</title>
+           <h:outputStylesheet library="css" name="style.css"/>
   </h:head>
    
   <h:body>
+        <header>          
+            <nav>
+            <ul>
+                <li><a class="active" href="index.xhtml">Início</a></li>
+                <li style="float:right"><a class="active" href="sobre.xhtml">Sobre</a></li>
+            </ul>
+            </nav>               
+        </header>
+              <p class="head">Sistema de Cadastro e Armazenamento de PCC</p>
       <h:form id="formBibliografia">
         <p:growl id="growl" showDetail="true" sticky="true" />
         <p:panel id="panel" header="Cadastrar Bibliografia">
@@ -57,10 +67,11 @@
         </h:panelGrid>
             </p:panel>
         <br/>
-        <p:commandButton value="Voltar" update="panel" action="index" ajax="false" icon="ui-icon-check" />
-        <p:commandButton value="Salvar" update="growl" actionListener="#{BibliografiaBean.cadastrarBibliografia()}" icon="ui-icon-check" />
+        <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
+        <p:commandButton class="salvar" value="Salvar" update="growl" actionListener="#{BibliografiaBean.cadastrarBibliografia()}" />
     </p:panel>
     </h:form>  
            
   </h:body>
+    <footer class="footer">iesb - centro universitário </footer>
   </html>

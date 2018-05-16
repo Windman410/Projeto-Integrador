@@ -5,71 +5,42 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Sistema de Cadastro e Armazenamento de PCC'                                                      '''''''''''''''''''''''''''</title>
-
-        <style>
-            *{color:#000;}
-            fieldset{width: 46%;float:left;height:100%;}
-            
-            
-        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Sistema de Cadastro e Armazenamento de PCC'                                                      '''''''''''''''''''''''''''</title>                               
+        <h:outputStylesheet library="css" name="style.css"/> 
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet"/>            
     </h:head>
-    <h:body>
-        
-
-        <p:fieldset legend="Cadastro de PCC" >
-                <p:button outcome="CadastroPCC" value="Cadastrar PCC" icon="ui-icon-star"> </p:button>
-                <br/>
-                
-                <p:button outcome="CadastroCurso" value="Cadastrar Curso" icon="ui-icon-star"></p:button>
-                <br/>
-                
-                <p:button outcome="CadastroProfessor" value="Cadastrar Professor" icon="ui-icon-star"></p:button>
-                <br/>
-                
-                <p:button outcome="CadastroDisciplina" value="Cadastrar Disciplina" icon="ui-icon-star"></p:button>
-                <br/>
-                
-                <p:button outcome="CadastroCronogramaAtividades" value="Cadastrar Cronograma de Atividades" icon="ui-icon-star"></p:button>
-                <br/>
-                
-                <p:button outcome="CadastroPlanoEnsino" value="Cadastrar Plano de Ensino" icon="ui-icon-star"></p:button>
-                <br/>
-                
-                <p:button outcome="CadastroBibliografia" value="Cadastrar Bibliografia" icon="ui-icon-star"></p:button>
-                <br/>
-            </p:fieldset>
-        
-        
-        <p:fieldset legend="Consulta de PCC">
-                <p:button outcome="ConsultarPPC" value="Consultar PCC" icon="ui-icon-star"> </p:button>
-                <br/>
-                
-                <p:button outcome="ConsultarCurso" value="Consultar Curso" icon="ui-icon-star"></p:button>
-                <br/>
-                
-                <p:button outcome="ConsultarPlanoEnsino" value="Consultar Plano de Ensino" icon="ui-icon-star"></p:button>
-                <br/>      
-        </p:fieldset>
-          
-        
-        <p:fieldset legend="Reuniões">
-                <p:button outcome="CadastroAta" value="Cadastrar Ata" icon="ui-icon-star"> </p:button>
-                <br/>
-                
-                <p:button outcome="ConsultarAta" value="Consultar Ata" icon="ui-icon-star"></p:button>
-                <br/>
-        </p:fieldset>
-        <p:fieldset  legend="Simular Avaliação do MEC">
-                <p:button outcome="SimularMEC" value="Simular Avaliação do MEC" icon="ui-icon-star"> </p:button>
-                
-        </p:fieldset>
-       
-<!-- <p:button outcome="productDetail" value="Bookmark" icon="ui-icon-star" disabled="true"> -->
-        
-        <br />
-        <!--<h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />-->
-        
+    <h:body>      
+        <header>          
+            <nav>
+            <ul>
+                <li><a class="active" href="">Início</a></li>
+                <li style="float:right"><a class="active" href="faces/sobre.xhtml">Sobre</a></li>
+            </ul>
+            </nav>               
+        </header>       
+        <p class="head">Sistema de Cadastro e Armazenamento de PCC</p>
+            <div style="overflow:auto">
+            <p:panel header="Cadastros" class="left">
+                <p:button outcome="CadastroPCC" value="Cadastrar PCC" > </p:button>             
+                <p:button outcome="CadastroCurso" value="Cadastrar Curso" ></p:button>              
+                <p:button outcome="CadastroProfessor" value="Cadastrar Professor" ></p:button>              
+                <p:button outcome="CadastroDisciplina" value="Cadastrar Disciplina" ></p:button>               
+                <p:button outcome="CadastroCronogramaAtividades" value="Cadastrar Cronograma de Atividades" ></p:button>            
+                <p:button outcome="CadastroPlanoEnsino" value="Cadastrar Plano de Ensino" ></p:button>             
+                <p:button outcome="CadastroBibliografia" value="Cadastrar Bibliografia" ></p:button>
+            </p:panel>       
+            <p:panel header="Consultas" class="right">    
+                <p:button outcome="ConsultarPPC" value="Consultar PCC" > </p:button>                                
+                <p:button outcome="ConsultarCurso" value="Consultar Curso" ></p:button>                              
+                <p:button outcome="ConsultarPlanoEnsino" value="Consultar Plano de Ensino" ></p:button>                    
+            </p:panel> 
+            <p:panel header="Reuniões" class="right">
+                <p:button outcome="CadastroAta" value="Cadastrar Ata" > </p:button>                
+                <p:button outcome="ConsultarAta" value="Consultar Ata" ></p:button>            
+            </p:panel>  
+            </div>
     </h:body>
+    <footer class="footer">iesb - centro universitário </footer>
 </html>
 

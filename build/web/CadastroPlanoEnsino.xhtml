@@ -5,10 +5,19 @@
    
   <h:head>
                <title>Cadastrar Plano de Ensino</title>
+               <h:outputStylesheet library="css" name="style.css"/>
   </h:head>
    
   <h:body>
-       
+        <header>          
+            <nav>
+            <ul>
+                <li><a class="active" href="index.xhtml">Início</a></li>
+                <li style="float:right"><a class="active" href="sobre.xhtml">Sobre</a></li>
+            </ul>
+            </nav>               
+        </header>
+              <p class="head">Sistema de Cadastro e Armazenamento de PCC</p>    
     <h:form id="form">
         <p:growl id="growl" showDetail="true" sticky="true" />  
         <p:panel id="panel" header="Cadastrar Plano de Ensino">
@@ -135,11 +144,13 @@
             </p:dataTable>
         </p:tab>
 </p:tabView>
-        <p:commandButton value="Voltar" update="panel" action="index" ajax="false" icon="ui-icon-check" />
-        <p:commandButton value="Salvar" update="growl" actionListener="#{PlanoDeEnsinoBean.cadastrarPlanoDeEnsino()}" icon="ui-icon-check" />
+            <br/>
+        <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
+        <p:commandButton class="salvar" value="Salvar" update="growl" actionListener="#{PlanoDeEnsinoBean.cadastrarPlanoDeEnsino()}" />
     </p:panel>
           
     </h:form>
     
   </h:body>
+    <footer class="footer">iesb - centro universitário </footer>
   </html>

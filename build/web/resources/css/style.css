@@ -1,0 +1,60 @@
+@charset "utf-8";
+*{margin: 0 auto;word-wrap:break-word;box-sizing:border-box;}
+body{font-size:22px;font-family: 'Roboto', sans-serif; background-color:#FAFAFA;margin:3%;}
+button{height:auto;}
+
+.head{background-color:#F2F2F2;padding:15px;text-align:center;color:#585858;}
+.footer{background-color:#F2F2F2;text-align:center;padding:10px;margin-top:7px;color:#585858;}
+.left {background-color:#FAFAFA;float:left;width:50%;padding:0 20px;margin-top:7px;margin-left:2%;}
+.right {background-color:#FAFAFA;float:left;width:44%;padding:15px;margin-top:7px;margin-left:1%;text-align:center;}
+
+.ui-button.ui-state-default {
+color:#fff;width:100%;margin-top:1%;background-color:#084B8A!important;
+}
+.ui-button.ui-state-hover {
+background-color:#0080FF !important;
+}
+.ui-button.ui-state-active {
+background-color:#B0C4DE !important;
+}
+
+.salvar.ui-state-default {
+color:#fff;float:right;width:auto;background-color:#01DF01!important;
+}
+.cancelar.ui-state-default {
+color:#fff;width:auto;background-color:#FF0000!important;
+}
+.consul.ui-state-default{width:auto;background-color:#0B3861!important;}
+
+
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+li a.active {
+    color: white;
+    background-color: #4CAF50;
+}

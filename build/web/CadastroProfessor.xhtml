@@ -5,10 +5,19 @@
    
   <h:head>
                <title>Cadastrar Professor</title>
+               <h:outputStylesheet library="css" name="style.css"/>
   </h:head>
    
   <h:body>
-       
+        <header>          
+            <nav>
+            <ul>
+                <li><a class="active" href="index.xhtml">Início</a></li>
+                <li style="float:right"><a class="active" href="sobre.xhtml">Sobre</a></li>
+            </ul>
+            </nav>               
+        </header>
+              <p class="head">Sistema de Cadastro e Armazenamento de PCC</p>     
       <h:form id="form">
           <p:growl id="growl" showDetail="true" sticky="true" />
           <p:panel id="panel" header="Cadastrar Professor">
@@ -264,9 +273,10 @@
         </p:tab>
     </p:tabView>
     
-        <p:commandButton value="Cancelar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
-        <p:commandButton value="Salvar" update="growl" actionListener="#{ProfessorBean.cadastrarProfessor()}" icon="ui-icon-check" />
+        <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
+        <p:commandButton class="salvar" value="Salvar" update="growl" actionListener="#{ProfessorBean.cadastrarProfessor()}" />
     </p:panel>
     </h:form>
   </h:body>
+    
   </html>
