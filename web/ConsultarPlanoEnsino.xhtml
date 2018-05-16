@@ -5,9 +5,19 @@
    
   <h:head>
       <title>Consultar Plano de Ensino</title>
+      <h:outputStylesheet library="css" name="style.css"/>
   </h:head>
    
   <h:body>
+        <header>          
+            <nav>
+            <ul>
+                <li><a class="active" href="index.xhtml">Início</a></li>
+                <li style="float:right"><a class="active" href="sobre.xhtml">Sobre</a></li>
+            </ul>
+            </nav>               
+        </header>
+              <p class="head">Sistema de Cadastro e Armazenamento de PCC</p>
        <h:form>
            <p:panel id="panel" header="Consultar Plano de Ensino">
             <p:dataTable var="usuario" value="#{UsuarioMB.usuarios}">
@@ -27,11 +37,12 @@
                        <h:outputText value="#{usuario.senha}" />
                   </p:column>
             </p:dataTable>
-               <p:commandButton value="Cancelar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
-               <p:commandButton value="Visualizar detalhes" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
-               <p:commandButton value="Editar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
-               <p:commandButton value="Imprimir" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
+               <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
+               <p:commandButton class="consul" value="Visualizar detalhes" update="panel" actionListener="#{userView.save}"/>
+               <p:commandButton class="consul" value="Editar" update="panel" actionListener="#{userView.save}"/>
+               <p:commandButton class="consul" value="Imprimir" update="panel" actionListener="#{userView.save}"/>
            </p:panel>
        </h:form>
   </h:body>
+    <footer class="footer">iesb - centro universitário </footer>
   </html>

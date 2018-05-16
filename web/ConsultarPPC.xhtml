@@ -5,26 +5,38 @@
    
   <h:head>
       <title>Consultar PCC</title>
+      <h:outputStylesheet library="css" name="style.css"/>
   </h:head>
    
   <h:body>
+        <header>          
+            <nav>
+            <ul>
+                <li><a class="active" href="index.xhtml">Início</a></li>
+                <li style="float:right"><a class="active" href="sobre.xhtml">Sobre</a></li>
+            </ul>
+            </nav>               
+        </header>
+              <p class="head">Sistema de Cadastro e Armazenamento de PCC</p>
        <h:form>
            <p:panel id="panel" header="Consultar PCC">
             <p:messages id="msgs" />
  
             
                <p:fieldset >   
-                   <h:outputLabel  value="Curso:"/>
-                    <h:selectOneMenu value="#{MBArtista.artista.pais}">
-                        <f:selectItem itemLabel="Selecione o Curso" />
-                        <f:selectItems value="#{MBPais.listaPaises}" var="pais"
-                            itemLabel="#{pais.nome}" />
+                   
+                   <h:outputLabel value="Curso:"/>
+                   <h:selectOneMenu value="#{PPCBean.cursoPPC}">
+                        <f:selectItems value="#{CursoBean.carregarCurso()}" 
+                                       itemLabel="#{CursoBean.denominacao}" />
                     </h:selectOneMenu>
+                   
+                   
                 </p:fieldset>
                <br/>
                
                
-            <p:dataTable var="usuario" value="#{UsuarioMB.usuarios}">
+            <p:dataTable var="listar" value="#{UsuarioMB.usuarios}">
                   <p:column headerText="Curso">
                        <h:outputText value="#{usuario.id}" />
                   </p:column>   
@@ -42,11 +54,12 @@
                   </p:column>
             </p:dataTable>
                
-               <p:commandButton value="Cancelar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
-               <p:commandButton value="Visualizar detalhes" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
-               <p:commandButton value="Editar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
-               <p:commandButton value="Imprimir" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
+               <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
+               <p:commandButton class="consul" value="Visualizar detalhes" update="panel" actionListener="#{userView.save}" />
+               <p:commandButton class="consul" value="Editar" update="panel" actionListener="#{userView.save}" />
+               <p:commandButton class="consul" value="Imprimir" update="panel" actionListener="#{userView.save}" />
            </p:panel>
        </h:form>
   </h:body>
+    <footer class="footer">iesb - centro universitário </footer>
   </html>

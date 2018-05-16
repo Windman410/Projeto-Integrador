@@ -1,29 +1,45 @@
+
 <html xmlns="http://www.w3.org/1999/xhtml"
        xmlns:h="http://java.sun.com/jsf/html"
        xmlns:f="http://java.sun.com/jsf/core"
        xmlns:p="http://primefaces.org/ui"> 
   <h:head>
       <title>Consultar Ata de Reunião</title>
+      <h:outputStylesheet library="css" name="style.css"/>
+      
   </h:head>  
   <h:body>
+        <header>          
+            <nav>
+            <ul>
+                <li><a class="active" href="index.xhtml">Início</a></li>
+                <li style="float:right"><a class="active" href="sobre.xhtml">Sobre</a></li>
+            </ul>
+            </nav>               
+        </header>
+              <p class="head">Sistema de Cadastro e Armazenamento de PCC</p>   
        <h:form>
            <p:panel id="panel" header="Consultar Ata de Reunião">
-            <p:dataTable var="usuario" value="#{UsuarioMB.usuarios}">
-                  <p:column headerText="Data da Reunião">
+               <p:dataTable var="usuario" value="#{UsuarioMB.usuarios}">
+                  <p:column headerText="Data">
                        <h:outputText value="#{usuario.id}" />
                   </p:column>  
-                  <p:column headerText="Local da Reunião">
+                  <p:column headerText="Local">
                        <h:outputText value="#{usuario.nome}" />
                   </p:column>
                   <p:column headerText="Participantes">
                        <h:outputText value="#{usuario.senha}" />
-                  </p:column>             
+                  </p:column>                
             </p:dataTable>
-               <p:commandButton value="Cancelar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
-               <p:commandButton value="Visualizar detalhes" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
-               <p:commandButton value="Editar" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
-               <p:commandButton value="Imprimir" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
+               
+               
+               
+               <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
+               <p:commandButton class="consul" value="Visualizar detalhes" update="panel" actionListener="#{userView.save}"/>
+               <p:commandButton class="consul" value="Editar" update="panel" actionListener="#{userView.save}" />
+               <p:commandButton class="consul" value="Imprimir" update="panel" actionListener="#{userView.save}" />
            </p:panel>
        </h:form>
   </h:body>
+    <footer class="footer">iesb - centro universitário </footer>
   </html>
