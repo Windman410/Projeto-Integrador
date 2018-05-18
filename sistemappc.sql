@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 14-Maio-2018 às 18:57
+-- Generation Time: 18-Maio-2018 às 16:17
 -- Versão do servidor: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -41,7 +41,16 @@ CREATE TABLE `tb_atas` (
 --
 
 INSERT INTO `tb_atas` (`id`, `data`, `local`, `participantes`, `deliberacoes`) VALUES
-(1, 0, 'Brasília', 'Juliana ', 'ahsdkjfh kashdfkj haskjdhfkjasd');
+(1, 0, 'Brasília', 'Juliana ', 'ahsdkjfh kashdfkj haskjdhfkjasd'),
+(2, 0, 'hjkh', 'jhj', 'khjkj'),
+(3, 0, 'kjhakjsh', 'jhkahsdlk', 'kasjkdf'),
+(4, 17052018, 'Campus Sul', 'Sasuke, Sakura, Naruto, Sai e Kakashi', 'Time 7'),
+(5, 22061995, 'Cabrobró do Norte', 'Junão', 'asjdhfkjhakjshdf'),
+(6, 22061995, 'Cabrobró do Norte', 'Junão', 'asjdhfkjhakjshdf'),
+(7, 0, 'BR', 'asdf', 'asdf'),
+(8, 22, 'BR', 'asdf', 'asdf'),
+(9, 0, 'lksjdflg', ',ajds,jf', 'klaskldjfjasd'),
+(10, 0, 'jakdflkds', 'lkjaklsdfj', 'ljalsdjfl');
 
 -- --------------------------------------------------------
 
@@ -60,6 +69,17 @@ CREATE TABLE `tb_bibliografia` (
   `editora` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `tb_bibliografia`
+--
+
+INSERT INTO `tb_bibliografia` (`id`, `cursos`, `disciplinas`, `titulo`, `autor`, `ano`, `isbn`, `editora`) VALUES
+(1, 'akhsdkf', 'Matemática Básica60', 'adfd', 'asdfads', 0, 'asdfd', 'asdfasd'),
+(2, 'Análise de Sistemas', 'Matemática Básica0', 'jaskjdfksd', 'kajskldfjlas', 0, 'ajskdkfkjlasd', 'ajskldjfasd'),
+(3, 'Análise de Sistemas', 'Matemática Básica0', 'Voar', 'kajskldfjlas', 0, 'ajskdkfkjlasd', 'ajskldjfasd'),
+(4, 'Análise de Sistemas', 'Lógica de Programação0', 'jjjasd', 'lajdfj', 0, 'kadlf', 'lajsd'),
+(5, 'Medicina', 'Lógica de Programação0', 'jjjasd', 'lajdfj', 0, 'kadlf', 'hehehehehe');
+
 -- --------------------------------------------------------
 
 --
@@ -77,7 +97,17 @@ CREATE TABLE `tb_cronograma` (
 --
 
 INSERT INTO `tb_cronograma` (`id`, `aula`, `conteudo`) VALUES
-(1, 0, 'hjhkhkh');
+(1, 0, 'hjhkhkh'),
+(2, 0, 'asdfasd'),
+(3, 0, 'adf'),
+(4, 0, 'adsf'),
+(5, 0, 'asdfads'),
+(6, 0, 'hggjh'),
+(7, 50, 'hehehehehe'),
+(8, 0, 'asdfas'),
+(9, 32, 'asdfas'),
+(10, 0, 'jhjgh'),
+(11, 22, 'Redação');
 
 -- --------------------------------------------------------
 
@@ -110,7 +140,9 @@ CREATE TABLE `tb_curso` (
 --
 
 INSERT INTO `tb_curso` (`id`, `tipo`, `modalidade`, `denominacao`, `habilitacao`, `localOferta`, `matutino`, `vespertino`, `noturno`, `vagasTurno`, `cargaHoraria`, `regimeLetivo`, `periodo`, `nomeProfessor`, `cpf`, `titulacao`, `tempoDedicacao`) VALUES
-(1, 'ajsdkfjas', 'ljalskdjf', 'akhsdkf', 'kahsdjf', 'akhsdjf', 1, 1, 0, 0, 0, 'aklsdjflas', 'jaskdfj', '', 0, 'ajsdkjf', 'asjlkd');
+(5, 'asdf', 'asdjfkasd', 'Análise de Sistemas', 'kjkj', 'kkjjkjk', 0, 0, 0, 0, 0, 'ljksdjfg', 'jkjjkj', 'Sasuke Uchiha', 0, 'llkjjkjl', 'jkkjkj'),
+(6, 'knajksndkjfnksd', 'haksdhfkjhaskd', 'Medicina', 'jasjdlfij', 'lajskljldlfja', 0, 0, 0, 0, 0, 'kaskjdjf', 'kaskjdfk', 'Sasuke Uchiha', 0, 'hakjsdhkfhas', 'kasjdkjfa'),
+(7, 'Presencial', 'asdfasd', 'Herbologia', 'jaksjdlf', 'asdlfkjas', 0, 0, 0, 0, 0, 'lajksdf', 'kjkjkl', 'Kakashi', 0, 'lajksdjfasd', 'ljkllkd');
 
 -- --------------------------------------------------------
 
@@ -132,7 +164,29 @@ CREATE TABLE `tb_disciplinas` (
 --
 
 INSERT INTO `tb_disciplinas` (`id`, `nome`, `cod`, `descricao`, `semestre`, `cargaHoraria`) VALUES
-(1, 'Matemática Básica', 1320, 'kadsjfhasdhfa', 1, 60);
+(9, 'Lógica de Programação', 0, 'asdf', 0, 0),
+(10, 'HEHEHEHE', 0, 'hjk', 0, 0),
+(11, 'adsfaasd', 0, 'adfsd', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tb_pcc`
+--
+
+CREATE TABLE `tb_pcc` (
+  `ID` int(11) NOT NULL,
+  `cursoPPC` varchar(300) NOT NULL,
+  `perfilCurso` text NOT NULL,
+  `perfilEgresso` text NOT NULL,
+  `formaAcesso` text NOT NULL,
+  `representacao` text NOT NULL,
+  `avaliacaoProcesso` text NOT NULL,
+  `avaliacaoProjeto` text NOT NULL,
+  `horasTCC` int(11) NOT NULL,
+  `horasEstagio` int(11) NOT NULL,
+  `politicaDeAtendimento` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -145,7 +199,7 @@ CREATE TABLE `tb_planoensino` (
   `curso` varchar(300) NOT NULL,
   `ano` int(11) NOT NULL,
   `semestre` int(11) NOT NULL,
-  `disciplina` varchar(300) NOT NULL,
+  `disciplinas` varchar(300) NOT NULL,
   `cargaHoraria` int(11) NOT NULL,
   `periodoCurso` varchar(300) NOT NULL,
   `professor` varchar(300) NOT NULL,
@@ -159,8 +213,8 @@ CREATE TABLE `tb_planoensino` (
 -- Extraindo dados da tabela `tb_planoensino`
 --
 
-INSERT INTO `tb_planoensino` (`id`, `curso`, `ano`, `semestre`, `disciplina`, `cargaHoraria`, `periodoCurso`, `professor`, `ementa`, `competenciasHabilidades`, `metodologiaEnsino`, `avaliacao`) VALUES
-(1, 'akhsdkf', 0, 0, 'Matemática Básica', 0, 'ssd', '', 'asdf', 'adfas', 'asfas', 'asdf');
+INSERT INTO `tb_planoensino` (`id`, `curso`, `ano`, `semestre`, `disciplinas`, `cargaHoraria`, `periodoCurso`, `professor`, `ementa`, `competenciasHabilidades`, `metodologiaEnsino`, `avaliacao`) VALUES
+(13, 'Herbologia', 0, 0, 'HEHEHEHE0', 0, 'asdfas', 'Kakashi', 'asdfas', 'asdfad', 'adsfas', 'adsfads');
 
 -- --------------------------------------------------------
 
@@ -195,9 +249,13 @@ CREATE TABLE `tb_professor` (
   `membroColegiado` tinyint(1) NOT NULL,
   `experienciaPedagogia` tinyint(1) NOT NULL,
   `tempoVinculoCurso` varchar(100) NOT NULL,
+  `dataInicialVinculoCurso` int(11) NOT NULL,
   `experienciaMagisterioSuperior` varchar(100) NOT NULL,
+  `dataInicialMagisterioSuperior` int(11) NOT NULL,
   `experienciaCursoDistancia` varchar(100) NOT NULL,
+  `dataInicialCursoDistancia` int(11) NOT NULL,
   `experienciaProfissional` varchar(100) NOT NULL,
+  `dataInicialExperienciaProfissional` int(11) NOT NULL,
   `participacaoEventos` int(11) NOT NULL,
   `artigoCientificoArea` int(11) NOT NULL,
   `artigoCientificoOutrasArea` int(11) NOT NULL,
@@ -211,6 +269,14 @@ CREATE TABLE `tb_professor` (
   `projetoTenicaArtistaCultural` int(11) NOT NULL,
   `producoesDidaticoPedagogico` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tb_professor`
+--
+
+INSERT INTO `tb_professor` (`id`, `nome`, `cpf`, `maiorTitulacao`, `areaFormacao`, `curriculo`, `dataAtualizacao`, `matricula`, `dataAdmissao`, `horasNDE`, `horasOrientacaoTCC`, `horasCordenacaoCurso`, `horasCordenacaoOutrosCurso`, `horasPesquisa`, `horasExtraClasseCurso`, `horasExtraClasseOutrosCurso`, `horasCurso`, `horasOutrosCurso`, `disciplinaCurso`, `cargaHorariaCurso`, `disciplinaOutrosCurso`, `cargaHorariaOutrosCurso`, `membroNDE`, `membroColegiado`, `experienciaPedagogia`, `tempoVinculoCurso`, `dataInicialVinculoCurso`, `experienciaMagisterioSuperior`, `dataInicialMagisterioSuperior`, `experienciaCursoDistancia`, `dataInicialCursoDistancia`, `experienciaProfissional`, `dataInicialExperienciaProfissional`, `participacaoEventos`, `artigoCientificoArea`, `artigoCientificoOutrasArea`, `livrosCapitulosArea`, `livrosCapitulosOutrasArea`, `trabalhoAnaisArea`, `trabalhoAnaisOutrasArea`, `propriedadeIntelectualArea`, `propriedadeIntelectualOutrasArea`, `traducoesPublicadas`, `projetoTenicaArtistaCultural`, `producoesDidaticoPedagogico`) VALUES
+(1, 'Sasuke Uchiha', 0, '', '', '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(2, 'Kakashi', 0, '', '', '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -247,6 +313,12 @@ ALTER TABLE `tb_disciplinas`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tb_pcc`
+--
+ALTER TABLE `tb_pcc`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `tb_planoensino`
 --
 ALTER TABLE `tb_planoensino`
@@ -266,43 +338,49 @@ ALTER TABLE `tb_professor`
 -- AUTO_INCREMENT for table `tb_atas`
 --
 ALTER TABLE `tb_atas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tb_bibliografia`
 --
 ALTER TABLE `tb_bibliografia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tb_cronograma`
 --
 ALTER TABLE `tb_cronograma`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tb_curso`
 --
 ALTER TABLE `tb_curso`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tb_disciplinas`
 --
 ALTER TABLE `tb_disciplinas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `tb_pcc`
+--
+ALTER TABLE `tb_pcc`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_planoensino`
 --
 ALTER TABLE `tb_planoensino`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tb_professor`
 --
 ALTER TABLE `tb_professor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
