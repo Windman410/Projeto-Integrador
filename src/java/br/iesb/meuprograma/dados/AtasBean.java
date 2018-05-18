@@ -1,15 +1,14 @@
 package br.iesb.meuprograma.dados;
 import br.iesb.meuprograma.negocio.AtasBO;
-import br.iesb.meuprograma.negocio.DisciplinaBO;
 import br.iesb.meuprograma.negocio.NegocioException;
 import java.io.Serializable;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JOptionPane;
 
 @ManagedBean(name = "AtasBean")
 @SessionScoped
@@ -19,7 +18,11 @@ public class AtasBean implements Serializable{
     private String local;
     private String participantes;
     private String deliberacoes;
+    
+    private List<AtasBean> carregarAtas = new ArrayList<>();
+    
 
+    
     public int getId() {
         return id;
     }
@@ -63,6 +66,10 @@ public class AtasBean implements Serializable{
     public Integer toInteger(){ 
         return data;}
     
+    
+
+    
+    
     public List<AtasBean> carregarAtas(){
     AtasBO bo = new AtasBO();
         try {
@@ -73,6 +80,7 @@ public class AtasBean implements Serializable{
             return null;
         }
     }
+    
     
     public void cadastrarAtas() {
         AtasBO bo = new AtasBO(); 
@@ -88,4 +96,7 @@ public class AtasBean implements Serializable{
             }
         }
     }
+    
+
 }
+

@@ -1,21 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.iesb.meuprograma.dados;
-
 import br.iesb.meuprograma.negocio.NegocioException;
 import br.iesb.meuprograma.negocio.PPCBO;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 @ManagedBean(name = "PPCBean")    // Using ManagedBean annotation  
-@RequestScoped  // Using Scope annotation  
+@SessionScoped
+@RequestScoped
 public class PPCBean implements Serializable{
     
     private int ID;
@@ -29,7 +26,9 @@ public class PPCBean implements Serializable{
     private int horasTCC;
     private int horasEstagio;
     private String politicaDeAtendimento;
-
+    private List<PPCBean> carregarPPC = new ArrayList<>();
+    
+    
     public int getID() {
         return ID;
     }
@@ -141,7 +140,7 @@ public class PPCBean implements Serializable{
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Sucesso", "Dados inseridos com sucesso!")); 
         }catch(NegocioException ex){
             if(ex.getCause() != null){
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erro", ex.getMessage()));
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Error", ex.getMessage()));
             }else{
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erro", ex.getMessage())); 
             }

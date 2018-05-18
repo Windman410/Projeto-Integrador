@@ -40,7 +40,7 @@ public class CursoBO implements BO<CursoBean>{
             throw new NegocioException("O campo Período é Obrigatório");
         }
         if(entidade.getNomeProfessor().isEmpty()){
-            throw new NegocioException("O campo Nome é Obrigatório");
+            throw new NegocioException("O campo Nome do Professor é Obrigatório");
         }
     }
 

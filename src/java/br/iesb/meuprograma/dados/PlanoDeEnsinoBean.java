@@ -1,22 +1,22 @@
 package br.iesb.meuprograma.dados;
-
 import br.iesb.meuprograma.negocio.NegocioException;
 import br.iesb.meuprograma.negocio.PlanoDeEnsinoBO;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 @ManagedBean(name = "PlanoDeEnsinoBean")    // Using ManagedBean annotation  
-@RequestScoped  // Using Scope annotation  
+@SessionScoped  // Using Scope annotation  
 public class PlanoDeEnsinoBean implements Serializable{
     private int id;
     private String curso;
     private int ano;
     private int semestre;
-    private String disciplina;
+    private String disciplinas;
     private int cargaHoraria;
     private String periodo;
     private String professor;
@@ -24,6 +24,8 @@ public class PlanoDeEnsinoBean implements Serializable{
     private String competenciasHabilidades;
     private String metodologia;
     private String avaliacao;
+    private List<PlanoDeEnsinoBean> carregarPlanoDeEnsino = new ArrayList<>();
+
 
     public int getId() {
         return id;
@@ -57,12 +59,12 @@ public class PlanoDeEnsinoBean implements Serializable{
         this.semestre = semestre;
     }
 
-    public String getDisciplina() {
-        return disciplina;
+    public String getDisciplinas() {
+        return disciplinas;
     }
 
-    public void setDisciplina(String disciplina) {
-        this.disciplina = disciplina;
+    public void setDisciplinas(String disciplinas) {
+        this.disciplinas = disciplinas;
     }
 
     public int getCargaHoraria() {

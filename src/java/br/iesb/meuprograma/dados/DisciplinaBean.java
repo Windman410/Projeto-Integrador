@@ -1,16 +1,19 @@
 package br.iesb.meuprograma.dados;
-
 import br.iesb.meuprograma.negocio.DisciplinaBO;
 import br.iesb.meuprograma.negocio.NegocioException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+
 @ManagedBean(name = "DisciplinaBean")
 @SessionScoped
+@RequestScoped
 public class DisciplinaBean implements Serializable{
     private int id;
     private String nome;
@@ -18,6 +21,11 @@ public class DisciplinaBean implements Serializable{
     private String descricao;
     private int semestre;
     private int cargaHoraria;
+    private List<DisciplinaBean> carregarDisciplina = new ArrayList<>();
+
+    
+    
+    
     
     public int getId() {
         return id;
@@ -69,7 +77,7 @@ public class DisciplinaBean implements Serializable{
     
     @Override
     public String toString(){ 
-        return nome;}
+        return nome+cargaHoraria;}
     
     public List<DisciplinaBean> carregarDisciplina(){
     DisciplinaBO bo = new DisciplinaBO();

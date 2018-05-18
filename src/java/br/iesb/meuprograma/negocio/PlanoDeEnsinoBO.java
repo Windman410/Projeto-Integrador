@@ -20,7 +20,7 @@ public class PlanoDeEnsinoBO implements BO<PlanoDeEnsinoBean>{
         } else if(entidade.getSemestre()== -2){
             throw new NegocioException("O campo Semestre aceita apenas Números");
         }
-        if(entidade.getDisciplina().isEmpty()){
+        if(entidade.getDisciplinas().isEmpty()){
             throw new NegocioException("O campo Disciplina é Obrigatório");
         }
         if(entidade.getCargaHoraria()== -1){

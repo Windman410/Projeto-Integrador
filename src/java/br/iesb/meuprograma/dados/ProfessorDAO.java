@@ -13,10 +13,10 @@ public class ProfessorDAO implements DAO<ProfessorBean> {
         String sql = "INSERT INTO tb_professor (nome,cpf,maiorTitulacao,areaFormacao,curriculo,dataAtualizacao,matricula,dataAdimissao,horasNDE"
                 + ",horasOrientacaoTCC,horasCordenacaoCurso,horasCordenacaoOutrosCurso,horasPesquisa,horasExtraClasseCurso,horasExtraClasseOutrosCurso"
                 + ",horasCurso,horasOutrosCurso,disciplinaCurso,cargaHorariaCurso,disciplinaOutrosCurso,cargaHorariaOutrosCurso"
-                + ",membroNDE,membroColegiado,experienciaPedagogia,tempoVinculoCurso,experienciaMagisterioSuperior,experienciaCursoDistancia,experienciaProfissional"
-                + ",participacaoEventos,artigoCientificoArea,artigoCientificoOutrasArea,livrosCapitulosArea,livrosCapitulosOutrasArea,trabalhoAnaisArea"
+                + ",membroNDE,membroColegiado,experienciaPedagogia,tempoVinculoCurso,dataInicialVinculoCurso,experienciaMagisterioSuperior,dataInicialMagisterioSuperior,experienciaCursoDistancia,dataInicialCursoDistancia,experienciaProfissional"
+                + ",dataInicialExperienciaProfissional, participacaoEventos,artigoCientificoArea,artigoCientificoOutrasArea,livrosCapitulosArea,livrosCapitulosOutrasArea,trabalhoAnaisArea"
                 + ",trabalhoAnaisOutrasArea,propriedadeIntelectualArea,propriedadeIntelectualOutrasArea,traducoesPublicadas"
-                + ",projetoTecnicaArtisticaCultural,producoesDidaticoPedagogico) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                + ",projetoTecnicaArtisticaCultural,producoesDidaticoPedagogico) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
        
         try {
             PreparedStatement comando = conexao.prepareStatement(sql);
@@ -44,22 +44,31 @@ public class ProfessorDAO implements DAO<ProfessorBean> {
             comando.setBoolean(22, entidade.isMembroNDE());
             comando.setBoolean(23, entidade.isMembroColegiado());
             comando.setBoolean(24, entidade.isExperienciaPedagogia());
-            comando.setString(25, entidade.getTempoVinculoCurso());
-            comando.setString(26, entidade.getExperienciaMagisterioSuperior());
-            comando.setString(27, entidade.getExperienciaCursoDistancia());
-            comando.setString(28, entidade.getExperienciaProfissional());
-            comando.setInt(29, entidade.getParticipacaoEventos());
-            comando.setInt(30, entidade.getArtigoCientificoArea());
-            comando.setInt(31, entidade.getArtigoCientificoOutrasArea());
-            comando.setInt(32, entidade.getLivrosCapitulosArea());
-            comando.setInt(33, entidade.getLivrosCapitulosOutrasArea());
-            comando.setInt(34, entidade.getTrabalhoAnaisArea());
-            comando.setInt(35, entidade.getTrabalhoAnaisOutrasArea());
-            comando.setInt(36, entidade.getPropriedadeIntelectualArea());
-            comando.setInt(37, entidade.getPropriedadeIntelectualOutrasArea());
-            comando.setInt(38, entidade.getTraducoesPublicadas());
-            comando.setInt(39, entidade.getProjetoTecnicaArtisticaCultural());
-            comando.setInt(40, entidade.getProducoesDidaticoPedagogico());
+            
+            comando.setString(25, entidade.getTempoVinculoCurso());        
+            comando.setInt(26, entidade.getDataInicialVinculoCurso());
+            
+            comando.setString(27, entidade.getExperienciaMagisterioSuperior());
+            comando.setInt(28, entidade.getDataInicialMagisterioSuperior());
+            
+            comando.setString(29, entidade.getExperienciaCursoDistancia());
+            comando.setInt(30, entidade.getDataInicialCursoDistancia());
+            
+            comando.setString(31, entidade.getExperienciaProfissional());
+            comando.setInt(32, entidade.getDataInicialExperienciaProfissional());
+            
+            comando.setInt(33, entidade.getParticipacaoEventos());
+            comando.setInt(34, entidade.getArtigoCientificoArea());
+            comando.setInt(35, entidade.getArtigoCientificoOutrasArea());
+            comando.setInt(36, entidade.getLivrosCapitulosArea());
+            comando.setInt(37, entidade.getLivrosCapitulosOutrasArea());
+            comando.setInt(38, entidade.getTrabalhoAnaisArea());
+            comando.setInt(39, entidade.getTrabalhoAnaisOutrasArea());
+            comando.setInt(40, entidade.getPropriedadeIntelectualArea());
+            comando.setInt(41, entidade.getPropriedadeIntelectualOutrasArea());
+            comando.setInt(42, entidade.getTraducoesPublicadas());
+            comando.setInt(43, entidade.getProjetoTecnicaArtisticaCultural());
+            comando.setInt(44, entidade.getProducoesDidaticoPedagogico());
             comando.executeUpdate();
             conexao.close();
         } catch (SQLException ex) {
@@ -67,7 +76,10 @@ public class ProfessorDAO implements DAO<ProfessorBean> {
             throw new DadosException("Erro ao inserir no banco de Dados", ex);
         }
     }
-
+    
+    
+    /* Adicionar dataInicialVinculoCurso, dataInicialMagisterioSuperior, dataInicialCursoDistancia, dataInicialExperienciaProfissional */
+    /* Adicionar dataInicialVinculoCurso, dataInicialMagisterioSuperior, dataInicialCursoDistancia, dataInicialExperienciaProfissional */
     @Override
     public void alterar(ProfessorBean entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
@@ -128,7 +140,10 @@ public class ProfessorDAO implements DAO<ProfessorBean> {
             throw new DadosException("Erro ao alterar!", ex);
         }
     }
-
+    
+    
+    /* Adicionar dataInicialVinculoCurso, dataInicialMagisterioSuperior, dataInicialCursoDistancia, dataInicialExperienciaProfissional */
+    /* Adicionar dataInicialVinculoCurso, dataInicialMagisterioSuperior, dataInicialCursoDistancia, dataInicialExperienciaProfissional */
     @Override
     public void excluir(ProfessorBean entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
@@ -144,6 +159,8 @@ public class ProfessorDAO implements DAO<ProfessorBean> {
         }
     }
 
+    /* Adicionar dataInicialVinculoCurso, dataInicialMagisterioSuperior, dataInicialCursoDistancia, dataInicialExperienciaProfissional */
+    /* Adicionar dataInicialVinculoCurso, dataInicialMagisterioSuperior, dataInicialCursoDistancia, dataInicialExperienciaProfissional */
     @Override
     public ProfessorBean consultar(int id) throws DadosException {
                 Connection conexao = ConexaoBD.getConexao();
@@ -205,6 +222,8 @@ public class ProfessorDAO implements DAO<ProfessorBean> {
         return professor;
     }
 
+    /* Adicionar dataInicialVinculoCurso, dataInicialMagisterioSuperior, dataInicialCursoDistancia, dataInicialExperienciaProfissional */
+    
     @Override
     public List<ProfessorBean> listar() throws DadosException {
                 Connection conexao = ConexaoBD.getConexao();

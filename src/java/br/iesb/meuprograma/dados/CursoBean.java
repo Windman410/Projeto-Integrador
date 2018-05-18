@@ -2,14 +2,17 @@ package br.iesb.meuprograma.dados;
 import br.iesb.meuprograma.negocio.CursoBO;
 import br.iesb.meuprograma.negocio.NegocioException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;  
-import javax.faces.bean.RequestScoped;  
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
   
 @ManagedBean(name = "CursoBean")    // Using ManagedBean annotation  
-@RequestScoped  // Using Scope annotation  
+@SessionScoped // Using Scope annotation
+@RequestScoped
 public class CursoBean implements Serializable{
     private int id;
     private String tipo;
@@ -29,6 +32,9 @@ public class CursoBean implements Serializable{
     private String titulacao;
     private String tempoDedicacao;
 
+    private List<CursoBean> carregarCurso = new ArrayList<>();
+
+    
     public int getId() {
         return id;
     }

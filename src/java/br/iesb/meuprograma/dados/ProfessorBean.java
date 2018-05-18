@@ -1,16 +1,18 @@
 package br.iesb.meuprograma.dados;
- 
 import br.iesb.meuprograma.negocio.NegocioException;
 import br.iesb.meuprograma.negocio.ProfessorBO;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 @ManagedBean(name = "ProfessorBean")    // Using ManagedBean annotation  
-@RequestScoped  // Using Scope annotation  
+@RequestScoped  // Using Scope annotation
+@SessionScoped
 public class ProfessorBean implements Serializable{
     private int id;
     private String nome;
@@ -39,23 +41,71 @@ public class ProfessorBean implements Serializable{
     private boolean membroNDE;
     private boolean membroColegiado;
     private boolean experienciaPedagogia;
+    
     private String tempoVinculoCurso;
+    private int dataInicialVinculoCurso;
+    
     private String experienciaMagisterioSuperior;
+    private int dataInicialMagisterioSuperior;
+    
     private String experienciaCursoDistancia;
+    private int dataInicialCursoDistancia;
+    
     private String experienciaProfissional;
+    private int dataInicialExperienciaProfissional;
+    
     private int participacaoEventos;
     
     private int artigoCientificoArea;
     private int artigoCientificoOutrasArea;
+    
     private int livrosCapitulosArea;
     private int livrosCapitulosOutrasArea;
+    
     private int trabalhoAnaisArea;
     private int trabalhoAnaisOutrasArea;
+    
     private int propriedadeIntelectualArea;
     private int propriedadeIntelectualOutrasArea;
+    
     private int traducoesPublicadas;
     private int projetoTecnicaArtisticaCultural;
     private int producoesDidaticoPedagogico;
+    private List<ProfessorBean> carregarProfessor = new ArrayList<>();
+
+    public int getDataInicialVinculoCurso() {
+        return dataInicialVinculoCurso;
+    }
+
+    public void setDataInicialVinculoCurso(int dataInicialVinculoCurso) {
+        this.dataInicialVinculoCurso = dataInicialVinculoCurso;
+    }
+
+    public int getDataInicialMagisterioSuperior() {
+        return dataInicialMagisterioSuperior;
+    }
+
+    public void setDataInicialMagisterioSuperior(int dataInicialMagisterioSuperior) {
+        this.dataInicialMagisterioSuperior = dataInicialMagisterioSuperior;
+    }
+
+    public int getDataInicialCursoDistancia() {
+        return dataInicialCursoDistancia;
+    }
+
+    public void setDataInicialCursoDistancia(int dataInicialCursoDistancia) {
+        this.dataInicialCursoDistancia = dataInicialCursoDistancia;
+    }
+
+    public int getDataInicialExperienciaProfissional() {
+        return dataInicialExperienciaProfissional;
+    }
+
+    public void setDataInicialExperienciaProfissional(int dataInicialExperienciaProfissional) {
+        this.dataInicialExperienciaProfissional = dataInicialExperienciaProfissional;
+    }
+
+
 
     public int getId() {
         return id;

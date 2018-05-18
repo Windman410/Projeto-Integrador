@@ -1,8 +1,8 @@
 package br.iesb.meuprograma.dados;
-
 import br.iesb.meuprograma.negocio.CronogramaBO;
 import br.iesb.meuprograma.negocio.NegocioException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -15,6 +15,8 @@ public class CronogramaBean implements Serializable{
     private int id;
     private int aula;
     private String conteudo;
+    private List<CronogramaBean> carregarCronograma = new ArrayList<>();
+
 
     public int getId() {
         return id;
@@ -45,7 +47,7 @@ public class CronogramaBean implements Serializable{
         return "Aula: " + aula + "  Conteudo: " + conteudo;
     }
     
-    public List<CronogramaBean> carregaCronograma(){
+    public List<CronogramaBean> carregarCronograma(){
     CronogramaBO bo = new CronogramaBO();
         try {
             List<CronogramaBean> lista = bo.listar();

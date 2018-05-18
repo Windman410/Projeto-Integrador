@@ -11,14 +11,14 @@ public class PlanoDeEnsinoDAO implements DAO<PlanoDeEnsinoBean>{
     @Override
     public void inserir(PlanoDeEnsinoBean entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
-        String sql = "INSERT INTO tb_planoensino (curso, ano, semestre, disciplina, cargaHoraria, periodoCurso, professor, ementa, competenciasHabilidades, metodologiaEnsino, avaliacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO tb_planoensino (curso, ano, semestre, disciplinas, cargaHoraria, periodoCurso, professor, ementa, competenciasHabilidades, metodologiaEnsino, avaliacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         try{
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setString(1, entidade.getCurso());
             comando.setInt(2, entidade.getAno());
             comando.setInt(3, entidade.getSemestre());
-            comando.setString(4, entidade.getDisciplina());
+            comando.setString(4, entidade.getDisciplinas());
             comando.setInt(5, entidade.getCargaHoraria());
             comando.setString(6, entidade.getPeriodo());
             comando.setString(7, entidade.getProfessor());
@@ -36,13 +36,13 @@ public class PlanoDeEnsinoDAO implements DAO<PlanoDeEnsinoBean>{
     @Override
     public void alterar(PlanoDeEnsinoBean entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
-        String sql = "UPDATE tb_planoensino SET curso=?, ano=?, semestre=?, disciplina=?, cargaHoraria=?, periodoCurso=?, professor=?, ementa=?, competenciasHabilidades=?, metodologiaEnsino=?, avaliacao=? WHERE id_plano=?";
+        String sql = "UPDATE tb_planoensino SET curso=?, ano=?, semestre=?, disciplinas=?, cargaHoraria=?, periodoCurso=?, professor=?, ementa=?, competenciasHabilidades=?, metodologiaEnsino=?, avaliacao=? WHERE id_plano=?";
         try {
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setString(1, entidade.getCurso());
             comando.setInt(2, entidade.getAno());
             comando.setInt(3, entidade.getSemestre());
-            comando.setString(4, entidade.getDisciplina());
+            comando.setString(4, entidade.getDisciplinas());
             comando.setInt(5, entidade.getCargaHoraria());
             comando.setString(6, entidade.getPeriodo());
             comando.setString(7, entidade.getProfessor());
@@ -87,7 +87,7 @@ public class PlanoDeEnsinoDAO implements DAO<PlanoDeEnsinoBean>{
                 planodeensino.setCurso(resultado.getString(2));
                 planodeensino.setAno(resultado.getInt(3));
                 planodeensino.setSemestre(resultado.getInt(4));
-                planodeensino.setDisciplina(resultado.getString(5));
+                planodeensino.setDisciplinas(resultado.getString(5));
                 planodeensino.setCargaHoraria(resultado.getInt(6));
                 planodeensino.setPeriodo(resultado.getString(7));
                 planodeensino.setProfessor(resultado.getString(8));
@@ -117,7 +117,7 @@ public class PlanoDeEnsinoDAO implements DAO<PlanoDeEnsinoBean>{
                 planodeensino.setCurso(resultado.getString(2));
                 planodeensino.setAno(resultado.getInt(3));
                 planodeensino.setSemestre(resultado.getInt(4));
-                planodeensino.setDisciplina(resultado.getString(5));
+                planodeensino.setDisciplinas(resultado.getString(5));
                 planodeensino.setCargaHoraria(resultado.getInt(6));
                 planodeensino.setPeriodo(resultado.getString(7));
                 planodeensino.setProfessor(resultado.getString(8));

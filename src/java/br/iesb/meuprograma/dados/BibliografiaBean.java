@@ -2,6 +2,7 @@ package br.iesb.meuprograma.dados;
 import br.iesb.meuprograma.negocio.BibliografiaBO;
 import br.iesb.meuprograma.negocio.NegocioException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -18,7 +19,9 @@ public class BibliografiaBean implements Serializable{
     private String autor;
     private int ano;
     private String isbn;
-    private String editora;  
+    private String editora;
+    private List<BibliografiaBean> carregarBibliografia = new ArrayList<>();
+
     
     
     public int getId() {
