@@ -21,41 +21,47 @@
             <h1 class="head">Sistema de Cadastro e Armazenamento de PCC</h1>
         </header>
              
-            <!--
-            <p:panel header="Consultar Cronograma de Atividades ">
-              <p:dataTable var="usuario" value="#{UsuarioMB.usuarios}">
-                    <p:column headerText="Aula">
-                         <h:outputText value="#{usuario.id}" />
-                    </p:column>
-                    <p:column headerText="Conteúdo">
-                         <h:outputText value="#{usuario.nome}" />
-                    </p:column>            
-              </p:dataTable>
-             </p:panel>
-             -->
-    <h:form id="cronogramaForm">
+            
+            
+             
+             
+        <h:form id="cronogramaForm">
                 <p:growl id="growl" showDetail="true" sticky="true" />
-                <p:panel id="panel" header="Cadastrar Cronograma de Atividades ">
+            <p:panel id="panel" header="Cadastrar Cronograma de Atividades ">
                 
                 <p:messages id="msgs" />
                 <p:panel>
-        <h:panelGrid columns="4" cellpadding="8">
-                    <h:outputLabel for="aula" value="Aula:" />
-                    <h:inputText   id="aula" value="#{CronogramaBean.aula}" label="Aula">
-                    </h:inputText>
+                    <h:panelGrid columns="2" cellpadding="8" cellspacing="12">
+                        <h:outputLabel for="aula" value="Aula:" />
+                        <h:inputText   id="aula" value="#{CronogramaBean.aula}" label="Aula">
+                        </h:inputText>
 
-                    <h:outputLabel for="conteudo" value="Conteúdo:" />
-                    <h:inputText id="conteudo" value="#{CronogramaBean.conteudo}" label="Conteúdo">
-                    </h:inputText>
-        </h:panelGrid>
+                        <h:outputLabel for="conteudo" value="Conteúdo:" />
+                        <h:inputText id="conteudo" value="#{CronogramaBean.conteudo}" label="Conteúdo">
+                        </h:inputText>
+                    </h:panelGrid>
                 </p:panel>
-                <br/>
- 
-        <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
-        <p:commandButton class="salvar" value="Salvar" update="growl" actionListener="#{CronogramaBean.cadastrarCronograma()}"/>
-
-        </p:panel>
-    </h:form>     
+                <br/> 
+                <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
+                <p:commandButton class="salvar" value="Salvar" update="growl" actionListener="#{CronogramaBean.cadastrarCronograma()}"/>
+            </p:panel>
+        </h:form>
+        <h:form>
+                <p:panel header="Consultar Cronograma de Atividades ">
+            
+                    <p:dataTable var="carregar" value="#{CronogramaBean.carregarCronograma()}" scrollable="true" scrollHeight="350">
+                    <p:column headerText="Aula">
+                        <h:outputText value="#{carregar.aula}" />
+                    </p:column>  
+                    <p:column headerText="Conteúdo">
+                        <h:outputText value="#{carregar.conteudo}" />
+                    </p:column>
+                </p:dataTable>
+                    
+             </p:panel>
+        </h:form>  
+      
+      
   </h:body>
     <footer class="footer">iesb - centro universitário </footer>
   </html>

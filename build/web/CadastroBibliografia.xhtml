@@ -29,7 +29,7 @@
  
 
         <p:panel>
-        <h:panelGrid columns="2" cellpadding="8">
+            <h:panelGrid columns="6" cellpadding="8" cellspacing="12">
             
             <h:outputLabel value="Curso:"/>
             <h:selectOneMenu  value="#{BibliografiaBean.cursos}">
@@ -38,8 +38,8 @@
             </h:selectOneMenu>
             <h:outputLabel value="Disciplina:"/>
             <h:selectOneMenu  value="#{BibliografiaBean.disciplinas}">
-                <f:selectItems  value="#{DisciplinaBean.carregarDisciplina()}" var="pais"
-                                itemLabel="#{DisciplinaBean.nome}" />
+                <f:selectItems  value="#{DisciplinaBean.carregarDisciplina()}" var="carregar"
+                                itemLabel="#{carregar.nome}" />
             </h:selectOneMenu> 
             
             <h:outputLabel for="titulo" value="Título:" />

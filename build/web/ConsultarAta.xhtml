@@ -23,15 +23,15 @@
                  
        <h:form>
            <p:panel id="panel" header="Consultar Ata de Reunião">
-               <p:dataTable var="usuario" value="#{UsuarioMB.usuarios}">
+               <p:dataTable var="carregar" value="#{AtasBean.carregarAtas()}" scrollable="true" scrollHeight="350">
                   <p:column headerText="Data">
-                       <h:outputText value="#{usuario.id}" />
+                      <h:outputText value="#{carregar.data}" />
                   </p:column>  
                   <p:column headerText="Local">
-                       <h:outputText value="#{usuario.nome}" />
+                      <h:outputText value="#{carregar.local}" />
                   </p:column>
                   <p:column headerText="Participantes">
-                       <h:outputText value="#{usuario.senha}" />
+                      <h:outputText value="#{carregar.participantes}" />
                   </p:column>                
             </p:dataTable>
                

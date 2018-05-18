@@ -26,19 +26,21 @@
         <p:panel id="panel" header="Cadastrar Plano de Ensino">
  
             <p:panel>
-        <h:panelGrid columns="4" cellpadding="8">
-            <h:outputLabel value="Curso:"></h:outputLabel>
+                <h:panelGrid columns="6" cellpadding="8" cellspacing="12">
+            <h:outputLabel value="Curso:"/>
             <h:selectOneMenu value="#{PlanoDeEnsinoBean.curso}">
-                <f:selectItems value="#{CursoBean.carregarCurso()}" 
-                               itemLabel="#{CursoBean.denominacao}" />
+                <f:selectItems var="carregar" value="#{CursoBean.carregarCurso()}" 
+                               itemLabel="#{carregar.denominacao}" />
             </h:selectOneMenu>
+
             
             
             <h:outputLabel value="Disciplina:"/>
-            <h:selectOneMenu value="#{PlanoDeEnsinoBean.disciplina}">
-                <f:selectItems value="#{DisciplinaBean.carregarDisciplina()}" 
-                               itemLabel="#{DisciplinaBean.nome}" />
+            <h:selectOneMenu value="#{PlanoDeEnsinoBean.disciplinas}">
+                <f:selectItems var="carregar" value="#{DisciplinaBean.carregarDisciplina()}" 
+                               itemLabel="#{carregar.nome}" />
             </h:selectOneMenu>
+             
 
             <h:outputLabel for="coddisciplina1" value="Ano:" />
             <h:inputText id="coddisciplina1" value="#{PlanoDeEnsinoBean.ano}" label="Cod Disciplina" required="true">
@@ -62,8 +64,8 @@
 
             <h:outputLabel value="Professor:"/>
             <h:selectOneMenu value="#{PlanoDeEnsinoBean.professor}">
-                <f:selectItems value="#{ProfessorBean.carregarProfessor()}" var="pais"
-                               itemLabel="#{ProfessorBean.nome}" />
+                <f:selectItems var="carregar" value="#{ProfessorBean.carregarProfessor()}" 
+                               itemLabel="#{carregar.nome}" />
             </h:selectOneMenu>
         </h:panelGrid>
                 </p:panel>
@@ -98,13 +100,13 @@
         </p:tab>
         
         <p:tab title="Cronograma de Atividades">
-            <p:dataTable var="usuario" value="#{UsuarioMB.usuarios}">
+            <p:dataTable var="carregar" value="#{CronogramaBean.carregarCronograma()}" scrollable="true" scrollHeight="350">
                   <p:column headerText="Aula">
-                       <h:outputText value="#{usuario.id}" />
+                      <h:outputText value="#{carregar.aula}" />
                   </p:column>
    
                   <p:column headerText="Conteúdo">
-                       <h:outputText value="#{usuario.nome}" />
+                      <h:outputText value="#{carregar.conteudo}" />
                   </p:column>                               
             </p:dataTable>
         </p:tab>
@@ -117,33 +119,33 @@
         </p:tab>
         
         <p:tab title="Bibliografia">
-            <p:dataTable var="usuarioss" value="#{UsuarioMB.usuarios}">
+            <p:dataTable var="carregar" value="#{BibliografiaBean.carregarBibliografia()}" scrollable="true" scrollHeight="350">
                   <p:column headerText="Curso">
-                       <h:outputText value="#{usuario.id}" />
+                      <h:outputText value="#{carregar.cursos}" />
                   </p:column>
    
                   <p:column headerText="Disciplina">
-                       <h:outputText value="#{usuario.nome}" />
+                      <h:outputText value="#{carregar.disciplinas}" />
                   </p:column>
    
                   <p:column headerText="Título">
-                       <h:outputText value="#{usuario.senha}" />
+                      <h:outputText value="#{carregar.titulo}" />
                   </p:column>
    
                   <p:column headerText="Autor">
-                       <h:outputText value="#{usuario.descricao}" />
+                      <h:outputText value="#{carregar.autor}" />
                   </p:column>
                   
                   <p:column headerText="Ano">
-                       <h:outputText value="#{usuario.dataCadastro11}" />
+                      <h:outputText value="#{carregar.ano}" />
                   </p:column>
                 
                   <p:column headerText="ISBN">
-                       <h:outputText value="#{usuario.dataCadastro1}" />
+                      <h:outputText value="#{carregar.isbn}" />
                   </p:column>
                 
                   <p:column headerText="Editora">
-                       <h:outputText value="#{usuario.dataCadastro}" />
+                      <h:outputText value="#{carregar.editora}" />
                   </p:column>
                   
             </p:dataTable>

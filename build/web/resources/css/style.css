@@ -1,6 +1,6 @@
 @charset "utf-8";
-*{margin:0;padding:0;word-wrap:break-word;box-sizing:border-box;}
-body{font-size:22px;font-family: 'Roboto', sans-serif; background-color:#FAFAFA;margin:1rem;}
+*{margin:0 auto;padding:0;word-wrap:break-word;box-sizing:border-box;}
+body{font-size:20px;font-family: 'Roboto', sans-serif; background-color:#FAFAFA;margin:0}
 button{height:auto;}
 .head{background-color:#2E2E2E;padding:2%;text-align:center;color:#F2F2F2;}
 .footer{background-color:#2E2E2E;text-align:center;padding:10px;margin-top:7px;color:#F2F2F2;}
@@ -12,40 +12,16 @@ button{height:auto;}
 .salvar.ui-state-default {color:#fff;float:right;width:auto;background-color:#088A08!important;}
 .cancelar.ui-state-default {color:#fff;width:auto;background-color:#FF0000!important;}
 .consul.ui-state-default{width:auto;background-color:#088A08!important;}
+ul {list-style-type: none;margin: 0;padding: 0;overflow: hidden;border: 1px solid #e7e7e7;background-color:#2E2E2E;}
+li {float: left;}
+li a {display: block;color: #666;text-align: center;padding: 14px 16px;text-decoration: none;}
+li a:hover:not(.active) {background-color: #ddd;}
+li a.active {color: white;background-color:#088A08;}
+li a.active:hover {background-color:#A4A4A4;}
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    border: 1px solid #e7e7e7;
-    background-color:#2E2E2E;
-}
 
-li {
-    float: left;
-}
-
-li a {
-    display: block;
-    color: #666;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li a:hover:not(.active) {
-    background-color: #ddd;
-}
-
-li a.active {
-    color: white;
-    background-color:#088A08;
-}
-li a.active:hover {
-    background-color:#A4A4A4;
-}
-
+.ui-panel .ui-panel-titlebar {background-color:#088A08;color:#fff;}
+.ui-tabs .ui-tabs-nav {background-color:#088A08;}
 
 
 
@@ -61,7 +37,7 @@ textarea, form {
 }
 
 
-input, select, output, label{width:100%;margin-top:1%;}
+input, select, output, label{width:100%;}
 
 
 
