@@ -23,38 +23,33 @@
               
        <h:form>
            <p:panel id="panel" header="Consultar Curso">
-            <p:dataTable var="usuario" value="#{UsuarioMB.usuarios}">
-                  <p:column headerText="Tipo do Curso">
-                       <h:outputText value="#{usuario.id}" />
-                  </p:column>  
-                  <p:column headerText="Modalidade">
-                       <h:outputText value="#{usuario.nome}" />
-                  </p:column>
-                  <p:column headerText="Denominação">
-                       <h:outputText value="#{usuario.senha}" />
-                  </p:column>
-                  <p:column headerText="Habilitação">
-                       <h:outputText value="#{usuario.senha}" />
-                  </p:column>
-                  <p:column headerText="Local de Oferta">
-                       <h:outputText value="#{usuario.nome}" />
-                  </p:column>
-                  <p:column headerText="Turnos">
-                       <h:outputText value="#{usuario.senha}" />
-                  </p:column>
-                  <p:column headerText="Carga Horária">
-                       <h:outputText value="#{usuario.senha}" />
-                  </p:column>
-                  <p:column headerText="Regime Letivo">
-                       <h:outputText value="#{usuario.senha}" />
-                  </p:column>
-                  <p:column headerText="Períodos">
-                       <h:outputText value="#{usuario.senha}" />
-                  </p:column>
-                  <p:column headerText="Professor">
-                       <h:outputText value="#{usuario.senha}" />
-                  </p:column>                   
-            </p:dataTable>
+                                 <!--<p:column headerText="Turnos">
+                      <h:outputText value="" />
+                      
+                  </p:column>  -->
+            <p:dataTable var="carregar" value="#{CursoBean.carregarCurso()}" scrollable="true" scrollHeight="350">
+                    <p:column headerText="Id">
+                      <h:outputText value="#{carregar.id}" />
+                    </p:column>  
+                    <p:column headerText="Nome">
+                      <h:outputText value="#{carregar.denominacao}" />
+                    </p:column>
+                    <p:column headerText="Modalidade">
+                      <h:outputText value="#{carregar.modalidade}" />
+                    </p:column>
+                    <p:column headerText="Carga Horária">
+                        <h:outputText value="#{carregar.cargaHoraria}" />
+                    </p:column>
+                    <p:column headerText="Vagas por Turno">
+                    <h:outputText value="#{carregar.vagasTurno}" />
+                    </p:column>
+                    <p:column headerText="Professor">
+                        <h:outputText value="#{carregar.nomeProfessor}" />
+                    </p:column>
+            </p:dataTable>  
+                                 
+                                 
+            
                <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
                <p:commandButton class="consul" value="Visualizar detalhes" update="panel" actionListener="#{userView.save}"/>
                <p:commandButton class="consul" value="Editar" update="panel" actionListener="#{userView.save}" />

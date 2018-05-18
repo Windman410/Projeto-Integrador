@@ -28,24 +28,34 @@
         <p:messages id="msgs" />
  
         <p:panel>
-        <h:panelGrid columns="2" cellpadding="8">
+            <h:panelGrid columns="2" cellpadding="8" cellspacing="12">
             
-            <h:outputLabel for="disciplina" value="Nome da Disciplina:" />
+            
+            <h:outputLabel value="Curso:"/>
+            <h:selectOneMenu  value="#{CursoBean.denominacao}">
+                <f:selectItems  value="#{CursoBean.carregarCurso()}" var="pais"
+                               itemLabel="#{CursoBean.denominacao}" />
+            </h:selectOneMenu>
+            
+            
+            <h:outputLabel for="disciplina" value="Disciplina:" />
             <h:inputText   id="disciplina" value="#{DisciplinaBean.nome}" label="Disciplina"/>
  
-            <h:outputLabel for="coddisciplina" value="Cód. Disciplina:" />
-            <h:inputText id="coddisciplina" value="#{DisciplinaBean.cod}" label="Cod Disciplina" required="true"/>
+            <h:outputLabel for="cod" value="Cód. Disciplina:" />
+            <h:inputText id="cod" value="#{DisciplinaBean.cod}" label="Cód" required="true"/>
 
+            <h:outputLabel for="descricao" value="Descrição:" />
+            <h:inputTextarea id="descricao" value="#{DisciplinaBean.descricao}" label="Descrição" required="true"/>
+            
             <h:outputLabel for="semestre" value="Semestre:" />
             <h:inputText id="semestre" value="#{DisciplinaBean.semestre}" label="Semestre" required="true"/>
             
             <h:outputLabel for="cargahoraria" value="Carga Horária:" />
-            <h:inputText id="cargahoraria" value="#{DisciplinaBean.cargaHoraria}" label="Carga Horária" required="true"/>
-            
-            <h:outputLabel for="descricao" value="Descrição:" />
-            <h:inputTextarea cols="60" rows="3" id="descricao" value="#{DisciplinaBean.descricao}" label="Descrição" required="true"/>
+            <h:inputText id="cargahoraria" value="#{DisciplinaBean.cargaHoraria}" label="Carga Horaria" required="true"/> 
+                
+                
  
-        </h:panelGrid>
+            </h:panelGrid>
             </p:panel>
             <br/>
         

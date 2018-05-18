@@ -26,7 +26,7 @@
         <p:panel id="panel" header="Cadastrar Curso">
         <p:messages id="msgs" />
         <p:panel>
-        <h:panelGrid columns="4" cellpadding="8" >
+            <h:panelGrid columns="4" cellpadding="8" cellspacing="12">
             <h:outputLabel for="disciplina" value="Tipo do Curso:" />
             <h:inputText   id="disciplina" value="#{CursoBean.tipo}"  label="Disciplina">
             
@@ -85,17 +85,17 @@
             </h:inputText>
 
             <h:outputLabel for="cargahoraria11" value="Professor:" />
-            <h:selectOneMenu value="#{CursoBean.nomeProfessor}">
+            <h:selectOneMenu  value="#{CursoBean.nomeProfessor}">
                 <f:selectItems value="#{ProfessorBean.carregarProfessor()}" var="professores"
-                    itemLabel="#{professores.nome}" />
+                               itemLabel="#{ProfessorBean.nome}" />
             </h:selectOneMenu>
                 
             
-            <h:outputLabel for="cpf" value="Cpf Professor:" />
-            <h:inputText id="cpf" value="#{CursoBean.cpf}" label="Cpf Professor"/>
+            <h:outputLabel for="cpf" value="CPF Professor:" />
+            <h:inputText id="cpf" value="#{CursoBean.cpf}" label="CPF Professor"/>
             
-            <h:outputLabel for="titulacao" value="Tirulação Professor:" />
-            <h:inputText id="titulacao" value="#{CursoBean.titulacao}" label="Tirulação Professor"/>
+            <h:outputLabel for="titulacao" value="Titulação Professor:" />
+            <h:inputText id="titulacao" value="#{CursoBean.titulacao}" label="Titulação Professor"/>
             
             <h:outputLabel for="dedicacao" value="Dedicação Professor" />
             <h:inputText id="dedicacao" value="#{CursoBean.tempoDedicacao}" label="Dedicação Professor"/>

@@ -23,23 +23,26 @@
               
        <h:form>
            <p:panel id="panel" header="Consultar Plano de Ensino">
-            <p:dataTable var="usuario" value="#{UsuarioMB.usuarios}">
-                  <p:column headerText="Curso">
-                       <h:outputText value="#{usuario.id}" />
-                  </p:column>   
-                  <p:column headerText="Disciplina">
-                       <h:outputText value="#{usuario.nome}" />
-                  </p:column>  
-                  <p:column headerText="Professor">
-                       <h:outputText value="#{usuario.senha}" />
-                  </p:column>
-                  <p:column headerText="Ano">
-                       <h:outputText value="#{usuario.senha}" />
-                  </p:column>
-                  <p:column headerText="Semestre">
-                       <h:outputText value="#{usuario.senha}" />
-                  </p:column>
-            </p:dataTable>
+               
+               
+               <p:dataTable var="carregar" value="#{PlanoDeEnsinoBean.carregarPlanoDeEnsino()}" scrollable="true" scrollHeight="350">
+                    <p:column headerText="Curso">
+                        <h:outputText value="#{carregar.curso}" />
+                    </p:column>  
+                    <p:column headerText="Disciplina">
+                        <h:outputText value="#{carregar.disciplinas}" />
+                    </p:column>
+                    <p:column headerText="Carga Horária">
+                        <h:outputText value="#{carregar.cargaHoraria}" />
+                    </p:column>
+                    <p:column headerText="Professor">
+                        <h:outputText value="#{carregar.professor}" />
+                    </p:column>
+                </p:dataTable> 
+               
+               
+               
+               
                <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
                <p:commandButton class="consul" value="Visualizar detalhes" update="panel" actionListener="#{userView.save}"/>
                <p:commandButton class="consul" value="Editar" update="panel" actionListener="#{userView.save}"/>
