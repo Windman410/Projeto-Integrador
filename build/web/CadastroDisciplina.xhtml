@@ -29,35 +29,25 @@
  
         <p:panel>
             <h:panelGrid columns="2" cellpadding="8" cellspacing="12">
-            
-            
-            <h:outputLabel value="Curso:"/>
-            <h:selectOneMenu  value="#{CursoBean.denominacao}">
-                <f:selectItems  value="#{CursoBean.carregarCurso()}" var="pais"
-                               itemLabel="#{CursoBean.denominacao}" />
-            </h:selectOneMenu>
-            
-            
-            <h:outputLabel for="disciplina" value="Disciplina:" />
-            <h:inputText   id="disciplina" value="#{DisciplinaBean.nome}" label="Disciplina"/>
- 
-            <h:outputLabel for="cod" value="Cód. Disciplina:" />
-            <h:inputText id="cod" value="#{DisciplinaBean.cod}" label="Cód" required="true"/>
 
-            <h:outputLabel for="descricao" value="Descrição:" />
-            <h:inputTextarea id="descricao" value="#{DisciplinaBean.descricao}" label="Descrição" required="true"/>
-            
-            <h:outputLabel for="semestre" value="Semestre:" />
-            <h:inputText id="semestre" value="#{DisciplinaBean.semestre}" label="Semestre" required="true"/>
-            
-            <h:outputLabel for="cargahoraria" value="Carga Horária:" />
-            <h:inputText id="cargahoraria" value="#{DisciplinaBean.cargaHoraria}" label="Carga Horaria" required="true"/> 
-                
-                
- 
+                <h:outputLabel for="disciplina" value="Disciplina:" />
+                <h:inputText   id="disciplina" value="#{DisciplinaBean.nome}" label="Disciplina"/>
+
+                <h:outputLabel for="cod" value="Cód. Disciplina:" />
+                <h:inputText id="cod" value="#{DisciplinaBean.cod}" label="Cód" required="true"/>
+
+                <h:outputLabel for="descricao" value="Descrição:" />
+                <h:inputTextarea id="descricao" value="#{DisciplinaBean.descricao}" label="Descrição" required="true"/>
+
+                <h:outputLabel for="semestre" value="Semestre:" />
+                <h:inputText id="semestre" value="#{DisciplinaBean.semestre}" label="Semestre" required="true"/>
+
+                <h:outputLabel for="cargahoraria" value="Carga Horária:" />
+                <h:inputText id="cargahoraria" value="#{DisciplinaBean.cargaHoraria}" label="Carga Horaria" required="true"/> 
+
             </h:panelGrid>
-            </p:panel>
-            <br/>
+        </p:panel>
+        <br/>
         
         <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
         <p:commandButton class="salvar" value="Salvar" update="growl" actionListener="#{DisciplinaBean.cadastrarDisciplina()}"/>

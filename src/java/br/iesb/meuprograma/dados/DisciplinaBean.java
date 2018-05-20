@@ -21,11 +21,6 @@ public class DisciplinaBean implements Serializable{
     private String descricao;
     private int semestre;
     private int cargaHoraria;
-    private List<DisciplinaBean> carregarDisciplina = new ArrayList<>();
-
-    
-    
-    
     
     public int getId() {
         return id;

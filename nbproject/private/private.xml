@@ -3,14 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/mamãe/Documents/NetBeansProjects/Projeto%20Integrador/web/index.xhtml</file>
-            <file>file:/C:/Users/mamãe/Documents/NetBeansProjects/Projeto%20Integrador/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/mamãe/Documents/NetBeansProjects/Projeto%20Integrador/web/welcomePrimefaces.xhtml</file>
-            <file>file:/C:/Users/mamãe/Documents/NetBeansProjects/Projeto%20Integrador/src/java/br/iesb/meuprograma/dados/Atas.java</file>
-            <file>file:/C:/Users/mamãe/Documents/NetBeansProjects/Projeto%20Integrador/web/CadastroCurso.xhtml</file>
+            <file>file:/C:/Users/mamãe/Documents/NetBeansProjects/Projeto%20Integrador/web/ConsultarPPC.xhtml</file>
+            <file>file:/C:/Users/mamãe/Documents/NetBeansProjects/Projeto%20Integrador/src/java/br/iesb/meuprograma/dados/ProfessorDAO.java</file>
             <file>file:/C:/Users/mamãe/Documents/NetBeansProjects/Projeto%20Integrador/web/CadastroDisciplina.xhtml</file>
+            <file>file:/C:/Users/mamãe/Documents/NetBeansProjects/Projeto%20Integrador/src/java/br/iesb/meuprograma/dados/ProfessorBean.java</file>
+            <file>file:/C:/Users/mamãe/Documents/NetBeansProjects/Projeto%20Integrador/web/CadastroProfessor.xhtml</file>
             <file>file:/C:/Users/mamãe/Documents/NetBeansProjects/Projeto%20Integrador/src/java/br/iesb/meuprograma/dados/DisciplinaBean.java</file>
-            <file>file:/C:/Users/mamãe/Documents/NetBeansProjects/Projeto%20Integrador/src/java/br/iesb/meuprograma/dados/CursoBean.java</file>
+            <file>file:/C:/Users/mamãe/Documents/NetBeansProjects/Projeto%20Integrador/web/ConsultarAta.xhtml</file>
         </group>
     </open-files>
 </project-private>
