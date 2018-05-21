@@ -21,28 +21,54 @@
             <h1 class="head">Sistema de Cadastro e Armazenamento de PCC</h1>
         </header>
                  
-       <h:form>
-           <p:panel id="panel" header="Consultar Ata de Reunião">
-               <p:dataTable var="carregar" value="#{AtasBean.carregarAtas()}" scrollable="true" scrollHeight="350">
-                  <p:column headerText="Data">
-                      <h:outputText value="#{carregar.data}" />
+       <h:form id="form">  
+           <p:growl id="growl" showDetail="true" sticky="true" /> 
+                   
+               <p:dataTable var="carregar" editable="true" editMode="row" value="#{AtasBean.carregarAtas()}" scrollable="true" scrollHeight="350">
+                   <p:ajax event="rowEdit" update=":form:growl" listener="#{carregar.alterarAtas}"/>
+                    <p:column headerText="Data">
+                      <p:cellEditor>
+                          <f:facet name="output"> 
+                              <h:outputText value="#{carregar.data}" />
+                          </f:facet>
+                          <f:facet name="input">
+                              <h:inputText id="modelInput" value="#{carregar.data}" />
+                          </f:facet>
+                      </p:cellEditor>
                   </p:column>  
                   <p:column headerText="Local">
-                      <h:outputText value="#{carregar.local}" />
+                      <p:cellEditor>
+                        <f:facet name="output"> 
+                            <h:outputText value="#{carregar.local}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{carregar.local}" />
+                        </f:facet>
+                      </p:cellEditor>
                   </p:column>
                   <p:column headerText="Participantes">
-                      <h:outputText value="#{carregar.participantes}" />
+                      <p:cellEditor>
+                        <f:facet name="output"> 
+                            <h:outputText value="#{carregar.participantes}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{carregar.participantes}" />
+                        </f:facet>
+                      </p:cellEditor>
+                  </p:column>                
+                  <p:column headerText="Excluir">
+                      <p:commandButton class="consul" value="Excluir" actionListener="#{carregar.excluirAtas(carregar)}" />
+                  </p:column>                
+                  <p:column headerText="Alterar">
+                       <p:rowEditor />
+                       <p:commandButton class="consul" value="Alterar" actionListener="#{carregar.alterarAtas(carregar)}" />
                   </p:column>                
             </p:dataTable>
                
                
                
-               <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
-               <p:commandButton class="consul" value="Visualizar detalhes" update="panel" actionListener="#{userView.save}"/>
-               <p:commandButton class="consul" value="Editar" update="panel" actionListener="#{userView.save}" />
-               <p:commandButton class="consul" value="Imprimir" update="panel" actionListener="#{userView.save}" />
-           </p:panel>
-       </h:form>
+               <p:commandButton class="cancelar" value="Cancelar" action="index" ajax="false"/>
+        </h:form>
   </h:body>
     <footer class="footer">iesb - centro universitário </footer>
   </html>

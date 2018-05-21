@@ -9,6 +9,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import org.primefaces.event.RowEditEvent;
 
 @ManagedBean(name = "AtasBean")
 @SessionScoped
@@ -97,6 +98,47 @@ public class AtasBean implements Serializable{
         }
     }
     
+    public void excluirAtas(AtasBean ata) {
+        AtasBO bo = new AtasBO(); 
+        
+        try{
+            bo.excluir(ata);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Sucesso", "Dados excluido com sucesso!")); 
+        }catch(NegocioException ex){
+            if(ex.getCause() != null){
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erro", ex.getMessage()));
+            }else{
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erro", ex.getMessage())); 
+            }
+        }
+    }
+    
+    public void alterarAtas(RowEditEvent event) {
+        
+        AtasBean ata = (AtasBean) event.getObject();
+        //CellEditEvent evento = new CellEditEvent();
+        //Object oldValue = evento.getOldValue();
+        //Object newValue = evento.getNewValue();
+            System.out.println(ata.getLocal());
+            System.out.println(ata.getData());
+            System.out.println(ata.getParticipantes());
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Sucesso",ata.getLocal() + " " + ata.getData() + " " + ata.getParticipantes() )); 
+        
+        //AtasBO bo = new AtasBO(); 
+        /*try{
+            System.out.println("alterando");
+            bo.alterar(ata);
+            System.out.println("altero!");
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Sucesso", "Dados alterados com sucesso!")); 
+        }catch(NegocioException ex){
+            if(ex.getCause() != null){
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erro", ex.getMessage()));
+            }else{
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erro", ex.getMessage())); 
+            }
+        }*/
+    }
+
 
 }
 
