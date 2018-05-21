@@ -21,11 +21,12 @@
             <h1 class="head">Sistema de Cadastro e Armazenamento de PCC</h1>
         </header>
                  
-       <h:form id="form">  
+       <h:form id="form">
+           <p:panel id="panelAtas" header="Consultar Atas">
            <p:growl id="growl" showDetail="true" sticky="true" /> 
                    
-               <p:dataTable var="carregar" editable="true" editMode="row" value="#{AtasBean.carregarAtas()}" scrollable="true" scrollHeight="350">
-                   <p:ajax event="rowEdit" update=":form:growl" listener="#{carregar.alterarAtas}"/>
+               <p:dataTable var="carregar" editable="true"  value="#{AtasBean.carregarAtas()}" scrollable="true" scrollHeight="350">
+                   <p:ajax event="rowEdit" update=":form:growl" listener="#{carregar.excluirAtas}"/>
                     <p:column headerText="Data">
                       <p:cellEditor>
                           <f:facet name="output"> 
@@ -68,6 +69,7 @@
                
                
                <p:commandButton class="cancelar" value="Cancelar" action="index" ajax="false"/>
+               </p:panel>
         </h:form>
   </h:body>
     <footer class="footer">iesb - centro universitário </footer>

@@ -21,7 +21,7 @@
             <h1 class="head">Sistema de Cadastro e Armazenamento de PCC</h1>
         </header>
               
-       <h:form>
+      <h:form id="form">
            <p:panel id="panel" header="Consultar PCC">
             <p:messages id="msgs" />
  
@@ -36,28 +36,68 @@
                <br/>
                
                
-               <p:dataTable var="carregar" value="#{PPCBean.carregarPPC()}" scrollable="true" scrollHeight="350">
-                  <p:column headerText="Curso">
-                      <h:outputText value="#{carregar.cursoPPC}" />
+               <p:dataTable var="carregar" value="#{PPCBean.carregarPPC()}" editable="true" scrollable="true" scrollHeight="350">
+                   <p:ajax event="rowEdit" update=":form" listener="#{carregar.excluirPPC}"/>
+                   
+                   <p:column headerText="Curso">
+                      <p:cellEditor>
+                          <f:facet name="output"> 
+                              <h:outputText value="#{carregar.cursoPPC}" />
+                          </f:facet>
+                          <f:facet name="input">
+                              <h:inputText  value="#{carregar.cursoPPC}" />
+                          </f:facet>
+                      </p:cellEditor>
                   </p:column>   
                   <p:column headerText="Perfil do Curso">
-                      <h:outputText value="#{carregar.perfilCurso}" />
+                      <p:cellEditor>
+                          <f:facet name="output"> 
+                              <h:outputText value="#{carregar.perfilCurso}" />
+                          </f:facet>
+                          <f:facet name="input">
+                              <h:inputText  value="#{carregar.perfilCurso}" />
+                          </f:facet>
+                      </p:cellEditor>
                   </p:column>  
                   <p:column headerText="Sistemas de Avaliação de Processos de Ensino de Aprendizagem:	">
-                      <h:outputText value="#{carregar.avaliacaoProcesso}" />
+                      <p:cellEditor>
+                          <f:facet name="output"> 
+                              <h:outputText value="#{carregar.avaliacaoProcesso}" />
+                          </f:facet>
+                          <f:facet name="input">
+                              <h:inputText value="#{carregar.avaliacaoProcesso}" />
+                          </f:facet>
+                      </p:cellEditor>
                   </p:column>
                   <p:column headerText="Sistemas de Avaliação do Projeto do Curso:	">
-                      <h:outputText value="#{carregar.avaliacaoProjeto}" />
+                      <p:cellEditor>
+                          <f:facet name="output"> 
+                              <h:outputText value="#{carregar.avaliacaoProjeto}" />
+                          </f:facet>
+                          <f:facet name="input">
+                              <h:inputText  value="#{carregar.avaliacaoProjeto}" />
+                          </f:facet>
+                      </p:cellEditor>
                   </p:column>
                   <p:column headerText="Horas de Trabalho de Conclusão do Curso:">
-                      <h:outputText value="#{carregar.horasTCC}" />
-                  </p:column>
+                      <p:cellEditor>
+                          <f:facet name="output"> 
+                              <h:outputText value="#{carregar.horasTCC}" />
+                          </f:facet>
+                          <f:facet name="input">
+                              <h:inputText  value="#{carregar.horasTCC}" />
+                          </f:facet>
+                      </p:cellEditor>
+                    </p:column>
+                    <p:column headerText="Excluir">
+                       <p:commandButton class="consul" value="Excluir" actionListener="#{carregar.excluirPPC(carregar)}" />
+                    </p:column>
+                    <p:column headerText="Editar">
+                      <p:commandButton class="consul" value="Editar" actionListener="#{carregar.alterarPPC(carregar)}" />
+                    </p:column>
             </p:dataTable>
                
                <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
-               <p:commandButton class="consul" value="Visualizar detalhes" update="panel" />
-               <p:commandButton class="consul" value="Editar" update="panel" />
-               <p:commandButton class="consul" value="Imprimir" update="panel" />
            </p:panel>
        </h:form>
   </h:body>

@@ -22,14 +22,9 @@
         </header>
              
             
-            
-             
-             
         <h:form id="cronogramaForm">
-                <p:growl id="growl" showDetail="true" sticky="true" />
+            <p:growl id="growl" showDetail="true" sticky="true" />
             <p:panel id="panel" header="Cadastrar Cronograma de Atividades ">
-                
-                <p:messages id="msgs" />
                 <p:panel>
                     <h:panelGrid columns="2" cellpadding="8" cellspacing="12">
                         <h:outputLabel for="aula" value="Aula:" />
@@ -43,19 +38,31 @@
                 </p:panel>
                 <br/> 
                 <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
-                <p:commandButton class="salvar" value="Salvar" update="growl" actionListener="#{CronogramaBean.cadastrarCronograma()}"/>
+                
+                <p:commandButton class="salvar" value="Salvar"  
+                                 actionListener="#{CronogramaBean.cadastrarCronograma()}" process="@form"
+                                 update="growl"/>
             </p:panel>
         </h:form>
-        <h:form>
+      <h:form id="formConsulta">
                 <p:panel header="Consultar Cronograma de Atividades ">
             
-                    <p:dataTable var="carregar" value="#{CronogramaBean.carregarCronograma()}" scrollable="true" scrollHeight="350">
+                    <p:dataTable id="tableCronograma" var="carregar" value="#{CronogramaBean.carregarCronograma()}" 
+                                 scrollable="true" scrollHeight="350"
+                                 selectionMode="single" rowKey="#{carregar.id}">
+                    
+                    <p:ajax event="rowSelect" listener="#{CronogramaBean.onRowSelect}" 
+                            update=":formConsulta" />    
+                    
+                    <p:column headerText="Id">
+                        <h:outputText value="#{carregar.id}" />
+                    </p:column>     
                     <p:column headerText="Aula">
                         <h:outputText value="#{carregar.aula}" />
                     </p:column>  
                     <p:column headerText="Conteúdo">
                         <h:outputText value="#{carregar.conteudo}" />
-                    </p:column>
+                    </p:column>   
                 </p:dataTable>
                     
              </p:panel>
