@@ -21,39 +21,84 @@
             <h1 class="head">Sistema de Cadastro e Armazenamento de PCC</h1>
         </header>
               
-       <h:form>
+      <h:form id="form">
            <p:panel id="panel" header="Consultar Curso">
                                  <!--<p:column headerText="Turnos">
                       <h:outputText value="" />
                       
                   </p:column>  -->
-            <p:dataTable var="carregar" value="#{CursoBean.carregarCurso()}" scrollable="true" scrollHeight="350">
+            <p:dataTable var="carregar" editable="true" value="#{CursoBean.carregarCurso()}" 
+                         scrollable="true" scrollHeight="350">
+                <p:ajax event="rowEdit" update=":form" listener="#{carregar.excluirCurso}"/>
+
                     <p:column headerText="Id">
-                      <h:outputText value="#{carregar.id}" />
+                      <p:cellEditor>
+                        <f:facet name="output"> 
+                            <h:outputText value="#{carregar.id}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{carregar.id}" />
+                        </f:facet>
+                      </p:cellEditor>
                     </p:column>  
                     <p:column headerText="Nome">
-                      <h:outputText value="#{carregar.denominacao}" />
+                      <p:cellEditor>
+                        <f:facet name="output"> 
+                            <h:outputText value="#{carregar.denominacao}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{carregar.denominacao}" />
+                        </f:facet>
+                      </p:cellEditor>
                     </p:column>
                     <p:column headerText="Modalidade">
-                      <h:outputText value="#{carregar.modalidade}" />
+                      <p:cellEditor>
+                        <f:facet name="output"> 
+                            <h:outputText value="#{carregar.modalidade}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{carregar.modalidade}" />
+                        </f:facet>
+                      </p:cellEditor>
                     </p:column>
                     <p:column headerText="Carga Horária">
-                        <h:outputText value="#{carregar.cargaHoraria}" />
+                        <p:cellEditor>
+                        <f:facet name="output"> 
+                            <h:outputText value="#{carregar.cargaHoraria}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{carregar.cargaHoraria}" />
+                        </f:facet>
+                      </p:cellEditor>
                     </p:column>
                     <p:column headerText="Vagas por Turno">
-                    <h:outputText value="#{carregar.vagasTurno}" />
+                        <p:cellEditor>
+                        <f:facet name="output"> 
+                            <h:outputText value="#{carregar.vagasTurno}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{carregar.vagasTurno}" />
+                        </f:facet>
+                      </p:cellEditor>
                     </p:column>
                     <p:column headerText="Professor">
-                        <h:outputText value="#{carregar.nomeProfessor}" />
+                        <p:cellEditor>
+                        <f:facet name="output"> 
+                            <h:outputText value="#{carregar.nomeProfessor}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{carregar.nomeProfessor}" />
+                        </f:facet>
+                      </p:cellEditor>
+                    </p:column>
+                    <p:column headerText="Excluir">
+                      <p:commandButton class="consul" value="Excluir" actionListener="#{carregar.excluirCurso(carregar)}" />
+                    </p:column>
+                    <p:column headerText="Editar">
+                      <p:commandButton class="consul" value="Editar" actionListener="#{carregar.AlterarCurso(carregar)}" />
                     </p:column>
             </p:dataTable>  
-                                 
-                                 
-            
                <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
-               <p:commandButton class="consul" value="Visualizar detalhes" update="panel" actionListener="#{userView.save}"/>
-               <p:commandButton class="consul" value="Editar" update="panel" actionListener="#{userView.save}" />
-               <p:commandButton class="consul" value="Imprimir" update="panel" actionListener="#{userView.save}" />
            </p:panel>
        </h:form>
   </h:body>

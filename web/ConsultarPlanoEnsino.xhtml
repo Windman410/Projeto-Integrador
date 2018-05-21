@@ -21,32 +21,62 @@
             <h1 class="head">Sistema de Cadastro e Armazenamento de PCC</h1>
         </header>
               
-       <h:form>
+      <h:form id="form">
            <p:panel id="panel" header="Consultar Plano de Ensino">
                
                
-               <p:dataTable var="carregar" value="#{PlanoDeEnsinoBean.carregarPlanoDeEnsino()}" scrollable="true" scrollHeight="350">
+               <p:dataTable var="carregar" value="#{PlanoDeEnsinoBean.carregarPlanoDeEnsino()}" 
+                            scrollable="true" scrollHeight="350"
+                            editable="true">
+                   <p:ajax event="rowEdit" update=":form" listener="#{carregar.excluirPlanoEnsino}"/>
                     <p:column headerText="Curso">
-                        <h:outputText value="#{carregar.curso}" />
+                        <p:cellEditor>
+                          <f:facet name="output"> 
+                              <h:outputText value="#{carregar.curso}" />
+                          </f:facet>
+                          <f:facet name="input">
+                              <h:inputText value="#{carregar.curso}" />
+                          </f:facet>
+                      </p:cellEditor>
                     </p:column>  
                     <p:column headerText="Disciplina">
-                        <h:outputText value="#{carregar.disciplinas}" />
+                        <p:cellEditor>
+                          <f:facet name="output"> 
+                              <h:outputText value="#{carregar.disciplinas}" />
+                          </f:facet>
+                          <f:facet name="input">
+                              <h:inputText value="#{carregar.disciplinas}" />
+                          </f:facet>
+                      </p:cellEditor>
                     </p:column>
                     <p:column headerText="Carga Horária">
-                        <h:outputText value="#{carregar.cargaHoraria}" />
+                        <p:cellEditor>
+                          <f:facet name="output"> 
+                              <h:outputText value="#{carregar.cargaHoraria}" />
+                          </f:facet>
+                          <f:facet name="input">
+                              <h:inputText value="#{carregar.cargaHoraria}" />
+                          </f:facet>
+                      </p:cellEditor>
                     </p:column>
                     <p:column headerText="Professor">
-                        <h:outputText value="#{carregar.professor}" />
+                        <p:cellEditor>
+                          <f:facet name="output"> 
+                              <h:outputText value="#{carregar.professor}" />
+                          </f:facet>
+                          <f:facet name="input">
+                              <h:inputText value="#{carregar.professor}" />
+                          </f:facet>
+                      </p:cellEditor>
                     </p:column>
-                </p:dataTable> 
-               
-               
-               
-               
+                   <p:column headerText="Excluir">
+                       <p:commandButton class="consul" value="Excluir" actionListener="#{carregar.excluirPlanoEnsino(carregar)}" />
+                  </p:column>
+                  <p:column headerText="Editar">
+                      <p:commandButton class="consul" value="Editar" actionListener="#{carregar.alterarPlanoEnsino(carregar)}" />
+                  </p:column>
+                </p:dataTable>               
                <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
-               <p:commandButton class="consul" value="Visualizar detalhes" update="panel" actionListener="#{userView.save}"/>
-               <p:commandButton class="consul" value="Editar" update="panel" actionListener="#{userView.save}"/>
-               <p:commandButton class="consul" value="Imprimir" update="panel" actionListener="#{userView.save}"/>
            </p:panel>
        </h:form>
   </h:body>
