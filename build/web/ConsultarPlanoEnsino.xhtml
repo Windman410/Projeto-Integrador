@@ -23,12 +23,23 @@
               
       <h:form id="form">
            <p:panel id="panel" header="Consultar Plano de Ensino">
+               <p:growl id="msg" showDetail="true" sticky="true" autoUpdate="true"/>
+             
                
-               
-               <p:dataTable var="carregar" value="#{PlanoDeEnsinoBean.carregarPlanoDeEnsino()}" 
+               <p:dataTable var="carregar" value="#{PlanoDeEnsinoBean.listaTodasPlanoEnsino}" editable="true" 
                             scrollable="true" scrollHeight="350"
-                            editable="true">
-                   <p:ajax event="rowEdit" update=":form" listener="#{carregar.excluirPlanoEnsino}"/>
+                            rowKey="#{PlanoDeEnsinoBean.id}" >
+                   
+                
+                
+                   <p:ajax event="rowEdit" listener="#{carregar.alterarPlanoEnsino}" 
+                            update=":form:msg"/>
+                    <p:column style="width:100px; ">
+                        <p:rowEditor/>
+                    </p:column>
+                    <p:column headerText="Id">                      
+                        <h:outputText value="#{carregar.id}" />                      
+                    </p:column> 
                     <p:column headerText="Curso">
                         <p:cellEditor>
                           <f:facet name="output"> 
@@ -69,12 +80,10 @@
                           </f:facet>
                       </p:cellEditor>
                     </p:column>
-                   <p:column headerText="Excluir">
-                       <p:commandButton class="consul" value="Excluir" actionListener="#{carregar.excluirPlanoEnsino(carregar)}" />
-                  </p:column>
-                  <p:column headerText="Editar">
-                      <p:commandButton class="consul" value="Editar" actionListener="#{carregar.alterarPlanoEnsino(carregar)}" />
-                  </p:column>
+                    <p:column>
+                        <p:commandButton class="cancelar" value="Excluir" actionListener="#{carregar.excluirPlanoEnsino(carregar)}" />
+                    </p:column>
+                  
                 </p:dataTable>               
                <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
            </p:panel>

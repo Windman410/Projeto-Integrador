@@ -23,23 +23,18 @@
               
       <h:form id="form">
            <p:panel id="panel" header="Consultar Curso">
-                                 <!--<p:column headerText="Turnos">
-                      <h:outputText value="" />
-                      
-                  </p:column>  -->
-            <p:dataTable var="carregar" editable="true" value="#{CursoBean.carregarCurso()}" 
-                         scrollable="true" scrollHeight="350">
-                <p:ajax event="rowEdit" update=":form" listener="#{carregar.excluirCurso}"/>
+              <p:growl showDetail="true" sticky="true" autoUpdate="true" />
+               <p:dataTable var="carregar" value="#{CursoBean.listaTodasCurso}" editable="true" 
+                            scrollable="true" scrollHeight="350"
+                            rowKey="#{CursoBean.id}">
 
-                    <p:column headerText="Id">
-                      <p:cellEditor>
-                        <f:facet name="output"> 
-                            <h:outputText value="#{carregar.id}" />
-                        </f:facet>
-                        <f:facet name="input">
-                            <h:inputText value="#{carregar.id}" />
-                        </f:facet>
-                      </p:cellEditor>
+                   <p:ajax event="rowEdit" listener="#{carregar.alterarCurso}"
+                                />
+                   <p:column style="width:80px; ">
+                        <p:rowEditor/>
+                    </p:column> 
+                    <p:column headerText="Id">                      
+                            <h:outputText value="#{carregar.id}" />                      
                     </p:column>  
                     <p:column headerText="Nome">
                       <p:cellEditor>
@@ -92,11 +87,9 @@
                       </p:cellEditor>
                     </p:column>
                     <p:column headerText="Excluir">
-                      <p:commandButton class="consul" value="Excluir" actionListener="#{carregar.excluirCurso(carregar)}" />
-                    </p:column>
-                    <p:column headerText="Editar">
-                      <p:commandButton class="consul" value="Editar" actionListener="#{carregar.AlterarCurso(carregar)}" />
-                    </p:column>
+                        <p:commandButton  class="cancelar" value="Excluir" 
+                                          actionListener="#{carregar.excluirCurso(carregar)}" />
+                    </p:column>                   
             </p:dataTable>  
                <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
            </p:panel>
