@@ -10,7 +10,7 @@ button{height:auto;}
 .ui-button.ui-state-hover {background-color:#2E2E2E!important;}
 .ui-button.ui-state-active {background-color:#B0C4DE !important;}
 .salvar.ui-state-default {color:#fff;float:right;width:auto;background-color:#088A08!important;}
-.cancelar.ui-state-default {color:#fff;width:auto;background-color:#FF0000!important;}
+.cancelar.ui-state-default {color:#fff;width:auto;background-color:#FF0000!important;height:auto;}
 .consul.ui-state-default{width:auto;background-color:#088A08!important;}
 ul {list-style-type: none;margin: 0;padding: 0;overflow: hidden;border: 1px solid #e7e7e7;background-color:#2E2E2E;}
 li {float: left;}
@@ -22,25 +22,19 @@ li a.active:hover {background-color:#A4A4A4;}
 
 .ui-panel .ui-panel-titlebar {background-color:#088A08;color:#fff;}
 .ui-tabs .ui-tabs-nav {background-color:#088A08;}
-
-
-
-
-
-textarea, form {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-    margin-top:1%;
-}
-
-
+textarea, form {width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;resize: vertical;margin-top:1%;}
 input, select, output, label{width:100%;}
 
 
 
 
 
- 
+.ui-widget-header {background-color:#848484;}
+.ui-datatable-scrollable-header-box{background-color:#848484;}
+.ui-datatable-scrollable-body{background-color:#fff;}/*conteúdo*/
+.ui-widget-content .ui-datatable-even{background-color:#fff;} /*primeira linha*/
+.ui-widget-content .ui-datatable-odd{background-color:#848484; color:#fff;}/*segunda linha*/
+.ui-icon-pencil{background-image: url("#{resources['images/pincel.png']}");} /*ícone*/
+.ui-icon-check {background-image: url("#{resources['images/check.png']}");}
+.ui-icon-close {background-image: url("#{resources['images/cancel.png']}");}
+

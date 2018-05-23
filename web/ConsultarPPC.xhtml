@@ -23,33 +23,46 @@
               
       <h:form id="form">
            <p:panel id="panel" header="Consultar PCC">
-            <p:messages id="msgs" />
+               <p:growl id="msg" showDetail="true" sticky="true" autoUpdate="true" />
  
             
                <p:fieldset>                     
                    <h:outputLabel value="Curso:"/>
-                   <h:selectOneMenu value="#{PPCBean.cursoPPC}">
+                   <h:selectOneMenu value="#{PPCBean.cursoPPC}" >
                         <f:selectItems value="#{CursoBean.carregarCurso()}" 
-                                       itemLabel="#{CursoBean.denominacao}" />
+                                       itemLabel="#{CursoBean.denominacao}"  />
                     </h:selectOneMenu>                   
                 </p:fieldset>
                <br/>
                
                
-               <p:dataTable var="carregar" value="#{PPCBean.carregarPPC()}" editable="true" scrollable="true" scrollHeight="350">
-                   <p:ajax event="rowEdit" update=":form" listener="#{carregar.excluirPPC}"/>
+               <p:dataTable var="carregar" value="#{PPCBean.listaTodasPPC}" editable="true" 
+                            scrollable="true" scrollHeight="350"
+                            rowKey="#{PPCBean.ID}" >
                    
-                   <p:column headerText="Curso">
-                      <p:cellEditor>
-                          <f:facet name="output"> 
-                              <h:outputText value="#{carregar.cursoPPC}" />
-                          </f:facet>
-                          <f:facet name="input">
-                              <h:inputText  value="#{carregar.cursoPPC}" />
-                          </f:facet>
+                
+                
+                <p:ajax event="rowEdit" listener="#{carregar.alterarPPC}" 
+                            update=":form:msg"/>
+                    
+                    <p:column style="width:100px; ">
+                        <p:rowEditor/>
+                    </p:column>
+                    <p:column headerText="Id">                      
+                        <h:outputText value="#{carregar.ID}" />                      
+                    </p:column>
+                  <p:column headerText="Curso">                     
+                        <p:cellEditor>
+                        <f:facet name="output"> 
+                            <h:outputText value="#{carregar.cursoPPC}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{carregar.cursoPPC}" />
+                        </f:facet>
                       </p:cellEditor>
-                  </p:column>   
-                  <p:column headerText="Perfil do Curso">
+                    </p:column>  
+                   
+                   <p:column headerText="Perfil do Curso" >
                       <p:cellEditor>
                           <f:facet name="output"> 
                               <h:outputText value="#{carregar.perfilCurso}" />
@@ -59,7 +72,8 @@
                           </f:facet>
                       </p:cellEditor>
                   </p:column>  
-                  <p:column headerText="Sistemas de Avaliação de Processos de Ensino de Aprendizagem:	">
+                   
+                  <p:column headerText="Sistemas de Avaliação de Processos de Ensino de Aprendizagem:">
                       <p:cellEditor>
                           <f:facet name="output"> 
                               <h:outputText value="#{carregar.avaliacaoProcesso}" />
@@ -69,7 +83,7 @@
                           </f:facet>
                       </p:cellEditor>
                   </p:column>
-                  <p:column headerText="Sistemas de Avaliação do Projeto do Curso:	">
+                   <p:column headerText="Sistemas de Avaliação do Projeto do Curso:">
                       <p:cellEditor>
                           <f:facet name="output"> 
                               <h:outputText value="#{carregar.avaliacaoProjeto}" />
@@ -79,7 +93,7 @@
                           </f:facet>
                       </p:cellEditor>
                   </p:column>
-                  <p:column headerText="Horas de Trabalho de Conclusão do Curso:">
+                   <p:column headerText="Horas de Trabalho de Conclusão do Curso:">
                       <p:cellEditor>
                           <f:facet name="output"> 
                               <h:outputText value="#{carregar.horasTCC}" />
@@ -89,12 +103,10 @@
                           </f:facet>
                       </p:cellEditor>
                     </p:column>
-                    <p:column headerText="Excluir">
-                       <p:commandButton class="consul" value="Excluir" actionListener="#{carregar.excluirPPC(carregar)}" />
-                    </p:column>
-                    <p:column headerText="Editar">
-                      <p:commandButton class="consul" value="Editar" actionListener="#{carregar.alterarPPC(carregar)}" />
-                    </p:column>
+                   
+                    <p:column>
+                       <p:commandButton class="cancelar" value="Excluir" actionListener="#{carregar.excluirPPC(carregar)}" />
+                    </p:column>                  
             </p:dataTable>
                
                <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>

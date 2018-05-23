@@ -22,53 +22,67 @@
         </header>
              
             
-        <h:form id="cronogramaForm">
-            <p:growl id="growl" showDetail="true" sticky="true" />
+        <h:form id="cronogramaform">
             <p:panel id="panel" header="Cadastrar Cronograma de Atividades ">
-                <p:panel>
+                <p:growl id="msg" showDetail="true" sticky="true" autoUpdate="true" />
+                <p:panel>                 
                     <h:panelGrid columns="2" cellpadding="8" cellspacing="12">
                         <h:outputLabel for="aula" value="Aula:" />
-                        <h:inputText   id="aula" value="#{CronogramaBean.aula}" label="Aula">
+                        <h:inputText   id="aula" value="#{CronogramaBean.aula}" label="Aula">                           
                         </h:inputText>
-
                         <h:outputLabel for="conteudo" value="Conteúdo:" />
                         <h:inputText id="conteudo" value="#{CronogramaBean.conteudo}" label="Conteúdo">
                         </h:inputText>
                     </h:panelGrid>
                 </p:panel>
                 <br/> 
-                <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
-                
+                <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>              
                 <p:commandButton class="salvar" value="Salvar"  
-                                 actionListener="#{CronogramaBean.cadastrarCronograma()}" process="@form"
-                                 update="growl"/>
+                                 actionListener="#{CronogramaBean.cadastrarCronograma()}"
+                                 update=":cronogramaform:msg" />
             </p:panel>
         </h:form>
-      <h:form id="formConsulta">
-                <p:panel header="Consultar Cronograma de Atividades ">
-            
-                    <p:dataTable id="tableCronograma" var="carregar" value="#{CronogramaBean.carregarCronograma()}" 
-                                 scrollable="true" scrollHeight="350"
-                                 selectionMode="single" rowKey="#{carregar.id}">
-                    
-                    <p:ajax event="rowSelect" listener="#{CronogramaBean.onRowSelect}" 
-                            update=":formConsulta" />    
-                    
-                    <p:column headerText="Id">
-                        <h:outputText value="#{carregar.id}" />
-                    </p:column>     
-                    <p:column headerText="Aula">
-                        <h:outputText value="#{carregar.aula}" />
-                    </p:column>  
+      <h:form id="form">
+          <p:growl autoUpdate="true" id="msg" /> 
+                <p:panel header="Consultar Cronograma de Atividades ">          
+                    <p:dataTable var="carregar" value="#{CronogramaBean.listaTodasCronograma}" editable="true" 
+                            scrollable="true" scrollHeight="350"
+                            rowKey="#{CronogramaBean.id}">                 
+                        <p:ajax event="rowEdit" listener="#{carregar.alterarCronograma}"
+                                update=":form:msg"/>                   
+                    <p:column style="width:80px; ">
+                        <p:rowEditor/>
+                    </p:column>
+                    <p:column headerText="Id">                      
+                            <h:outputText value="#{carregar.id}" />                      
+                    </p:column>
+                    <p:column headerText="Aula">                   
+                        <p:cellEditor>
+                        <f:facet name="output"> 
+                            <h:outputText value="#{carregar.aula}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{carregar.aula}" />
+                        </f:facet>
+                      </p:cellEditor>
+                    </p:column>                    
                     <p:column headerText="Conteúdo">
-                        <h:outputText value="#{carregar.conteudo}" />
-                    </p:column>   
-                </p:dataTable>
-                    
+                        <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{carregar.conteudo}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{carregar.conteudo}"/>
+                        </f:facet>
+                        </p:cellEditor>    
+                    </p:column>
+                    <p:column headerText="Excluir">
+                        <p:commandButton  class="cancelar" value="Excluir" update=":form:msg"
+                                          actionListener="#{carregar.excluirCronograma(carregar)}" />
+                    </p:column>                         
+                </p:dataTable>                   
              </p:panel>
-        </h:form>  
-      
-      
+        </h:form>   
   </h:body>
     <footer class="footer">iesb - centro universitário </footer>
   </html>

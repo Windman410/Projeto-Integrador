@@ -23,10 +23,21 @@
                  
        <h:form id="form">
            <p:panel id="panelAtas" header="Consultar Atas">
-           <p:growl id="growl" showDetail="true" sticky="true" /> 
+               <p:growl id="msg" showDetail="true" sticky="true" autoUpdate="true"/> 
                    
-               <p:dataTable var="carregar" editable="true"  value="#{AtasBean.carregarAtas()}" scrollable="true" scrollHeight="350">
-                   <p:ajax event="rowEdit" update=":form:growl" listener="#{carregar.excluirAtas}"/>
+               <p:dataTable  var="carregar" value="#{AtasBean.listaTodasAtas}" editable="true" 
+                            scrollable="true" scrollHeight="350"
+                                 rowKey="#{AtasBean.id}" >
+                   
+                   <p:ajax event="rowEdit" listener="#{carregar.alterarAtas}" 
+                           update=":form:msg" />
+                    
+                    <p:column style="width:100px;">
+                        <p:rowEditor/>
+                    </p:column>
+                   <p:column headerText="Id">                      
+                        <h:outputText value="#{carregar.id}" />                      
+                    </p:column>
                     <p:column headerText="Data">
                       <p:cellEditor>
                           <f:facet name="output"> 
@@ -57,18 +68,15 @@
                         </f:facet>
                       </p:cellEditor>
                   </p:column>                
-                  <p:column headerText="Excluir">
-                      <p:commandButton class="consul" value="Excluir" actionListener="#{carregar.excluirAtas(carregar)}" />
-                  </p:column>                
-                  <p:column headerText="Alterar">
-                       <p:rowEditor />
-                       <p:commandButton class="consul" value="Alterar" actionListener="#{carregar.alterarAtas(carregar)}" />
-                  </p:column>                
+                  <p:column>
+                      <p:commandButton class="cancelar"  value="Excluir" icon="ui-icon-close" 
+                                       actionListener="#{carregar.excluirAtas(carregar)}" />
+                    </p:column>              
             </p:dataTable>
                
                
                
-               <p:commandButton class="cancelar" value="Cancelar" action="index" ajax="false"/>
+               <p:commandButton  class="cancelar" value="Cancelar" action="index" ajax="false" />
                </p:panel>
         </h:form>
   </h:body>
