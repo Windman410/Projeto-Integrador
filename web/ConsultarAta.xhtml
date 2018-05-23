@@ -27,7 +27,8 @@
                    
                <p:dataTable  var="carregar" value="#{AtasBean.listaTodasAtas}" editable="true" 
                             scrollable="true" scrollHeight="350"
-                                 rowKey="#{AtasBean.id}" >
+                            rowKey="#{AtasBean.id}" filteredValue="#{AtasBean.filtroAtas}"
+                            emptyMessage="Nenhuma ata encontrada!">
                    
                    <p:ajax event="rowEdit" listener="#{carregar.alterarAtas}" 
                            update=":form:msg" />
@@ -38,7 +39,7 @@
                    <p:column headerText="Id">                      
                         <h:outputText value="#{carregar.id}" />                      
                     </p:column>
-                    <p:column headerText="Data">
+                   <p:column headerText="Data" filterBy="#{carregar.data}">
                       <p:cellEditor>
                           <f:facet name="output"> 
                               <h:outputText value="#{carregar.data}" />
