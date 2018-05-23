@@ -47,7 +47,10 @@
                 <p:panel header="Consultar Cronograma de Atividades ">          
                     <p:dataTable var="carregar" value="#{CronogramaBean.listaTodasCronograma}" editable="true" 
                             scrollable="true" scrollHeight="350"
-                            rowKey="#{CronogramaBean.id}">                 
+                            rowKey="#{CronogramaBean.id}"
+                            filteredValue="#{CronogramaBean.filtroCronograma}"                          
+                            emptyMessage="Nenhuma conteúdo encontrado!">
+                        
                         <p:ajax event="rowEdit" listener="#{carregar.alterarCronograma}"
                                 update=":form:msg"/>                   
                     <p:column style="width:80px; ">
@@ -56,7 +59,7 @@
                     <p:column headerText="Id">                      
                             <h:outputText value="#{carregar.id}" />                      
                     </p:column>
-                    <p:column headerText="Aula">                   
+                        <p:column headerText="Aula">                   
                         <p:cellEditor>
                         <f:facet name="output"> 
                             <h:outputText value="#{carregar.aula}" />
@@ -66,7 +69,7 @@
                         </f:facet>
                       </p:cellEditor>
                     </p:column>                    
-                    <p:column headerText="Conteúdo">
+                        <p:column headerText="Conteúdo" filterBy="#{carregar.conteudo}">
                         <p:cellEditor>
                         <f:facet name="output">
                             <h:outputText value="#{carregar.conteudo}" />
