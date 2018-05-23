@@ -24,9 +24,14 @@
       <h:form id="form">
            <p:panel id="panel" header="Consultar Curso">
               <p:growl showDetail="true" sticky="true" autoUpdate="true" />
-               <p:dataTable var="carregar" value="#{CursoBean.listaTodasCurso}" editable="true" 
+               
+              <p:dataTable var="carregar" value="#{CursoBean.listaTodasCurso}" editable="true" 
                             scrollable="true" scrollHeight="350"
-                            rowKey="#{CursoBean.id}">
+                            rowKey="#{CursoBean.id}" filteredValue="#{CursoBean.filtroCurso}"
+                            emptyMessage="Nenhum curso encontrado!">
+                                     
+                      
+                  
 
                    <p:ajax event="rowEdit" listener="#{carregar.alterarCurso}"
                                 />
@@ -35,14 +40,17 @@
                     </p:column> 
                     <p:column headerText="Id">                      
                             <h:outputText value="#{carregar.id}" />                      
-                    </p:column>  
-                    <p:column headerText="Nome">
+                    </p:column>
+                   
+                   
+                   <p:column headerText="Nome" filterBy="#{carregar.denominacao}">
+                       
                       <p:cellEditor>
-                        <f:facet name="output"> 
-                            <h:outputText value="#{carregar.denominacao}" />
+                        <f:facet name="output" > 
+                            <h:outputText value="#{carregar.denominacao}"  />
                         </f:facet>
-                        <f:facet name="input">
-                            <h:inputText value="#{carregar.denominacao}" />
+                        <f:facet name="input" >
+                            <h:inputText value="#{carregar.denominacao}"  />
                         </f:facet>
                       </p:cellEditor>
                     </p:column>
