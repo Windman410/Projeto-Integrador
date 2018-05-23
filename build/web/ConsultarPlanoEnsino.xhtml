@@ -28,7 +28,8 @@
                
                <p:dataTable var="carregar" value="#{PlanoDeEnsinoBean.listaTodasPlanoEnsino}" editable="true" 
                             scrollable="true" scrollHeight="350"
-                            rowKey="#{PlanoDeEnsinoBean.id}" >
+                            rowKey="#{PlanoDeEnsinoBean.id}" filteredValue="#{PlanoDeEnsinoBean.filtroPlanoEnsino}"
+                            emptyMessage="Nada encontrado!" >
                    
                 
                 
@@ -40,7 +41,7 @@
                     <p:column headerText="Id">                      
                         <h:outputText value="#{carregar.id}" />                      
                     </p:column> 
-                    <p:column headerText="Curso">
+                   <p:column headerText="Curso" filterBy="#{carregar.curso}">
                         <p:cellEditor>
                           <f:facet name="output"> 
                               <h:outputText value="#{carregar.curso}" />
@@ -50,7 +51,7 @@
                           </f:facet>
                       </p:cellEditor>
                     </p:column>  
-                    <p:column headerText="Disciplina">
+                   <p:column headerText="Disciplina" filterBy="#{carregar.disciplinas}">
                         <p:cellEditor>
                           <f:facet name="output"> 
                               <h:outputText value="#{carregar.disciplinas}" />
@@ -70,7 +71,7 @@
                           </f:facet>
                       </p:cellEditor>
                     </p:column>
-                    <p:column headerText="Professor">
+                   <p:column headerText="Professor" filterBy="#{carregar.professor}">
                         <p:cellEditor>
                           <f:facet name="output"> 
                               <h:outputText value="#{carregar.professor}" />
