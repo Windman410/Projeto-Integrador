@@ -4,11 +4,14 @@ import br.iesb.meuprograma.negocio.PPCBO;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import org.primefaces.event.RowEditEvent;
 
 @ManagedBean(name = "PPCBean")    // Using ManagedBean annotation  
 @SessionScoped
@@ -27,7 +30,37 @@ public class PPCBean implements Serializable{
     private int horasEstagio;
     private String politicaDeAtendimento;
     private List<PPCBean> carregarPPC = new ArrayList<>();
+    private List<PPCBean> filtroPPC;
     
+    public List<PPCBean> getFiltroPPC() {
+        return filtroPPC;
+    }
+    public void setFiltroPPC(List<PPCBean> filtroPPC) {
+        this.filtroPPC = filtroPPC;
+    }
+    private List<PPCBean> listaTodasPPC;
+    public List<PPCBean> getListaTodasPPC() {
+        PPCDAO dao = new PPCDAO();
+        if(listaTodasPPC == null){
+            try {
+                listaTodasPPC = dao.listar();
+            } catch (DadosException ex) {
+                Logger.getLogger(PPCBean.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+         
+        return listaTodasPPC;
+    }
+    public void setListaTodasPPC(List<PPCBean> listaTodasPPC) {
+        this.listaTodasPPC = listaTodasPPC;
+    }    
+    public List<PPCBean> getCarregarPPC() {
+        return carregarPPC;
+    }
+
+    public void setCarregarPPC(List<PPCBean> carregarPPC) {
+        this.carregarPPC = carregarPPC;
+    }
     
     public int getID() {
         return ID;
@@ -137,7 +170,7 @@ public class PPCBean implements Serializable{
         
         try{
             bo.inserir(this);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Sucesso", "Dados inseridos com sucesso!")); 
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Dados inseridos com sucesso!")); 
         }catch(NegocioException ex){
             if(ex.getCause() != null){
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Error", ex.getMessage()));
@@ -147,4 +180,38 @@ public class PPCBean implements Serializable{
         }
     }
     
+            public void excluirPPC(PPCBean ppc) {
+            PPCDAO dao = new PPCDAO();       
+        try {
+            dao.excluir(ppc);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Dados excluídos com sucesso!"));
+        } catch (DadosException ex) {
+            Logger.getLogger(PPCBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+    }
+            private PPCBean ppc;
+            public PPCBean getPpc() {
+                if (this.ppc == null) {  
+                    this.ppc = new PPCBean();  
+                }  
+                return ppc;
+            }
+            public void setPpc(PPCBean ppc) {
+                this.ppc = ppc;
+            }      
+            public void alterarPPC(RowEditEvent event){
+                PPCDAO dao = new PPCDAO();
+            try {
+                dao.alterar(this);
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Dados alterados com sucesso!"));
+            } catch (DadosException ex) {
+                Logger.getLogger(CronogramaBean.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }  
+        
 }
+            
+            //####--- FILTROS ---####//  
+    
+

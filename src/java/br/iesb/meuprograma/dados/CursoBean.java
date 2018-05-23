@@ -4,15 +4,18 @@ import br.iesb.meuprograma.negocio.NegocioException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;  
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import org.primefaces.event.RowEditEvent;
   
 @ManagedBean(name = "CursoBean")    // Using ManagedBean annotation  
 @SessionScoped // Using Scope annotation
-@RequestScoped
+
 public class CursoBean implements Serializable{
     private int id;
     private String tipo;
@@ -31,9 +34,44 @@ public class CursoBean implements Serializable{
     private long cpf;
     private String titulacao;
     private String tempoDedicacao;
-
     private List<CursoBean> carregarCurso = new ArrayList<>();
+    private List<CursoBean> filtroCurso;
 
+    public List<CursoBean> getCarregarCurso() {
+        return carregarCurso;
+    }
+
+    public void setCarregarCurso(List<CursoBean> carregarCurso) {
+        this.carregarCurso = carregarCurso;
+    }
+
+    public List<CursoBean> getFiltroCurso() {
+        return filtroCurso;
+    }
+
+    public void setFiltroCurso(List<CursoBean> filtroCurso) {
+        this.filtroCurso = filtroCurso;
+    }
+    
+    private List<CursoBean> listaTodasCurso;
+
+    public List<CursoBean> getListaTodasCurso() {
+        CursoDAO dao = new CursoDAO();
+                if(listaTodasCurso == null){
+            try {
+                listaTodasCurso = dao.listar();
+            } catch (DadosException ex) {
+                Logger.getLogger(PPCBean.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return listaTodasCurso;      
+    }
+
+    public void setListaTodasCurso(List<CursoBean> listaTodasCurso) {
+        this.listaTodasCurso = listaTodasCurso;
+    }
+    
     
     public int getId() {
         return id;
@@ -193,7 +231,7 @@ public class CursoBean implements Serializable{
         
         try{
             bo.inserir(this);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Sucesso", "Dados inseridos com sucesso!")); 
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Dados inseridos com sucesso!")); 
         }catch(NegocioException ex){
             if(ex.getCause() != null){
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erro", ex.getMessage()));
@@ -201,5 +239,41 @@ public class CursoBean implements Serializable{
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erro", ex.getMessage())); 
             }
         }
-    }                        
+    }
+    
+    
+    public void excluirCurso(CursoBean curso) {
+        CursoDAO dao = new CursoDAO();       
+        try {
+            dao.excluir(curso);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Dados excluídos com sucesso!"));
+        } catch (DadosException ex) {
+            Logger.getLogger(CursoBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    private CursoBean curso;
+
+    public CursoBean getCurso() {
+        if (this.curso == null) {  
+                    this.curso = new CursoBean();  
+                }  
+        return curso;
+    }
+
+    public void setCurso(CursoBean curso) {
+        this.curso = curso;
+    }
+    
+                public void alterarCurso(RowEditEvent event){
+                CursoDAO dao = new CursoDAO();
+            try {
+                dao.alterar(this);
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Dados alterados com sucesso!"));
+            } catch (DadosException ex) {
+                Logger.getLogger(CronogramaBean.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } 
+    
 }

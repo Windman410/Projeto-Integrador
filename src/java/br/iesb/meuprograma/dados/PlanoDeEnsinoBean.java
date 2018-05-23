@@ -4,10 +4,14 @@ import br.iesb.meuprograma.negocio.PlanoDeEnsinoBO;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import org.primefaces.event.RowEditEvent;
+import org.primefaces.event.SelectEvent;
 
 @ManagedBean(name = "PlanoDeEnsinoBean")    // Using ManagedBean annotation  
 @SessionScoped  // Using Scope annotation  
@@ -25,6 +29,61 @@ public class PlanoDeEnsinoBean implements Serializable{
     private String metodologia;
     private String avaliacao;
     private List<PlanoDeEnsinoBean> carregarPlanoDeEnsino = new ArrayList<>();
+    private PlanoDeEnsinoBean selectedPlanoDeEnsino;
+    private PlanoDeEnsinoBean selectedBibliografia;
+    private List<PlanoDeEnsinoBean> filtroPlanoEnsino;
+
+    public List<PlanoDeEnsinoBean> getFiltroPlanoEnsino() {
+        return filtroPlanoEnsino;
+    }
+
+    public void setFiltroPlanoEnsino(List<PlanoDeEnsinoBean> filtroPlanoEnsino) {
+        this.filtroPlanoEnsino = filtroPlanoEnsino;
+    }
+    
+    private List<PlanoDeEnsinoBean> listaTodasPlanoEnsino;
+
+    public List<PlanoDeEnsinoBean> getListaTodasPlanoEnsino() {
+        PlanoDeEnsinoDAO dao = new PlanoDeEnsinoDAO();
+        if(listaTodasPlanoEnsino == null){
+            try {
+                listaTodasPlanoEnsino = dao.listar();
+            } catch (DadosException ex) {
+                Logger.getLogger(PPCBean.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+         
+        return listaTodasPlanoEnsino;
+    }
+
+    public void setListaTodasPlanoEnsino(List<PlanoDeEnsinoBean> listaTodasPlanoEnsino) {
+        this.listaTodasPlanoEnsino = listaTodasPlanoEnsino;
+    }
+    
+
+    public PlanoDeEnsinoBean getSelectedBibliografia() {
+        return selectedBibliografia;
+    }
+
+    public void setSelectedBibliografia(PlanoDeEnsinoBean selectedBibliografia) {
+        this.selectedBibliografia = selectedBibliografia;
+    }
+
+    public List<PlanoDeEnsinoBean> getCarregarPlanoDeEnsino() {
+        return carregarPlanoDeEnsino;
+    }
+
+    public void setCarregarPlanoDeEnsino(List<PlanoDeEnsinoBean> carregarPlanoDeEnsino) {
+        this.carregarPlanoDeEnsino = carregarPlanoDeEnsino;
+    }
+
+    public PlanoDeEnsinoBean getSelectedPlanoDeEnsino() {
+        return selectedPlanoDeEnsino;
+    }
+
+    public void setSelectedPlanoDeEnsino(PlanoDeEnsinoBean selectedPlanoDeEnsino) {
+        this.selectedPlanoDeEnsino = selectedPlanoDeEnsino;
+    }
 
 
     public int getId() {
@@ -148,5 +207,48 @@ public class PlanoDeEnsinoBean implements Serializable{
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erro", ex.getMessage())); 
             }
         }
-    }       
+    }
+    public void onRowSelectCronograma(SelectEvent event){
+        PlanoDeEnsinoBean planodeensino = ((PlanoDeEnsinoBean) event.getObject());
+       int i = 0;
+    }
+        public void onRowSelectBibliografia(SelectEvent event){
+        PlanoDeEnsinoBean planodeensino = ((PlanoDeEnsinoBean) event.getObject());
+       int i = 0;
+    }
+        
+        public void excluirPlanoEnsino(PlanoDeEnsinoBean planoensino) {
+        PlanoDeEnsinoBO bo = new PlanoDeEnsinoBO();       
+        try{
+            bo.excluir(planoensino);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Dados excluido com sucesso!")); 
+        }catch(NegocioException ex){
+            if(ex.getCause() != null){
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erro", ex.getMessage()));
+            }else{
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erro", ex.getMessage())); 
+            }
+        }
+    }   
+        
+        
+        private PlanoDeEnsinoBean planoensino;
+
+    public PlanoDeEnsinoBean getPlanoensino() {
+        return planoensino;
+    }
+
+    public void setPlanoensino(PlanoDeEnsinoBean planoensino) {
+        this.planoensino = planoensino;
+    }
+            
+            public void alterarPlanoEnsino(RowEditEvent event){
+                PlanoDeEnsinoDAO dao = new PlanoDeEnsinoDAO();
+            try {
+                dao.alterar(this);
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Dados alterados com sucesso!"));
+            } catch (DadosException ex) {
+                Logger.getLogger(CronogramaBean.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }  
 }
