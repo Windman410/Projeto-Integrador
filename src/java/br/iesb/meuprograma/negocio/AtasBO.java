@@ -12,15 +12,16 @@ public class AtasBO implements BO<AtasBean>{
     public void validar(AtasBean entidade) throws NegocioException {
          if(entidade.getData()== -1){
             throw new NegocioException("O campo Data é obrigatório!");
-        }else {
         }
         if(entidade.getLocal().isEmpty()){
-            throw new NegocioException("O campo Local da reunião é Obrigatório");
+            throw new NegocioException("O campo Local da Reunião é Obrigatório");
+        }
+        if(entidade.getParticipantes().isEmpty()){
+            throw new NegocioException("O campo Participantes é Obrigatório");
         }
         if(entidade.getDeliberacoes().isEmpty()){
             throw new NegocioException("O campo Deliberações é Obrigatório");
-        } 
-         
+        }        
           if(entidade.getData()== -2){
             throw new NegocioException("O campo Data aceita apenas números!");
         } else {
@@ -33,6 +34,7 @@ public class AtasBO implements BO<AtasBean>{
         AtasDAO dao = new AtasDAO();
         try {
             dao.inserir(entidade);
+            
         } catch (DadosException ex) {
             throw new NegocioException("Erro ao inserir!\n"+ ex.getMessage(), ex);
         }

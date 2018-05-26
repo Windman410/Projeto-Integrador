@@ -63,7 +63,7 @@ public class PPCBO implements BO<PPCBean>{
         try{
             dao.inserir(entidade);
         }catch(DadosException ex){
-            throw new NegocioException("Erro ao Inserir o Objeto",ex);
+            throw new NegocioException("Erro ao Inserir o dados!",ex);
         }
     }
 

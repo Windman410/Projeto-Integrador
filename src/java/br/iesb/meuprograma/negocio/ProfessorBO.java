@@ -54,7 +54,7 @@ public class ProfessorBO implements BO<ProfessorBean>{
         try{
             dao.inserir(entidade);
         }catch(DadosException ex){
-            throw new NegocioException("Erro ao Inserir o Objeto\n"+ ex.getMessage(),ex);
+            throw new NegocioException("Erro ao Inserir os dados\n"+ ex.getMessage(),ex);
         }
     }
 

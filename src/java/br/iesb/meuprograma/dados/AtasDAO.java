@@ -23,6 +23,7 @@ public class AtasDAO implements DAO<AtasBean>{
             comando.setString(3, entidade.getParticipantes());
             comando.setString(4, entidade.getDeliberacoes());
             comando.executeUpdate();
+            
             conexao.close();
         } catch (SQLException ex) {
             throw new DadosException("Erro ao inserir!", ex);

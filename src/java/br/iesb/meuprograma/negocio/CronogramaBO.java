@@ -10,11 +10,11 @@ public class CronogramaBO implements BO<CronogramaBean>{
     @Override
     public void validar(CronogramaBean entidade) throws NegocioException {
         if(entidade.getAula()== -1){
-            throw new NegocioException("O campo Aula é obrigatório!");
+            throw new NegocioException("O Campo Aula é Obrigatório!");
         }else {
         }
         if(entidade.getConteudo().isEmpty()){
-            throw new NegocioException("O campo Conteúdo é Obrigatório");
+            throw new NegocioException("O Campo Conteúdo é Obrigatório!");
         }
     }
 
@@ -25,7 +25,7 @@ public class CronogramaBO implements BO<CronogramaBean>{
         try {
             dao.inserir(entidade);
         } catch (DadosException ex) {
-            throw new NegocioException("Erro ao inserir!\n" + ex.getMessage(), ex);
+            throw new NegocioException("Erro ao inserir dados!\n" + ex.getMessage(), ex);
         }
     }
 

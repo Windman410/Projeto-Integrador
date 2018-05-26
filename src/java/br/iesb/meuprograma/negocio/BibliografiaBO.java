@@ -10,20 +10,20 @@ public class BibliografiaBO implements BO<BibliografiaBean>{
     @Override
     public void validar(BibliografiaBean entidade) throws NegocioException {
         if(entidade.getTitulo().isEmpty()){
-            throw new NegocioException("O Campo título não pode ser vazio!");
+            throw new NegocioException("O Campo Título é Obrigatório!");
         }
         if(entidade.getAutor().isEmpty()){
-            throw new NegocioException("O Campo autor não pode ser vazio!");
+            throw new NegocioException("O Campo Autor é Obrigatório!");
         }
         if(entidade.getAno()== -1){
-            throw new NegocioException("O campo Ano é obrigatório!");
+            throw new NegocioException("O Campo Ano é obrigatório!");
         }else {
         }
         if(entidade.getIsbn().isEmpty()){
-            throw new NegocioException("O Campo ISBN não pode ser vazio!");
+            throw new NegocioException("O Campo ISBN é Obrigatório!");
         }
         if(entidade.getEditora().isEmpty()){
-            throw new NegocioException("O Campo editora não pode ser vazio!");
+            throw new NegocioException("O Campo Editora é Obrigatório!");
         }
         
     }

@@ -3,6 +3,7 @@ package br.iesb.meuprograma.dados;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class ProfessorDAO implements DAO<ProfessorBean> {
 
@@ -71,7 +72,7 @@ public class ProfessorDAO implements DAO<ProfessorBean> {
             comando.executeUpdate();
             conexao.close();
         } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro DAO", JOptionPane.ERROR_MESSAGE);
             throw new DadosException("Erro ao inserir no banco de Dados", ex);
         }
     }

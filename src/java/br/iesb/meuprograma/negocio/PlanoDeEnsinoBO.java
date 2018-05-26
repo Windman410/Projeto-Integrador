@@ -8,43 +8,43 @@ public class PlanoDeEnsinoBO implements BO<PlanoDeEnsinoBean>{
     @Override
     public void validar(PlanoDeEnsinoBean entidade) throws NegocioException {
         if(entidade.getCurso().isEmpty()){
-            throw new NegocioException("O campo  Curso é Obrigatório");
+            throw new NegocioException("O campo Curso é Obrigatório!");
         }
         if(entidade.getAno()== -1){
-            throw new NegocioException("O campo Ano é Obrigatório");
+            throw new NegocioException("O campo Ano é Obrigatório!");
         } else if(entidade.getAno()== -2){
             throw new NegocioException("O campo Ano aceita apenas Números");
         }
         if(entidade.getSemestre()== -1){
-            throw new NegocioException("O campo Semestre é Obrigatório");
+            throw new NegocioException("O campo Semestre é Obrigatório!");
         } else if(entidade.getSemestre()== -2){
             throw new NegocioException("O campo Semestre aceita apenas Números");
         }
         if(entidade.getDisciplinas().isEmpty()){
-            throw new NegocioException("O campo Disciplina é Obrigatório");
+            throw new NegocioException("O campo Disciplina é Obrigatório!");
         }
         if(entidade.getCargaHoraria()== -1){
-            throw new NegocioException("O campo Carga Horária é Obrigatório");
+            throw new NegocioException("O campo Carga Horária é Obrigatório!");
         } else if(entidade.getCargaHoraria()== -2){
             throw new NegocioException("O campo Carga Horária aceita apenas Números");
         }
         if(entidade.getPeriodo().isEmpty()){
-            throw new NegocioException("O campo Período é Obrigatório");
+            throw new NegocioException("O campo Período é Obrigatório!");
         }
         if(entidade.getProfessor().isEmpty()){
-            throw new NegocioException("O campo Professor é Obrigatório");
+            throw new NegocioException("O campo Professor é Obrigatório!");
         }
         if(entidade.getEmenta().isEmpty()){
-            throw new NegocioException("O campo Ementa é Obrigatório");
+            throw new NegocioException("O campo Ementa é Obrigatório!");
         }
         if(entidade.getCompetenciasHabilidades().isEmpty()){
-            throw new NegocioException("O campo Competências e Habilidades é Obrigatório");
+            throw new NegocioException("O campo Competências e Habilidades é Obrigatório!");
         }
         if(entidade.getMetodologia().isEmpty()){
-            throw new NegocioException("O campo Metodologia é Obrigatório");
+            throw new NegocioException("O campo Metodologia é Obrigatório!");
         }
         if(entidade.getAvaliacao().isEmpty()){
-            throw new NegocioException("O campo Avaliação é Obrigatório");
+            throw new NegocioException("O campo Avaliação é Obrigatório!");
         }   
     }
 

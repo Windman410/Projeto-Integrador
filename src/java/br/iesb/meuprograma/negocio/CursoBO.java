@@ -9,38 +9,44 @@ public class CursoBO implements BO<CursoBean>{
     @Override
     public void validar(CursoBean entidade) throws NegocioException {
         if(entidade.getTipo().isEmpty()){
-            throw new NegocioException("O campo Tipo de Curso é Obrigatório");
+            throw new NegocioException("O campo Tipo de Curso é Obrigatório!");
         }
         if(entidade.getModalidade().isEmpty()){
-            throw new NegocioException("O campo Modalidade é Obrigatório");
+            throw new NegocioException("O campo Modalidade é Obrigatório!");
         }
         if(entidade.getDenominacao().isEmpty()){
-            throw new NegocioException("O campo Denominação (Nome do Curso) é Obrigatório");
+            throw new NegocioException("O campo Denominação (Nome do Curso) é Obrigatório!");
         }
         if(entidade.getHabilitacao().isEmpty()){
-            throw new NegocioException("O campo Habilitação é Obrigatório");
+            throw new NegocioException("O campo Habilitação é Obrigatório!");
         }
         if(entidade.getLocalOferta().isEmpty()){
-            throw new NegocioException("O campo Local de Oferta é Obrigatório");
+            throw new NegocioException("O campo Local de Oferta é Obrigatório!");
         }
         if(entidade.getVagasTurno()== -1){
-            throw new NegocioException("O campo Vagas por Turno é Obrigatório");
+            throw new NegocioException("O campo Vagas por Turno é Obrigatório!");
         } else if(entidade.getVagasTurno() == -2){
-            throw new NegocioException("O campo Vagas por Turno aceita apenas Números");
+            throw new NegocioException("O campo Vagas por Turno aceita apenas Números!");
         }
         if(entidade.getCargaHoraria()== -1){
-            throw new NegocioException("O campo Carga Horária é Obrigatório");
+            throw new NegocioException("O campo Carga Horária é Obrigatório!");
         } else if(entidade.getCargaHoraria() == -2){
-            throw new NegocioException("O campo Carga Horária aceita apenas Números");
+            throw new NegocioException("O campo Carga Horária aceita apenas Números!");
         }
         if(entidade.getRegimeLetivo().isEmpty()){
-            throw new NegocioException("O campo Regime Letivo é Obrigatório");
+            throw new NegocioException("O campo Regime Letivo é Obrigatório!");
         }
         if(entidade.getPeriodo().isEmpty()){
-            throw new NegocioException("O campo Período é Obrigatório");
+            throw new NegocioException("O campo Período é Obrigatório!");
         }
         if(entidade.getNomeProfessor().isEmpty()){
-            throw new NegocioException("O campo Nome do Professor é Obrigatório");
+            throw new NegocioException("O campo Nome do Professor é Obrigatório!");
+        }
+        if(entidade.getTitulacao().isEmpty()){
+            throw new NegocioException("O campo Titulação do Professor é Obrigatório!");
+        }
+        if(entidade.getTempoDedicacao().isEmpty()){
+            throw new NegocioException("O campo Área de Dedicação do Professor é Obrigatório!");
         }
     }
 

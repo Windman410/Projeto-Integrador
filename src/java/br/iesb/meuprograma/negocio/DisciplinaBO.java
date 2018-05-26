@@ -10,23 +10,23 @@ public class DisciplinaBO implements BO<DisciplinaBean>{
     @Override
     public void validar(DisciplinaBean entidade) throws NegocioException {
         if(entidade.getNome().isEmpty()){
-            throw new NegocioException("O Nome é obrigatório!");
+            throw new NegocioException("O campo Nome da Disciplina é Obrigatório!");
         }
         
         if(entidade.getCod()== -1){
-            throw new NegocioException("O campo Código é obrigatório!");
+            throw new NegocioException("O campo Código é Obrigatório!");
         }else {
         }
                 
         if(entidade.getDescricao().isEmpty()){
-            throw new NegocioException("O campo Descrição é Obrigatório");
+            throw new NegocioException("O campo Descrição é Obrigatório!");
         }
         if(entidade.getSemestre()== -1){
-            throw new NegocioException("O campo Semestre é Obrigatório");
+            throw new NegocioException("O campo Semestre é Obrigatório!");
         }
         
         if(entidade.getCargaHoraria()== -1){
-            throw new NegocioException("O campo Carga Horária é Obrigatório");
+            throw new NegocioException("O campo Carga Horária é Obrigatório!");
         }
         // Na camada de apresentação, caso tenha sido digitado um valor não numerico, envie o valor -2.        
         if(entidade.getCod()== -2){
@@ -45,12 +45,12 @@ public class DisciplinaBO implements BO<DisciplinaBean>{
 
     @Override
     public void inserir(DisciplinaBean entidade) throws NegocioException {
+        validar(entidade);
+        DisciplinaDAO dao = new DisciplinaDAO();
         try {
-            //validar(entidade);
-            DisciplinaDAO dao = new DisciplinaDAO();
-                dao.inserir(entidade);
+            dao.inserir(entidade);
         } catch (DadosException ex) {
-            throw new NegocioException("Erro ao inserir!\n"+ ex.getMessage(), ex);
+            throw new NegocioException("Erro ao inserir dados!\n"+ ex.getMessage(), ex);
         }
     }
 
