@@ -1,73 +1,66 @@
-<!DOCTYPE html>
-<html  xmlns="http://www.w3.org/1999/xhtml"
-       xmlns:h="http://java.sun.com/jsf/html"
-       xmlns:f="http://java.sun.com/jsf/core"
-       xmlns:p="http://primefaces.org/ui">  
-  <h:head>
-           <meta charset="UTF-8"/>
-           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-           <title>Cadastrar Bibliografia</title>
-           <h:outputStylesheet library="css" name="style.css"/>
-           <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet"/> 
-  </h:head>
-  <h:body>
-        <header>          
-            <nav>
-            <ul>
-                <li><a class="active" href="index.xhtml">Início</a></li>
-                <li style="float:right"><a class="active" href="sobre.xhtml">Sobre</a></li>
-            </ul>
-            </nav>
-            <h1 class="head">Sistema de Cadastro e Armazenamento de PCC</h1>
-        </header>
-              
-      <h:form>
-        <p:growl id="growl" showDetail="true" sticky="true" />
-        <p:panel id="panel" header="Cadastrar Bibliografia">
-        
-        <p:messages id="msgs" />
- 
+    <!DOCTYPE html>
+    <html  xmlns="http://www.w3.org/1999/xhtml"
+           xmlns:h="http://java.sun.com/jsf/html"
+           xmlns:f="http://java.sun.com/jsf/core"
+           xmlns:p="http://primefaces.org/ui">  
+        <h:head>
+            <meta charset="UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title>Cadastrar Bibliografia</title>
+            <h:outputStylesheet library="css" name="style.css"/>
+            <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet"/> 
+        </h:head>
+        <h:body>
+            <header>                         
+                    <h:form style="width:100%; border:none;"> 
+                        <h1 class="head">
+                     Sistema de Cadastro e Armazenamento de PPC                             
+                        </h1>
+                        <p:menubar>
+                            <p:menuitem value="Home" outcome="index" />
+                            <p:menuitem value="Sobre" outcome="sobre"/>
+                        </p:menubar>  
+                    </h:form> 
+            </header>  
+            <h:form id="formCadastroBibliografia">           
+                <p:panel id="panel" header="Cadastrar Bibliografia">
+                    <p:growl id="msg" showDetail="true" sticky="true" autoUpdate="true" />
+                    <p:panel>
+                        <h:panelGrid columns="6" cellpadding="8" cellspacing="12">
 
-        <p:panel>
-            <h:panelGrid columns="6" cellpadding="8" cellspacing="12">
-            
-            <h:outputLabel value="Curso:"/>
-            <h:selectOneMenu  value="#{BibliografiaBean.cursos}">
-                <f:selectItems  value="#{CursoBean.carregarCurso()}" var="pais"
-                               itemLabel="#{CursoBean.denominacao}" />
-            </h:selectOneMenu>
-            <h:outputLabel value="Disciplina:"/>
-            <h:selectOneMenu  value="#{BibliografiaBean.disciplinas}">
-                <f:selectItems  value="#{DisciplinaBean.carregarDisciplina()}" var="carregar"
-                                itemLabel="#{carregar.nome}" />
-            </h:selectOneMenu> 
-            
-            <h:outputLabel for="titulo" value="Título:" />
-            <h:inputText   id="titulo" value="#{BibliografiaBean.titulo}" label="Título"/>
- 
-            <h:outputLabel for="autor" value="Autor:" />
-            <h:inputText id="autor" value="#{BibliografiaBean.autor}" label="Autor" required="true"/>
+                            <h:outputLabel value="Curso:"/>
+                            <h:selectOneMenu  value="#{BibliografiaBean.cursos}">
+                                <f:selectItems  value="#{CursoBean.carregarCurso()}" var="pais"
+                                                itemLabel="#{CursoBean.denominacao}" />
+                            </h:selectOneMenu>
+                            <h:outputLabel value="Disciplina:"/>
+                            <h:selectOneMenu  value="#{BibliografiaBean.disciplinas}">
+                                <f:selectItems  value="#{DisciplinaBean.carregarDisciplina()}" var="carregar"
+                                                itemLabel="#{carregar.nome}" />
+                            </h:selectOneMenu> 
 
-            <h:outputLabel for="ano" value="Ano:" />
-            <h:inputText id="ano" value="#{BibliografiaBean.ano}" label="Ano" required="true"/>
-            
-            <h:outputLabel for="isbn" value="ISBN:" />
-            <h:inputText id="isbn" value="#{BibliografiaBean.isbn}" label="ISBN" required="true"/>
-            
-            <h:outputLabel for="editora" value="Editora:" />
-            <h:inputText id="editora" value="#{BibliografiaBean.editora}" label="Editora" required="true"/>
- 
-        </h:panelGrid>
-            </p:panel>
-        
-        
-        
-        <br/>
-        <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
-        <p:commandButton class="salvar" value="Salvar" update="growl" actionListener="#{BibliografiaBean.cadastrarBibliografia()}" />
-    </p:panel>
-    </h:form>  
-           
-  </h:body>
-    <footer class="footer">iesb - centro universitário </footer>
-  </html>
+                            <h:outputLabel for="titulo" value="Título:" />
+                            <h:inputText   id="titulo" value="#{BibliografiaBean.titulo}" label="Título"/>
+
+                            <h:outputLabel for="autor" value="Autor:" />
+                            <h:inputText id="autor" value="#{BibliografiaBean.autor}" label="Autor" />
+
+                            <h:outputLabel for="ano" value="Ano:" />
+                            <h:inputText id="ano" value="#{BibliografiaBean.ano}" label="Ano" />
+
+                            <h:outputLabel for="isbn" value="ISBN:" />
+                            <h:inputText id="isbn" value="#{BibliografiaBean.isbn}" label="ISBN" />
+
+                            <h:outputLabel for="editora" value="Editora:" />
+                            <h:inputText id="editora" value="#{BibliografiaBean.editora}" label="Editora" />
+
+                        </h:panelGrid>
+                    </p:panel>
+                    <br/>
+                    <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
+                    <p:commandButton class="salvar" value="Salvar" update=":formCadastroBibliografia:msg" actionListener="#{BibliografiaBean.cadastrarBibliografia()}" />
+                </p:panel>
+            </h:form>  
+        </h:body>
+        <footer class="footer">iesb - centro universitário </footer>
+    </html>

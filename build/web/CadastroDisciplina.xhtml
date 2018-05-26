@@ -1,61 +1,54 @@
-<!DOCTYPE html>
-<html  xmlns="http://www.w3.org/1999/xhtml"
-       xmlns:h="http://java.sun.com/jsf/html"
-       xmlns:f="http://java.sun.com/jsf/core"
-       xmlns:p="http://primefaces.org/ui">  
-  <h:head>
-           <meta charset="UTF-8"/>
-           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-           <title>Cadastrar Disciplina</title>
-           <h:outputStylesheet library="css" name="style.css"/>
-           <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet"/> 
-  </h:head>
-  <h:body>
-        <header>          
-            <nav>
-            <ul>
-                <li><a class="active" href="index.xhtml">Início</a></li>
-                <li style="float:right"><a class="active" href="sobre.xhtml">Sobre</a></li>
-            </ul>
-            </nav>
-            <h1 class="head">Sistema de Cadastro e Armazenamento de PCC</h1>
-        </header>
-              
-      <h:form id="disciplinaForm">
-        <p:growl id="growl" showDetail="true" sticky="true" />  
-        <p:panel id="panel" header="Cadastrar Disciplina">
-        
-        <p:messages id="msgs" />
- 
-        <p:panel>
-            <h:panelGrid columns="2" cellpadding="8" cellspacing="12">
+    <!DOCTYPE html>
+    <html  xmlns="http://www.w3.org/1999/xhtml"
+           xmlns:h="http://java.sun.com/jsf/html"
+           xmlns:f="http://java.sun.com/jsf/core"
+           xmlns:p="http://primefaces.org/ui">  
+        <h:head>
+            <meta charset="UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title>Cadastrar Disciplina</title>
+            <h:outputStylesheet library="css" name="style.css"/>
+            <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet"/> 
+        </h:head>
+        <h:body>
+            <header>                         
+                    <h:form style="width:100%; border:none;"> 
+                        <h1 class="head">
+                     Sistema de Cadastro e Armazenamento de PPC                             
+                        </h1>
+                        <p:menubar>
+                            <p:menuitem value="Home" outcome="index" />
+                            <p:menuitem value="Sobre" outcome="sobre"/>
+                        </p:menubar>  
+                    </h:form> 
+            </header> 
+            <h:form id="disciplinaForm">  
+                <p:panel id="panel" header="Cadastrar Disciplina">
+                    <p:growl id="msg" showDetail="true" sticky="true" autoUpdate="true"/>
+                    <p:panel>
+                        <h:panelGrid columns="2" cellpadding="8" cellspacing="12">
 
-                <h:outputLabel for="disciplina" value="Disciplina:" />
-                <h:inputText   id="disciplina" value="#{DisciplinaBean.nome}" label="Disciplina"/>
+                            <h:outputLabel for="disciplina" value="Disciplina:" />
+                            <h:inputText   id="disciplina" value="#{DisciplinaBean.nome}" label="Disciplina"/>
 
-                <h:outputLabel for="cod" value="Cód. Disciplina:" />
-                <h:inputText id="cod" value="#{DisciplinaBean.cod}" label="Cód" required="true"/>
+                            <h:outputLabel for="cod" value="Cód. Disciplina:" />
+                            <h:inputText id="cod" value="#{DisciplinaBean.cod}" label="Cód" />
 
-                <h:outputLabel for="descricao" value="Descrição:" />
-                <h:inputTextarea id="descricao" value="#{DisciplinaBean.descricao}" label="Descrição" required="true"/>
+                            <h:outputLabel for="descricao" value="Descrição:" />
+                            <h:inputTextarea id="descricao" value="#{DisciplinaBean.descricao}" label="Descrição" />
 
-                <h:outputLabel for="semestre" value="Semestre:" />
-                <h:inputText id="semestre" value="#{DisciplinaBean.semestre}" label="Semestre" required="true"/>
+                            <h:outputLabel for="semestre" value="Semestre:" />
+                            <h:inputText id="semestre" value="#{DisciplinaBean.semestre}" label="Semestre" />
 
-                <h:outputLabel for="cargahoraria" value="Carga Horária:" />
-                <h:inputText id="cargahoraria" value="#{DisciplinaBean.cargaHoraria}" label="Carga Horaria" required="true"/> 
-
-            </h:panelGrid>
-        </p:panel>
-        <br/>
-        
-        <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
-        <p:commandButton class="salvar" value="Salvar" update="growl" actionListener="#{DisciplinaBean.cadastrarDisciplina()}"/>
-
-
-    </p:panel>
-    </h:form>     
-  </h:body>
-      <footer class="footer">iesb - centro universitário </footer>
-  </html>
-
+                            <h:outputLabel for="cargahoraria" value="Carga Horária:" />
+                            <h:inputText id="cargahoraria" value="#{DisciplinaBean.cargaHoraria}" label="Carga Horaria" /> 
+                        </h:panelGrid>
+                    </p:panel>
+                    <br/>
+                    <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
+                    <p:commandButton class="salvar" value="Salvar" update=":disciplinaForm:msg" actionListener="#{DisciplinaBean.cadastrarDisciplina()}"/>
+                </p:panel>
+            </h:form>     
+        </h:body>
+        <footer class="footer">iesb - centro universitário </footer>
+    </html>

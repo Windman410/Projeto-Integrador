@@ -1,27 +1,27 @@
 @charset "utf-8";
 *{margin:0 auto;padding:0;word-wrap:break-word;box-sizing:border-box;}
-body{font-size:20px;font-family: 'Roboto', sans-serif; background-color:#FAFAFA;margin:0}
+body{font-size:1.3em;font-family: 'Roboto', sans-serif; background-color:#FAFAFA;margin:0}
 button{height:auto;}
-.head{background-color:#2E2E2E;padding:2%;text-align:center;color:#F2F2F2;}
-.footer{background-color:#2E2E2E;text-align:center;padding:10px;margin-top:7px;color:#F2F2F2;}
+.head{padding:2%;text-align:center;color:#848484;}
+.footer{background-color:#E6E6E6;text-align:center;padding:10px;margin-top:7px;color:#848484;}
 .left {background-color:#FAFAFA;float:left;width:50%;padding:0 20px;margin-top:7px;margin-left:2%;}
 .right {background-color:#FAFAFA;float:left;width:44%;padding:15px;margin-top:7px;margin-left:1%;text-align:center;}
-.ui-button.ui-state-default {color:#fff;width:100%;margin-top:1%;background-color:#6E6E6E!important;}
-.ui-button.ui-state-hover {background-color:#2E2E2E!important;}
+.ui-button.ui-state-default {color:#848484;width:100%;margin-top:1%;background-color:#D8D8D8!important;}
+.ui-button.ui-state-hover {background-color:#E6E6E6!important;}
 .ui-button.ui-state-active {background-color:#B0C4DE !important;}
 .salvar.ui-state-default {color:#fff;float:right;width:auto;background-color:#088A08!important;}
 .cancelar.ui-state-default {color:#fff;width:auto;background-color:#FF0000!important;height:auto;}
 .consul.ui-state-default{width:auto;background-color:#088A08!important;}
-ul {list-style-type: none;margin: 0;padding: 0;overflow: hidden;border: 1px solid #e7e7e7;background-color:#2E2E2E;}
-li {float: left;}
-li a {display: block;color: #666;text-align: center;padding: 14px 16px;text-decoration: none;}
+
+
+
 li a:hover:not(.active) {background-color: #ddd;}
-li a.active {color: white;background-color:#088A08;}
+li a.active {color: white;background-color:#FAFAFA;}
 li a.active:hover {background-color:#A4A4A4;}
 
 
-.ui-panel .ui-panel-titlebar {background-color:#088A08;color:#fff;}
-.ui-tabs .ui-tabs-nav {background-color:#088A08;}
+.ui-panel .ui-panel-titlebar {background-color:#D8D8D8;color:#848484;}
+.ui-tabs .ui-tabs-nav {background-color:#FAFAFA;}
 textarea, form {width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;resize: vertical;margin-top:1%;}
 input, select, output, label{width:100%;}
 
@@ -29,12 +29,8 @@ input, select, output, label{width:100%;}
 
 
 
-.ui-widget-header {background-color:#848484;}
-.ui-datatable-scrollable-header-box{background-color:#848484;}
+.ui-widget-header {background-color:#D8D8D8;color:#848484;}
+.ui-datatable-scrollable-header-box{background-color:#848484;color:#F2F2F2;}
 .ui-datatable-scrollable-body{background-color:#fff;}/*conteúdo*/
-.ui-widget-content .ui-datatable-even{background-color:#fff;} /*primeira linha*/
-.ui-widget-content .ui-datatable-odd{background-color:#848484; color:#fff;}/*segunda linha*/
-.ui-icon-pencil{background-image: url("#{resources['images/pincel.png']}");} /*ícone*/
-.ui-icon-check {background-image: url("#{resources['images/check.png']}");}
-.ui-icon-close {background-image: url("#{resources['images/cancel.png']}");}
-
+.ui-widget-content .ui-datatable-even{background-color:#F2F2F2; color:#000;} /*primeira linha*/
+.ui-widget-content .ui-datatable-odd{background-color:#fff; color:#000;}/*segunda linha*/

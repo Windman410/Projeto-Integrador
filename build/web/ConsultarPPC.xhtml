@@ -1,117 +1,128 @@
-<!DOCTYPE html>
-<html  xmlns="http://www.w3.org/1999/xhtml"
-       xmlns:h="http://java.sun.com/jsf/html"
-       xmlns:f="http://java.sun.com/jsf/core"
-       xmlns:p="http://primefaces.org/ui">  
-  <h:head>
-           <meta charset="UTF-8"/>
-           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-           <title>Consultar PCC</title>
-           <h:outputStylesheet library="css" name="style.css"/>
-           <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet"/> 
-  </h:head> 
-  <h:body>
-        <header>          
-            <nav>
-            <ul>
-                <li><a class="active" href="index.xhtml">Início</a></li>
-                <li style="float:right"><a class="active" href="sobre.xhtml">Sobre</a></li>
-            </ul>
-            </nav>
-            <h1 class="head">Sistema de Cadastro e Armazenamento de PCC</h1>
-        </header>
-              
-      <h:form id="form">
-           <p:panel id="panel" header="Consultar PCC">
-               <p:growl id="msg" showDetail="true" sticky="true" autoUpdate="true" />
- 
-            
-               <p:fieldset>                     
-                   <h:outputLabel value="Curso:"/>
-                   <h:selectOneMenu value="#{PPCBean.cursoPPC}" >
-                        <f:selectItems value="#{CursoBean.carregarCurso()}" 
-                                       itemLabel="#{CursoBean.denominacao}"  />
-                    </h:selectOneMenu>                   
-                </p:fieldset>
-               <br/>
-               
-               
-               <p:dataTable var="carregar" value="#{PPCBean.listaTodasPPC}" editable="true" 
-                            scrollable="true" scrollHeight="350"
-                            rowKey="#{PPCBean.ID}" >
-                   
-                
-                
-                <p:ajax event="rowEdit" listener="#{carregar.alterarPPC}" 
-                            update=":form:msg"/>
-                    
-                    <p:column style="width:100px; ">
-                        <p:rowEditor/>
-                    </p:column>
-                    <p:column headerText="Id">                      
-                        <h:outputText value="#{carregar.ID}" />                      
-                    </p:column>
-                  <p:column headerText="Curso">                     
-                        <p:cellEditor>
-                        <f:facet name="output"> 
-                            <h:outputText value="#{carregar.cursoPPC}" />
+    <!DOCTYPE html>
+    <html  xmlns="http://www.w3.org/1999/xhtml"
+           xmlns:h="http://java.sun.com/jsf/html"
+           xmlns:f="http://java.sun.com/jsf/core"
+           xmlns:p="http://primefaces.org/ui">  
+        <h:head>
+            <meta charset="UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title>Consultar PCC</title>
+            <h:outputStylesheet library="css" name="style.css"/>
+            <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet"/> 
+        </h:head> 
+        <h:body>
+            <header>                         
+                    <h:form style="width:100%; border:none;"> 
+                        <h1 class="head">
+                     Sistema de Cadastro e Armazenamento de PPC                             
+                        </h1>
+                        <p:menubar>
+                            <p:menuitem value="Home" outcome="index" />
+                            <p:menuitem value="Sobre" outcome="sobre"/>
+                        </p:menubar>  
+                    </h:form> 
+            </header> 
+
+            <h:form id="form">
+                <p:panel id="panel" header="Consultar PCC">
+                    <p:growl id="msg" showDetail="true" sticky="true" autoUpdate="true" />
+
+                    <p:fieldset>                     
+                        <h:outputLabel value="Curso:"/>
+                        <h:selectOneMenu value="#{PPCBean.cursoPPC}" >
+                            <f:selectItems value="#{CursoBean.carregarCurso()}" 
+                                           itemLabel="#{CursoBean.denominacao}"  />
+                        </h:selectOneMenu>                   
+                    </p:fieldset>
+                    <br/>
+
+
+                    <p:dataTable var="carregar" value="#{PPCBean.listaTodasPPC}" editable="true" 
+                                 scrollable="true" scrollHeight="350" widgetVar="ppcTable"
+                                 rowKey="#{PPCBean.ID}" filteredValue="#{PPCBean.filtroPPC}"
+                                 emptyMessage="Nenhum PPC encontrado!" >
+                        
+                        <f:facet name="header">
+                            <p:outputPanel>
+                                <h:outputText value="Pesquisar"/>
+                                <p:inputText  id="globalFilter" onkeyup="PF('ppcTable').filter()" 
+                                              placeholder="Pesquisar Curso, Perfil do Curso e etc." />
+                            </p:outputPanel>
                         </f:facet>
-                        <f:facet name="input">
-                            <h:inputText value="#{carregar.cursoPPC}" />
-                        </f:facet>
-                      </p:cellEditor>
-                    </p:column>  
-                   
-                   <p:column headerText="Perfil do Curso" >
-                      <p:cellEditor>
-                          <f:facet name="output"> 
-                              <h:outputText value="#{carregar.perfilCurso}" />
-                          </f:facet>
-                          <f:facet name="input">
-                              <h:inputText  value="#{carregar.perfilCurso}" />
-                          </f:facet>
-                      </p:cellEditor>
-                  </p:column>  
-                   
-                  <p:column headerText="Sistemas de Avaliação de Processos de Ensino de Aprendizagem:">
-                      <p:cellEditor>
-                          <f:facet name="output"> 
-                              <h:outputText value="#{carregar.avaliacaoProcesso}" />
-                          </f:facet>
-                          <f:facet name="input">
-                              <h:inputText value="#{carregar.avaliacaoProcesso}" />
-                          </f:facet>
-                      </p:cellEditor>
-                  </p:column>
-                   <p:column headerText="Sistemas de Avaliação do Projeto do Curso:">
-                      <p:cellEditor>
-                          <f:facet name="output"> 
-                              <h:outputText value="#{carregar.avaliacaoProjeto}" />
-                          </f:facet>
-                          <f:facet name="input">
-                              <h:inputText  value="#{carregar.avaliacaoProjeto}" />
-                          </f:facet>
-                      </p:cellEditor>
-                  </p:column>
-                   <p:column headerText="Horas de Trabalho de Conclusão do Curso:">
-                      <p:cellEditor>
-                          <f:facet name="output"> 
-                              <h:outputText value="#{carregar.horasTCC}" />
-                          </f:facet>
-                          <f:facet name="input">
-                              <h:inputText  value="#{carregar.horasTCC}" />
-                          </f:facet>
-                      </p:cellEditor>
-                    </p:column>
-                   
-                    <p:column>
-                       <p:commandButton class="cancelar" value="Excluir" actionListener="#{carregar.excluirPPC(carregar)}" />
-                    </p:column>                  
-            </p:dataTable>
-               
-               <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
-           </p:panel>
-       </h:form>
-  </h:body>
-    <footer class="footer">iesb - centro universitário </footer>
-  </html>
+
+                        <p:ajax event="rowEdit" listener="#{carregar.alterarPPC}" 
+                                update=":form:msg"/>
+
+                        <p:column style="width:100px; ">
+                            <p:rowEditor/>
+                        </p:column>
+                        <p:column headerText="Id">                      
+                            <h:outputText value="#{carregar.ID}" />                      
+                        </p:column>
+                        <p:column headerText="Curso" filterBy="#{carregar.cursoPPC}">                     
+                            <p:cellEditor>
+                                <f:facet name="output"> 
+                                    <h:outputText value="#{carregar.cursoPPC}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:inputText value="#{carregar.cursoPPC}" />
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>  
+
+                        <p:column headerText="Perfil do Curso" filterBy="#{carregar.perfilCurso}">
+                            <p:cellEditor>
+                                <f:facet name="output"> 
+                                    <h:outputText value="#{carregar.perfilCurso}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:inputText  value="#{carregar.perfilCurso}" />
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>  
+
+                        <p:column headerText="Sistemas de Avaliação de Processos de Ensino de Aprendizagem:"
+                                  filterBy="#{carregar.avaliacaoProcesso}">
+                            <p:cellEditor>
+                                <f:facet name="output"> 
+                                    <h:outputText value="#{carregar.avaliacaoProcesso}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:inputText value="#{carregar.avaliacaoProcesso}" />
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                        <p:column headerText="Sistemas de Avaliação do Projeto do Curso:" filterBy="#{carregar.avaliacaoProjeto}">
+                            <p:cellEditor>
+                                <f:facet name="output"> 
+                                    <h:outputText value="#{carregar.avaliacaoProjeto}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:inputText  value="#{carregar.avaliacaoProjeto}" />
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                        <p:column headerText="Horas de Trabalho de Conclusão do Curso:" filterBy="#{carregar.horasTCC}">
+                            <p:cellEditor>
+                                <f:facet name="output"> 
+                                    <h:outputText value="#{carregar.horasTCC}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:inputText  value="#{carregar.horasTCC}" />
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column>
+                            <p:commandButton class="cancelar" value="Excluir" 
+                                             icon="ui-icon-trash"
+                                             actionListener="#{carregar.excluirPPC(carregar)}" />
+                        </p:column>                  
+                    </p:dataTable>
+
+                    <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
+                </p:panel>
+            </h:form>
+        </h:body>
+        <footer class="footer">iesb - centro universitário </footer>
+    </html>

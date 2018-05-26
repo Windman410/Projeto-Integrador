@@ -1,85 +1,99 @@
-<!DOCTYPE html>
-<html  xmlns="http://www.w3.org/1999/xhtml"
-       xmlns:h="http://java.sun.com/jsf/html"
-       xmlns:f="http://java.sun.com/jsf/core"
-       xmlns:p="http://primefaces.org/ui">  
-  <h:head>
-           <meta charset="UTF-8"/>
-           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-           <title>Consultar Ata</title>
-           <h:outputStylesheet library="css" name="style.css"/>
-           <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet"/> 
-  </h:head> 
-  <h:body>
-        <header>          
-            <nav>
-            <ul>
-                <li><a class="active" href="index.xhtml">Início</a></li>
-                <li style="float:right"><a class="active" href="sobre.xhtml">Sobre</a></li>
-            </ul>
-            </nav>
-            <h1 class="head">Sistema de Cadastro e Armazenamento de PCC</h1>
-        </header>
-                 
-       <h:form id="form">
-           <p:panel id="panelAtas" header="Consultar Atas">
-               <p:growl id="msg" showDetail="true" sticky="true" autoUpdate="true"/> 
-                   
-               <p:dataTable  var="carregar" value="#{AtasBean.listaTodasAtas}" editable="true" 
-                            scrollable="true" scrollHeight="350"
-                            rowKey="#{AtasBean.id}" filteredValue="#{AtasBean.filtroAtas}"
-                            emptyMessage="Nenhuma ata encontrada!">
-                   
-                   <p:ajax event="rowEdit" listener="#{carregar.alterarAtas}" 
-                           update=":form:msg" />
+    <!DOCTYPE html>
+    <html  xmlns="http://www.w3.org/1999/xhtml"
+           xmlns:h="http://java.sun.com/jsf/html"
+           xmlns:f="http://java.sun.com/jsf/core"
+           xmlns:p="http://primefaces.org/ui">  
+        <h:head>
+            <meta charset="UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title>Consultar Ata</title>
+            <h:outputStylesheet library="css" name="style.css"/>
+            <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet"/> 
+            
+        </h:head> 
+        <h:body>
+            <header>                         
+                    <h:form style="width:100%; border:none;"> 
+                        <h1 class="head">
+                     Sistema de Cadastro e Armazenamento de PPC                             
+                        </h1>
+                        <p:menubar>
+                            <p:menuitem value="Home" outcome="index" />
+                            <p:menuitem value="Sobre" outcome="sobre"/>
+                        </p:menubar>  
+                    </h:form> 
+            </header> 
+
+            <h:form id="form">
+                <p:panel id="panelAtas" header="Consultar Atas">
+                    <p:growl id="msg" showDetail="true" sticky="true" autoUpdate="true"/> 
+
+                    <p:dataTable var="carregar" value="#{AtasBean.listaTodasAtas}" editable="true" 
+                                 scrollable="true" scrollHeight="350"
+                                 rowKey="#{AtasBean.id}" filteredValue="#{AtasBean.filtroAtas}"
+                                 emptyMessage="Nenhuma ata encontrada!" widgetVar="atasTable">
+
+                        <f:facet name="header">
+                            <p:outputPanel>
+                                <h:outputText value="Pesquisar"/>
+                                <p:inputText  id="globalFilter" onkeyup="PF('atasTable').filter()" 
+                                              placeholder="Pesquisar por Data, Local e Participantes" />
+                            </p:outputPanel>
+                        </f:facet>
+                        
+
+                        <p:ajax event="rowEdit" listener="#{carregar.alterarAtas}" 
+                                update=":form:msg" />
+
+                        <p:column style="width:100px;">
+                            <p:rowEditor/>
+                        </p:column>
+                        <p:column headerText="Id">                      
+                            <h:outputText value="#{carregar.id}" />                      
+                        </p:column>
+                        <p:column headerText="Data" filterBy="#{carregar.data}">
+                            <p:cellEditor>
+                                <f:facet name="output"> 
+                                    <h:outputText  value="#{carregar.data}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:inputText  value="#{carregar.data}" />
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>  
+                        <p:column headerText="Local" filterBy="#{carregar.local}">
+                            <p:cellEditor>
+                                <f:facet name="output"> 
+                                    <h:outputText value="#{carregar.local}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:inputText value="#{carregar.local}" />
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                        <p:column headerText="Participantes" filterBy="#{carregar.participantes}">
+                            <p:cellEditor>
+                                <f:facet name="output"> 
+                                    <h:outputText value="#{carregar.participantes}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:inputText value="#{carregar.participantes}" />
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                        
+                        <p:column>
+                            <p:commandButton class="cancelar"  value="Excluir" icon="ui-icon-trash"
+                                             actionListener="#{carregar.excluirAtas(carregar)}" 
+                                             update=":form"/>
+                        </p:column>              
+                    </p:dataTable>
                     
-                    <p:column style="width:100px;">
-                        <p:rowEditor/>
-                    </p:column>
-                   <p:column headerText="Id">                      
-                        <h:outputText value="#{carregar.id}" />                      
-                    </p:column>
-                   <p:column headerText="Data" filterBy="#{carregar.data}">
-                      <p:cellEditor>
-                          <f:facet name="output"> 
-                              <h:outputText value="#{carregar.data}" />
-                          </f:facet>
-                          <f:facet name="input">
-                              <h:inputText id="modelInput" value="#{carregar.data}" />
-                          </f:facet>
-                      </p:cellEditor>
-                  </p:column>  
-                  <p:column headerText="Local">
-                      <p:cellEditor>
-                        <f:facet name="output"> 
-                            <h:outputText value="#{carregar.local}" />
-                        </f:facet>
-                        <f:facet name="input">
-                            <h:inputText value="#{carregar.local}" />
-                        </f:facet>
-                      </p:cellEditor>
-                  </p:column>
-                  <p:column headerText="Participantes">
-                      <p:cellEditor>
-                        <f:facet name="output"> 
-                            <h:outputText value="#{carregar.participantes}" />
-                        </f:facet>
-                        <f:facet name="input">
-                            <h:inputText value="#{carregar.participantes}" />
-                        </f:facet>
-                      </p:cellEditor>
-                  </p:column>                
-                  <p:column>
-                      <p:commandButton class="cancelar"  value="Excluir" icon="ui-icon-close" 
-                                       actionListener="#{carregar.excluirAtas(carregar)}" />
-                    </p:column>              
-            </p:dataTable>
-               
-               
-               
-               <p:commandButton  class="cancelar" value="Cancelar" action="index" ajax="false" />
-               </p:panel>
-        </h:form>
-  </h:body>
-    <footer class="footer">iesb - centro universitário </footer>
-  </html>
+                    
+                    
+                    <p:commandButton  class="cancelar" value="Cancelar" action="index" ajax="false" icon="ui-icon-close" />
+                </p:panel>
+            </h:form>
+        </h:body>
+        <footer class="footer">iesb - centro universitário </footer>
+    </html>

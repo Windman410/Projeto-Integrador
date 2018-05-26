@@ -1,44 +1,61 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Sistema de Cadastro e Armazenamento de PCC'                                                      '''''''''''''''''''''''''''</title>                               
-        <h:outputStylesheet library="css" name="style.css"/> 
-        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet"/>            
-    </h:head>
-    <h:body>     
-        <header>          
-            <nav>
-            <ul>
-                <li><a class="active" href="index.xhtml">Início</a></li>
-                <li style="float:right"><a class="active" href="sobre.xhtml">Sobre</a></li>
-            </ul>
-            </nav>
-            <h1 class="head">Sistema de Cadastro e Armazenamento de PCC</h1>
-        </header>      
-        
-            
-        <p:panel>
-            
-            <h2 align="center">Sistema de Cadastro e Armazenamento de PPC</h2>
-            <h4 align="center">
-                              
-               <br/><br/><br/>
-               Centro Universitário IESB - 1/2018
-               <br/>
-               Desenvolvedores: Juliana e Rodriguete
+    <!DOCTYPE html>
+    <html  xmlns="http://www.w3.org/1999/xhtml"
+           xmlns:h="http://java.sun.com/jsf/html"
+           xmlns:f="http://java.sun.com/jsf/core"
+           xmlns:p="http://primefaces.org/ui">  
+        <h:head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title>Sistema de Cadastro e Armazenamento de PCC'                                                      '''''''''''''''''''''''''''</title>                               
+            <h:outputStylesheet library="css" name="style.css"/> 
+            <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet"/>            
+        </h:head>
+        <h:body>     
+            <header>                         
+                    <h:form style="width:100%; border:none;"> 
+                        <h1 class="head">
+                     Sistema de Cadastro e Armazenamento de PPC                             
+                        </h1>
+                        <p:menubar>
+                            <p:menuitem value="Home" outcome="index" />
+                            <p:menuitem value="Sobre" outcome="sobre"/>
+                        </p:menubar>  
+                    </h:form> 
+            </header>      
+            <p:panel>
+                <h2 align="center">Sistema de Cadastro e Armazenamento de PPC <br/> Nome ---- Versão ---- </h2>
+                <br/><br/>
                 
-            </h4>
-            
-        </p:panel>
-        
-        <footer class="footer">iesb - centro universitário </footer>
-    </h:body>
-</html>
+                <h4 align="center">    
+                    Arquitetura utilizada - MVC
+                    <br/>
+                    Linguagem utilizada - JAVA
+                    <br/>
+                    Framework - JSF - PrimeFaces
+                    <br/>
+                    Banco de Dados - MySQL
+                </h4>
+                <br/><br/>                   
+                    <h:form>
+                        <h4 align="center">Manual do Produto - Plano de Testes - Roteiro de Homologação - 
+                            Especificação de Requisitos PPC<br/>           
+                        <p:commandButton style="width:auto" value="Download - ZIP" ajax="false" 
+                                         onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s">
+                                         <p:fileDownload value="#{fileDownloadView.file}" />
+                        </p:commandButton>
+                        </h4>
+  
+                    </h:form>
+                    
+                <br/><br/>
+                <h3 align="center">
+                    Centro Universitário IESB - 1/2018
+                    <br/>
+                    Desenvolvedores: Juliana e Rodriguete
+                </h3>
+            </p:panel>
+            <footer class="footer">iesb - centro universitário </footer>
+        </h:body>
+    </html>
 
 
 

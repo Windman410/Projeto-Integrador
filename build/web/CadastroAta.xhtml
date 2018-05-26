@@ -1,63 +1,56 @@
-<!DOCTYPE html>
-<html  xmlns="http://www.w3.org/1999/xhtml"
-       xmlns:h="http://java.sun.com/jsf/html"
-       xmlns:f="http://java.sun.com/jsf/core"
-       xmlns:p="http://primefaces.org/ui">  
-  <h:head>
-           <meta charset="UTF-8"/>
-           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-           <title>Cadastrar Ata de Reunião</title>
-           <h:outputStylesheet library="css" name="style.css"/>
-           <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet"/> 
-  </h:head>
-  <h:body>
-        <header>          
-            <nav>
-            <ul>
-                <li><a class="active" href="index.xhtml">Início</a></li>
-                <li style="float:right"><a class="active" href="sobre.xhtml">Sobre</a></li>
-            </ul>
-            </nav>
-            <h1 class="head">Sistema de Cadastro e Armazenamento de PCC</h1>
-        </header>
-      
-        
-      
-        
-              <h:form  id="ataForm">
-        <p:growl id="growl" showDetail="true" sticky="true" />
-           
-        <p:panel  id="panel" header="Cadastrar Ata de Reunião">
-        
-        <p:messages id="msgs" />
-        <p:panel>
-            <h:panelGrid  columns="2" cellpadding="8" cellspacing="12">
-            
-            
-            <h:outputLabel for="data" value="Data de Reunião: " />
-            <h:inputText   id="data" value="#{AtasBean.data}" required="true" label="Data"/>
+    <!DOCTYPE html>
+    <html  xmlns="http://www.w3.org/1999/xhtml"
+           xmlns:h="http://java.sun.com/jsf/html"
+           xmlns:f="http://java.sun.com/jsf/core"
+           xmlns:p="http://primefaces.org/ui">  
+        <h:head>
+            <meta charset="UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title>Cadastrar Ata de Reunião</title>
+            <h:outputStylesheet library="css" name="style.css"/>
+            <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet"/> 
+        </h:head>
+        <h:body>
+            <header>                         
+                    <h:form style="width:100%; border:none;"> 
+                        <h1 class="head">
+                     Sistema de Cadastro e Armazenamento de PPC                             
+                        </h1>
+                        <p:menubar>
+                            <p:menuitem value="Home" outcome="index" />
+                            <p:menuitem value="Sobre" outcome="sobre"/>
+                        </p:menubar>  
+                    </h:form> 
+            </header>  
+            <h:form  id="ataFormCadastro">                   
+                <p:panel  id="panel" header="Cadastrar Ata de Reunião">
+                    <p:growl id="msg" showDetail="true" sticky="true" /> 
+                    <p:panel>
+                        <h:panelGrid id="panelGridFormCadastroAta"  columns="2" cellpadding="8" cellspacing="12">            
 
-            <h:outputLabel for="local" value="Local da Reunião: " />
-            <h:inputText  id="local" value="#{AtasBean.local}" label="Local da Reunião" required="true" />
-           
-            <h:outputLabel for="participantes" value="Participantes: " />
-            <h:inputText id="participantes" value="#{AtasBean.participantes}" label="Participantes" required="true"/>
-           
-            <h:outputLabel for="deliberacoes" value="Deliberações: " />
-            <h:inputTextarea rows="3" cols="60" id="deliberacoes" value="#{AtasBean.deliberacoes}" label="Deliberações" required="true"/>
-                 
-        </h:panelGrid>
-            </p:panel>
-        <br/>
- 
-        <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
-        <p:commandButton class="salvar" value="Salvar" update="growl" actionListener="#{AtasBean.cadastrarAtas()}" />
+                            <h:outputLabel for="data" value="Data de Reunião: " />
+                            <h:inputText   id="data" value="#{AtasBean.data}" label="Data"/>
 
-    </p:panel>
-    </h:form>  
-          
-  </h:body>
-    <footer class="footer">iesb - centro universitário </footer>
-  </html>
+                            <h:outputLabel for="local" value="Local da Reunião: " />
+                            <h:inputText  id="local" value="#{AtasBean.local}" label="Local da Reunião"  />
+
+                            <h:outputLabel for="participantes" value="Participantes: " />
+                            <h:inputText id="participantes" value="#{AtasBean.participantes}" label="Participantes" />
+
+                            <h:outputLabel for="deliberacoes" value="Deliberações: " />
+                            <h:inputTextarea rows="3" cols="60" id="deliberacoes" value="#{AtasBean.deliberacoes}" label="Deliberações" />                 
+                        </h:panelGrid>
+                    </p:panel>
+                    <br/>
+
+                    <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
+                    <p:commandButton  class="salvar" value="Salvar" update=":ataFormCadastro:msg" 
+                                      actionListener="#{AtasBean.cadastrarAtas()}" />
+                </p:panel>
+            </h:form>  
+
+        </h:body>
+        <footer class="footer">iesb - centro universitário </footer>
+    </html>
 
 

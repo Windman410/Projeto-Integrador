@@ -1,94 +1,104 @@
-<!DOCTYPE html>
-<html  xmlns="http://www.w3.org/1999/xhtml"
-       xmlns:h="http://java.sun.com/jsf/html"
-       xmlns:f="http://java.sun.com/jsf/core"
-       xmlns:p="http://primefaces.org/ui">  
-  <h:head>
-           <meta charset="UTF-8"/>
-           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-           <title>Consultar Plano de Ensino</title>
-           <h:outputStylesheet library="css" name="style.css"/>
-           <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet"/> 
-  </h:head> 
-  <h:body>
-        <header>          
-            <nav>
-            <ul>
-                <li><a class="active" href="index.xhtml">Início</a></li>
-                <li style="float:right"><a class="active" href="sobre.xhtml">Sobre</a></li>
-            </ul>
-            </nav>
-            <h1 class="head">Sistema de Cadastro e Armazenamento de PCC</h1>
-        </header>
-              
-      <h:form id="form">
-           <p:panel id="panel" header="Consultar Plano de Ensino">
-               <p:growl id="msg" showDetail="true" sticky="true" autoUpdate="true"/>
-             
-               
-               <p:dataTable var="carregar" value="#{PlanoDeEnsinoBean.listaTodasPlanoEnsino}" editable="true" 
-                            scrollable="true" scrollHeight="350"
-                            rowKey="#{PlanoDeEnsinoBean.id}" filteredValue="#{PlanoDeEnsinoBean.filtroPlanoEnsino}"
-                            emptyMessage="Nada encontrado!" >
-                   
-                
-                
-                   <p:ajax event="rowEdit" listener="#{carregar.alterarPlanoEnsino}" 
-                            update=":form:msg"/>
-                    <p:column style="width:100px; ">
-                        <p:rowEditor/>
-                    </p:column>
-                    <p:column headerText="Id">                      
-                        <h:outputText value="#{carregar.id}" />                      
-                    </p:column> 
-                   <p:column headerText="Curso" filterBy="#{carregar.curso}">
-                        <p:cellEditor>
-                          <f:facet name="output"> 
-                              <h:outputText value="#{carregar.curso}" />
-                          </f:facet>
-                          <f:facet name="input">
-                              <h:inputText value="#{carregar.curso}" />
-                          </f:facet>
-                      </p:cellEditor>
-                    </p:column>  
-                   <p:column headerText="Disciplina" filterBy="#{carregar.disciplinas}">
-                        <p:cellEditor>
-                          <f:facet name="output"> 
-                              <h:outputText value="#{carregar.disciplinas}" />
-                          </f:facet>
-                          <f:facet name="input">
-                              <h:inputText value="#{carregar.disciplinas}" />
-                          </f:facet>
-                      </p:cellEditor>
-                    </p:column>
-                    <p:column headerText="Carga Horária">
-                        <p:cellEditor>
-                          <f:facet name="output"> 
-                              <h:outputText value="#{carregar.cargaHoraria}" />
-                          </f:facet>
-                          <f:facet name="input">
-                              <h:inputText value="#{carregar.cargaHoraria}" />
-                          </f:facet>
-                      </p:cellEditor>
-                    </p:column>
-                   <p:column headerText="Professor" filterBy="#{carregar.professor}">
-                        <p:cellEditor>
-                          <f:facet name="output"> 
-                              <h:outputText value="#{carregar.professor}" />
-                          </f:facet>
-                          <f:facet name="input">
-                              <h:inputText value="#{carregar.professor}" />
-                          </f:facet>
-                      </p:cellEditor>
-                    </p:column>
-                    <p:column>
-                        <p:commandButton class="cancelar" value="Excluir" actionListener="#{carregar.excluirPlanoEnsino(carregar)}" />
-                    </p:column>
-                  
-                </p:dataTable>               
-               <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
-           </p:panel>
-       </h:form>
-  </h:body>
-    <footer class="footer">iesb - centro universitário </footer>
-  </html>
+    <!DOCTYPE html>
+    <html  xmlns="http://www.w3.org/1999/xhtml"
+           xmlns:h="http://java.sun.com/jsf/html"
+           xmlns:f="http://java.sun.com/jsf/core"
+           xmlns:p="http://primefaces.org/ui">  
+        <h:head>
+            <meta charset="UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title>Consultar Plano de Ensino</title>
+            <h:outputStylesheet library="css" name="style.css"/>
+            <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet"/> 
+        </h:head> 
+        <h:body>
+            <header>                         
+                    <h:form style="width:100%; border:none;"> 
+                        <h1 class="head">
+                     Sistema de Cadastro e Armazenamento de PPC                             
+                        </h1>
+                        <p:menubar>
+                            <p:menuitem value="Home" outcome="index" />
+                            <p:menuitem value="Sobre" outcome="sobre"/>
+                        </p:menubar>  
+                    </h:form> 
+            </header>  
+
+            <h:form id="form">
+                <p:panel id="panel" header="Consultar Plano de Ensino">
+                    <p:growl id="msg" showDetail="true" sticky="true" autoUpdate="true"/>
+
+
+                    <p:dataTable var="carregar" value="#{PlanoDeEnsinoBean.listaTodasPlanoEnsino}" editable="true" 
+                                 scrollable="true" scrollHeight="350"
+                                 rowKey="#{PlanoDeEnsinoBean.id}" filteredValue="#{PlanoDeEnsinoBean.filtroPlanoEnsino}"
+                                 emptyMessage="Nada encontrado!" widgetVar="planoTable">
+                        <f:facet name="header">
+                            <p:outputPanel>
+                                <h:outputText value="Pesquisar"/>
+                                <p:inputText id="globalFilter" onkeyup="PF('planoTable').filter()" 
+                                             placeholder="Pesquisar por Curso, Disciplina e Professor"/>
+                            </p:outputPanel>
+                        </f:facet>
+
+
+                        <p:ajax event="rowEdit" listener="#{carregar.alterarPlanoEnsino}" 
+                                update=":form:msg"/>
+                        <p:column style="width:100px; ">
+                            <p:rowEditor/>
+                        </p:column>
+                        <p:column headerText="Id">                      
+                            <h:outputText value="#{carregar.id}" />                      
+                        </p:column> 
+                        <p:column headerText="Curso" filterBy="#{carregar.curso}">
+                            <p:cellEditor>
+                                <f:facet name="output"> 
+                                    <h:outputText value="#{carregar.curso}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:inputText value="#{carregar.curso}" />
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>  
+                        <p:column headerText="Disciplina" filterBy="#{carregar.disciplinas}">
+                            <p:cellEditor>
+                                <f:facet name="output"> 
+                                    <h:outputText value="#{carregar.disciplinas}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:inputText value="#{carregar.disciplinas}" />
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                        <p:column headerText="Carga Horária">
+                            <p:cellEditor>
+                                <f:facet name="output"> 
+                                    <h:outputText value="#{carregar.cargaHoraria}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:inputText value="#{carregar.cargaHoraria}" />
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                        <p:column headerText="Professor" filterBy="#{carregar.professor}">
+                            <p:cellEditor>
+                                <f:facet name="output"> 
+                                    <h:outputText value="#{carregar.professor}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:inputText value="#{carregar.professor}" />
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                        <p:column>
+                            <p:commandButton class="cancelar" value="Excluir" 
+                                             icon="ui-icon-trash"
+                                             actionListener="#{carregar.excluirPlanoEnsino(carregar)}" />
+                        </p:column>
+
+                    </p:dataTable>               
+                    <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
+                </p:panel>
+            </h:form>
+        </h:body>
+        <footer class="footer">iesb - centro universitário </footer>
+    </html>
