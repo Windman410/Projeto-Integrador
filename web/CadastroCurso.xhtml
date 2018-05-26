@@ -1,114 +1,113 @@
-<!DOCTYPE html>
-<html  xmlns="http://www.w3.org/1999/xhtml"
-       xmlns:h="http://java.sun.com/jsf/html"
-       xmlns:f="http://java.sun.com/jsf/core"
-       xmlns:p="http://primefaces.org/ui">  
-  <h:head>
-           <meta charset="UTF-8"/>
-           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-           <title>Cadastrar Curso</title>
-           <h:outputStylesheet library="css" name="style.css"/>
-           <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet"/> 
-  </h:head>
-  <h:body>
-        <header>          
-            <nav>
-            <ul>
-                <li><a class="active" href="index.xhtml">Início</a></li>
-                <li style="float:right"><a class="active" href="sobre.xhtml">Sobre</a></li>
-            </ul>
-            </nav>
-            <h1 class="head">Sistema de Cadastro e Armazenamento de PCC</h1>
-        </header>
-              
-        <h:form>
-        <p:growl id="growl" showDetail="true" sticky="true" />  
-        <p:panel id="panel" header="Cadastrar Curso">
-        <p:messages id="msgs" />
-        <p:panel>
-            <h:panelGrid columns="4" cellpadding="8" cellspacing="12">
-            <h:outputLabel for="disciplina" value="Tipo do Curso:" />
-            <h:inputText   id="disciplina" value="#{CursoBean.tipo}"  label="Disciplina">
-            
-            </h:inputText>
+    <!DOCTYPE html>
+    <html  xmlns="http://www.w3.org/1999/xhtml"
+           xmlns:h="http://java.sun.com/jsf/html"
+           xmlns:f="http://java.sun.com/jsf/core"
+           xmlns:p="http://primefaces.org/ui">  
+        <h:head>
+            <meta charset="UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title>Cadastrar Curso</title>
+            <h:outputStylesheet library="css" name="style.css"/>
+            <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet"/> 
+        </h:head>
+        <h:body>
+            <header>                         
+                    <h:form style="width:100%; border:none;"> 
+                        <h1 class="head">
+                     Sistema de Cadastro e Armazenamento de PPC                             
+                        </h1>
+                        <p:menubar>
+                            <p:menuitem value="Home" outcome="index" />
+                            <p:menuitem value="Sobre" outcome="sobre"/>
+                        </p:menubar>  
+                    </h:form> 
+            </header>              
+            <h:form id="formCadastroCurso">             
+                <p:panel id="panel" header="Cadastrar Curso">
+                    <p:growl id="msg" showDetail="true" sticky="true" autoUpdate="true" /> 
+                    <p:panel>
+                        <h:panelGrid columns="4" cellpadding="8" cellspacing="12">
+                            <h:outputLabel for="disciplina" value="Tipo do Curso:" />
+                            <h:inputText   id="disciplina" value="#{CursoBean.tipo}"  label="Disciplina">
 
-            <h:outputLabel for="coddisciplina" value="Modalidade:" />
-            <h:inputText id="coddisciplina" value="#{CursoBean.modalidade}" label="Cod Disciplina" >
-            
-            </h:inputText>
+                            </h:inputText>
 
-            <h:outputLabel for="semestre" value="Denominação:" />
-            <h:inputText id="semestre" value="#{CursoBean.denominacao}" label="Semestre" >
-            
-            </h:inputText>
+                            <h:outputLabel for="coddisciplina" value="Modalidade:" />
+                            <h:inputText id="coddisciplina" value="#{CursoBean.modalidade}" label="Cod Disciplina" >
 
-            <h:outputLabel for="semestre2" value="Habilitação:" />
-            <h:inputText id="semestre2" value="#{CursoBean.habilitacao}" label="Semestre" >
-            
-            </h:inputText>
+                            </h:inputText>
 
-            <h:outputLabel for="cargahoraria" value="Local de Oferta:" />
-            <h:inputText id="cargahoraria" value="#{CursoBean.localOferta}" label="Carga Horária" >
-            
-            </h:inputText>
+                            <h:outputLabel for="semestre" value="Denominação:" />
+                            <h:inputText id="semestre" value="#{CursoBean.denominacao}" label="Semestre" >
 
-            <h:outputLabel for="turnos" value="Turnos:" />
-            <p:panel>
-                <p:selectBooleanCheckbox value="#{CursoBean.matutino}"/>
-                <h:outputLabel value="Matutino:" />
-                <br/>
-                <p:selectBooleanCheckbox value="#{CursoBean.vespertino}"/>
-                <h:outputLabel value="Vespertino:" />
-                <br/>
-                <p:selectBooleanCheckbox value="#{CursoBean.noturno}"/>
-                <h:outputLabel value="Noturno:" />
-            </p:panel>    
+                            </h:inputText>
 
-            <h:outputLabel for="cargahoraria1" value="Carga Horária:" />
-            <h:inputText id="cargahoraria1" value="#{CursoBean.cargaHoraria}" label="Carga Horária" >
-            
-            </h:inputText>
+                            <h:outputLabel for="semestre2" value="Habilitação:" />
+                            <h:inputText id="semestre2" value="#{CursoBean.habilitacao}" label="Semestre" >
 
-            <h:outputLabel for="vagasTurno" value="Vagas por turno:" />
-            <h:inputText id="vagasTurno" value="#{CursoBean.vagasTurno}" label="Vagas por turno" >
-            
-            </h:inputText>
+                            </h:inputText>
 
-            <h:outputLabel for="regime" value="Regime Letivo:" />
-            <h:inputText id="regime" value="#{CursoBean.regimeLetivo}" label="Regime Letivo" >
-                
-            </h:inputText>
+                            <h:outputLabel for="cargahoraria" value="Local de Oferta:" />
+                            <h:inputText id="cargahoraria" value="#{CursoBean.localOferta}" label="Carga Horária" >
 
-            <h:outputLabel for="cargahoraria11" value="Períodos:" />
-            <h:inputText id="cargahoraria11" value="#{CursoBean.periodo}" label="Períodos" >
-                
-            </h:inputText>
+                            </h:inputText>
 
-            <h:outputLabel for="cargahoraria11" value="Professor:" />
-            <h:selectOneMenu  value="#{CursoBean.nomeProfessor}">
-                <f:selectItems value="#{ProfessorBean.carregarProfessor()}" var="professores"
-                               itemLabel="#{ProfessorBean.nome}" />
-            </h:selectOneMenu>
-                
-            
-            <h:outputLabel for="cpf" value="CPF Professor:" />
-            <h:inputText id="cpf" value="#{CursoBean.cpf}" label="CPF Professor"/>
-            
-            <h:outputLabel for="titulacao" value="Titulação Professor:" />
-            <h:inputText id="titulacao" value="#{CursoBean.titulacao}" label="Titulação Professor"/>
-            
-            <h:outputLabel for="dedicacao" value="Dedicação Professor" />
-            <h:inputText id="dedicacao" value="#{CursoBean.tempoDedicacao}" label="Dedicação Professor"/>
-            
-        </h:panelGrid>
-            </p:panel>
-            <br/>
- 
-        <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
-        <p:commandButton class="salvar" value="Salvar" update="growl" actionListener="#{CursoBean.cadastrarCurso()}"/>
-        
-    </p:panel>
-    </h:form>     
-  </h:body>
-      <footer class="footer">iesb - centro universitário </footer>
-  </html>
+                            <h:outputLabel for="turnos" value="Turnos:" />
+                            <p:panel>
+                                <p:selectBooleanCheckbox value="#{CursoBean.matutino}"/>
+                                <h:outputLabel value="Matutino:" />
+                                <br/>
+                                <p:selectBooleanCheckbox value="#{CursoBean.vespertino}"/>
+                                <h:outputLabel value="Vespertino:" />
+                                <br/>
+                                <p:selectBooleanCheckbox value="#{CursoBean.noturno}"/>
+                                <h:outputLabel value="Noturno:" />
+                            </p:panel>    
+
+                            <h:outputLabel for="cargahoraria1" value="Carga Horária:" />
+                            <h:inputText id="cargahoraria1" value="#{CursoBean.cargaHoraria}" label="Carga Horária" >
+
+                            </h:inputText>
+
+                            <h:outputLabel for="vagasTurno" value="Vagas por turno:" />
+                            <h:inputText id="vagasTurno" value="#{CursoBean.vagasTurno}" label="Vagas por turno" >
+
+                            </h:inputText>
+
+                            <h:outputLabel for="regime" value="Regime Letivo:" />
+                            <h:inputText id="regime" value="#{CursoBean.regimeLetivo}" label="Regime Letivo" >
+
+                            </h:inputText>
+
+                            <h:outputLabel for="cargahoraria11" value="Períodos:" />
+                            <h:inputText id="cargahoraria11" value="#{CursoBean.periodo}" label="Períodos" >
+
+                            </h:inputText>
+
+                            <h:outputLabel for="cargahoraria11" value="Professor:" />
+                            <h:selectOneMenu  value="#{CursoBean.nomeProfessor}">
+                                <f:selectItems value="#{ProfessorBean.carregarProfessor()}" var="professores"
+                                               itemLabel="#{ProfessorBean.nome}" />
+                            </h:selectOneMenu>
+
+
+                            <h:outputLabel for="cpf" value="CPF Professor:" />
+                            <h:inputText id="cpf" value="#{CursoBean.cpf}" label="CPF Professor"/>
+
+                            <h:outputLabel for="titulacao" value="Titulação Professor:" />
+                            <h:inputText id="titulacao" value="#{CursoBean.titulacao}" label="Titulação Professor"/>
+
+                            <h:outputLabel for="dedicacao" value="Dedicação Professor" />
+                            <h:inputText id="dedicacao" value="#{CursoBean.tempoDedicacao}" label="Dedicação Professor"/>
+
+                        </h:panelGrid>
+                    </p:panel>
+                    <br/>
+                    <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
+                    <p:commandButton class="salvar" value="Salvar" update=":formCadastroCurso:msg" actionListener="#{CursoBean.cadastrarCurso()}"/>
+
+                </p:panel>
+            </h:form>     
+        </h:body>
+        <footer class="footer">iesb - centro universitário </footer>
+    </html>

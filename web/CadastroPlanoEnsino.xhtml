@@ -1,163 +1,148 @@
-<!DOCTYPE html>
-<html  xmlns="http://www.w3.org/1999/xhtml"
-       xmlns:h="http://java.sun.com/jsf/html"
-       xmlns:f="http://java.sun.com/jsf/core"
-       xmlns:p="http://primefaces.org/ui">  
-  <h:head>
-           <meta charset="UTF-8"/>
-           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-           <title>Cadastrar Plano de Ensino</title>
-           <h:outputStylesheet library="css" name="style.css"/>
-           <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet"/> 
-  </h:head>
-  <h:body>
-        <header>          
-            <nav>
-            <ul>
-                <li><a class="active" href="index.xhtml">Início</a></li>
-                <li style="float:right"><a class="active" href="sobre.xhtml">Sobre</a></li>
-            </ul>
-            </nav>
-            <h1 class="head">Sistema de Cadastro e Armazenamento de PCC</h1>
-        </header>
-                  
-    <h:form id="form">
-        <p:growl id="growl" showDetail="true" sticky="true" />  
-        <p:panel id="panel" header="Cadastrar Plano de Ensino">
+    <!DOCTYPE html>
+    <html  xmlns="http://www.w3.org/1999/xhtml"
+           xmlns:h="http://java.sun.com/jsf/html"
+           xmlns:f="http://java.sun.com/jsf/core"
+           xmlns:p="http://primefaces.org/ui">  
+        <h:head>
+            <meta charset="UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title>Cadastrar Plano de Ensino</title>
+            <h:outputStylesheet library="css" name="style.css"/>
+            <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet"/> 
+        </h:head>
+        <h:body>
+            <header>                         
+                    <h:form style="width:100%; border:none;"> 
+                        <h1 class="head">
+                     Sistema de Cadastro e Armazenamento de PPC                             
+                        </h1>
+                        <p:menubar>
+                            <p:menuitem value="Home" outcome="index" />
+                            <p:menuitem value="Sobre" outcome="sobre"/>
+                        </p:menubar>  
+                    </h:form> 
+            </header> 
+
+            <h:form id="formCadastroPlano">  
+                <p:panel id="panel" header="Cadastrar Plano de Ensino">
+                    <p:growl id="msg" showDetail="true" sticky="true" autoUpdate="true"/>
+                    <p:panel>
+                        <h:panelGrid columns="6" cellpadding="8" cellspacing="12">
+                            <h:outputLabel value="Curso:"/>
+                            <h:selectOneMenu value="#{PlanoDeEnsinoBean.curso}">
+                                <f:selectItems var="carregar" value="#{CursoBean.carregarCurso()}" 
+                                               itemLabel="#{carregar.denominacao}" />
+                            </h:selectOneMenu>
+
+                            <h:outputLabel value="Disciplina:"/>
+                            <h:selectOneMenu value="#{PlanoDeEnsinoBean.disciplinas}">
+                                <f:selectItems var="carregar" value="#{DisciplinaBean.carregarDisciplina()}" 
+                                               itemLabel="#{carregar.nome}" />
+                            </h:selectOneMenu>
+
+                            <h:outputLabel for="coddisciplina1" value="Ano:" />
+                            <h:inputText id="coddisciplina1" value="#{PlanoDeEnsinoBean.ano}" label="Cod Disciplina" />
+
+                            <h:outputLabel for="coddisciplina21" value="Semestre:" />
+                            <h:inputText id="coddisciplina21" value="#{PlanoDeEnsinoBean.semestre}" label="Cod Disciplina" />
+
+                            <h:outputLabel for="coddisciplina212" value="Carga Horária Semestral:" />
+                            <h:inputText id="coddisciplina212" value="#{PlanoDeEnsinoBean.cargaHoraria}" label="Cod Disciplina" />
+
+                            <h:outputLabel for="coddisciplina421" value="Período do Curso:" />
+                            <h:inputText id="coddisciplina421" value="#{PlanoDeEnsinoBean.periodo}" label="Cod Disciplina" />
+
+                            <h:outputLabel value="Professor:"/>
+                            <h:selectOneMenu value="#{PlanoDeEnsinoBean.professor}">
+                                <f:selectItems var="carregar" value="#{ProfessorBean.carregarProfessor()}" 
+                                               itemLabel="#{carregar.nome}" />
+                            </h:selectOneMenu>
+                        </h:panelGrid>
+                    </p:panel>
+                    <br/>
+                    <p:tabView>
+                        <p:tab title="Ementa">
+                            <h:inputTextarea rows="10" cols="100" id="cargahoraria" value="#{PlanoDeEnsinoBean.ementa}" label="Carga Horária" />
+                        </p:tab>
+
+                        <p:tab title="Competências e Habilidades">
+                            <h:inputTextarea rows="10" cols="100" id="cargahoraria22" value="#{PlanoDeEnsinoBean.competenciasHabilidades}" label="Carga Horária" /> 
+                        </p:tab>
+
+                        <p:tab title="Metodologia de Ensino">
+                            <h:inputTextarea rows="10" cols="100" id="cargahoraria33" value="#{PlanoDeEnsinoBean.metodologia}" label="Carga Horária" />   
+                        </p:tab>
+
+                        <p:tab title="Cronograma de Atividades">
+                            <p:dataTable id="tableCronogramaAtividades" var="carregar" value="#{CronogramaBean.listaTodasCronograma}" 
+                                         scrollable="true" scrollHeight="350" 
+                                         selectionMode="single"  selection="#{PlanoDeEnsinoBean.selectedCronograma}"
+                                         rowKey="#{PlanoDeEnsinoBean.id}"
+                                         >
  
-            <p:panel>
-                <h:panelGrid columns="6" cellpadding="8" cellspacing="12">
-            <h:outputLabel value="Curso:"/>
-            <h:selectOneMenu value="#{PlanoDeEnsinoBean.curso}">
-                <f:selectItems var="carregar" value="#{CursoBean.carregarCurso()}" 
-                               itemLabel="#{carregar.denominacao}" />
-            </h:selectOneMenu>
+                                <p:column headerText="Id">
+                                    <h:outputText value="#{carregar.id}" />
+                                </p:column> 
+                                <p:column headerText="Aula">
+                                    <h:outputText value="#{carregar.aula}" />
+                                </p:column>
 
-            
-            
-            <h:outputLabel value="Disciplina:"/>
-            <h:selectOneMenu value="#{PlanoDeEnsinoBean.disciplinas}">
-                <f:selectItems var="carregar" value="#{DisciplinaBean.carregarDisciplina()}" 
-                               itemLabel="#{carregar.nome}" />
-            </h:selectOneMenu>
-             
+                                <p:column headerText="Conteúdo">
+                                    <h:outputText value="#{carregar.conteudo}" />
+                                </p:column>                               
+                            </p:dataTable>
+                        </p:tab>
+                        <p:tab title="Avaliação">
+                            <h:inputTextarea rows="10" cols="100"  id="cargahoraria83" value="#{PlanoDeEnsinoBean.avaliacao}" label="Carga Horária" />
+                        </p:tab>
 
-            <h:outputLabel for="coddisciplina1" value="Ano:" />
-            <h:inputText id="coddisciplina1" value="#{PlanoDeEnsinoBean.ano}" label="Cod Disciplina" required="true">
-                
-            </h:inputText>
+                        <p:tab title="Bibliografia">
+                            <p:dataTable id="tableBibliografia" var="carregar" value="#{BibliografiaBean.listaTodasBibliografia}" 
+                                         scrollable="true" scrollHeight="350"
+                                         selectionMode="single"  selection="#{PlanoDeEnsinoBean.selectedBibliografia}"
+                                         rowKey="#{PlanoDeEnsinoBean.id}">
+                                         
+                                <p:column headerText="Id">
+                                    <h:outputText value="#{carregar.id}" />
+                                </p:column>
+                                <p:column headerText="Curso">
+                                    <h:outputText value="#{carregar.cursos}" />
+                                </p:column>
 
-            <h:outputLabel for="coddisciplina21" value="Semestre:" />
-            <h:inputText id="coddisciplina21" value="#{PlanoDeEnsinoBean.semestre}" label="Cod Disciplina" required="true">
-                
-            </h:inputText>
+                                <p:column headerText="Disciplina">
+                                    <h:outputText value="#{carregar.disciplinas}" />
+                                </p:column>
 
-            <h:outputLabel for="coddisciplina212" value="Carga Horária Semestral:" />
-            <h:inputText id="coddisciplina212" value="#{PlanoDeEnsinoBean.cargaHoraria}" label="Cod Disciplina" required="true">
-                
-            </h:inputText>
+                                <p:column headerText="Título">
+                                    <h:outputText value="#{carregar.titulo}" />
+                                </p:column>
 
-            <h:outputLabel for="coddisciplina421" value="Período do Curso:" />
-            <h:inputText id="coddisciplina421" value="#{PlanoDeEnsinoBean.periodo}" label="Cod Disciplina" required="true">
-                
-            </h:inputText>
+                                <p:column headerText="Autor">
+                                    <h:outputText value="#{carregar.autor}" />
+                                </p:column>
 
-            <h:outputLabel value="Professor:"/>
-            <h:selectOneMenu value="#{PlanoDeEnsinoBean.professor}">
-                <f:selectItems var="carregar" value="#{ProfessorBean.carregarProfessor()}" 
-                               itemLabel="#{carregar.nome}" />
-            </h:selectOneMenu>
-        </h:panelGrid>
+                                <p:column headerText="Ano">
+                                    <h:outputText value="#{carregar.ano}" />
+                                </p:column>
+
+                                <p:column headerText="ISBN">
+                                    <h:outputText value="#{carregar.isbn}" />
+                                </p:column>
+
+                                <p:column headerText="Editora">
+                                    <h:outputText value="#{carregar.editora}" />
+                                </p:column>
+
+                            </p:dataTable>
+                        </p:tab>
+                    </p:tabView>
+                    <br/>
+                    <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
+                    <p:commandButton class="salvar" value="Salvar" update=":formCadastroPlano:msg" actionListener="#{PlanoDeEnsinoBean.cadastrarPlanoDeEnsino()}" />
                 </p:panel>
-            <br/>
 
+            </h:form>
 
-    
-    <p:tabView>
-        
-        <p:tab title="Ementa">
-             
-                <h:inputTextarea rows="10" cols="100" id="cargahoraria" value="#{PlanoDeEnsinoBean.ementa}" label="Carga Horária" required="true">
-                
-            </h:inputTextarea>    
-            
-        </p:tab>
-        
-        <p:tab title="Competências e Habilidades">
-             
-                <h:inputTextarea rows="10" cols="100" id="cargahoraria22" value="#{PlanoDeEnsinoBean.competenciasHabilidades}" label="Carga Horária" required="true">
-                
-            </h:inputTextarea>    
-            
-        </p:tab>
-        
-        <p:tab title="Metodologia de Ensino">
-             
-                <h:inputTextarea rows="10" cols="100" id="cargahoraria33" value="#{PlanoDeEnsinoBean.metodologia}" label="Carga Horária" required="true">
-                
-            </h:inputTextarea>    
-            
-        </p:tab>
-        
-        <p:tab title="Cronograma de Atividades">
-            <p:dataTable var="carregar" value="#{CronogramaBean.carregarCronograma()}" scrollable="true" scrollHeight="350">
-                  <p:column headerText="Aula">
-                      <h:outputText value="#{carregar.aula}" />
-                  </p:column>
-   
-                  <p:column headerText="Conteúdo">
-                      <h:outputText value="#{carregar.conteudo}" />
-                  </p:column>                               
-            </p:dataTable>
-        </p:tab>
-        <p:tab title="Avaliação">
-            
-                <h:inputTextarea rows="10" cols="100"  id="cargahoraria83" value="#{PlanoDeEnsinoBean.avaliacao}" label="Carga Horária" required="true">
-                
-                </h:inputTextarea>    
-            
-        </p:tab>
-        
-        <p:tab title="Bibliografia">
-            <p:dataTable var="carregar" value="#{BibliografiaBean.carregarBibliografia()}" scrollable="true" scrollHeight="350">
-                  <p:column headerText="Curso">
-                      <h:outputText value="#{carregar.cursos}" />
-                  </p:column>
-   
-                  <p:column headerText="Disciplina">
-                      <h:outputText value="#{carregar.disciplinas}" />
-                  </p:column>
-   
-                  <p:column headerText="Título">
-                      <h:outputText value="#{carregar.titulo}" />
-                  </p:column>
-   
-                  <p:column headerText="Autor">
-                      <h:outputText value="#{carregar.autor}" />
-                  </p:column>
-                  
-                  <p:column headerText="Ano">
-                      <h:outputText value="#{carregar.ano}" />
-                  </p:column>
-                
-                  <p:column headerText="ISBN">
-                      <h:outputText value="#{carregar.isbn}" />
-                  </p:column>
-                
-                  <p:column headerText="Editora">
-                      <h:outputText value="#{carregar.editora}" />
-                  </p:column>
-                  
-            </p:dataTable>
-        </p:tab>
-</p:tabView>
-            <br/>
-        <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
-        <p:commandButton class="salvar" value="Salvar" update="growl" actionListener="#{PlanoDeEnsinoBean.cadastrarPlanoDeEnsino()}" />
-    </p:panel>
-          
-    </h:form>
-    
-  </h:body>
-    <footer class="footer">iesb - centro universitário </footer>
-  </html>
+        </h:body>
+        <footer class="footer">iesb - centro universitário </footer>
+    </html>

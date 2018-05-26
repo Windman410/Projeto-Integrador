@@ -1,91 +1,91 @@
-<!DOCTYPE html>
-<html  xmlns="http://www.w3.org/1999/xhtml"
-       xmlns:h="http://java.sun.com/jsf/html"
-       xmlns:f="http://java.sun.com/jsf/core"
-       xmlns:p="http://primefaces.org/ui">  
-  <h:head>
-           <meta charset="UTF-8"/>
-           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-           <title>Cadastrar Cronograma de Atividades</title>
-           <h:outputStylesheet library="css" name="style.css"/>
-           <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet"/> 
-  </h:head>
-  <h:body>
-        <header>          
-            <nav>
-            <ul>
-                <li><a class="active" href="index.xhtml">Início</a></li>
-                <li style="float:right"><a class="active" href="sobre.xhtml">Sobre</a></li>
-            </ul>
-            </nav>
-            <h1 class="head">Sistema de Cadastro e Armazenamento de PCC</h1>
-        </header>
-             
-            
-        <h:form id="cronogramaform">
-            <p:panel id="panel" header="Cadastrar Cronograma de Atividades ">
-                <p:growl id="msg" showDetail="true" sticky="true" autoUpdate="true" />
-                <p:panel>                 
-                    <h:panelGrid columns="2" cellpadding="8" cellspacing="12">
-                        <h:outputLabel for="aula" value="Aula:" />
-                        <h:inputText   id="aula" value="#{CronogramaBean.aula}" label="Aula">                           
-                        </h:inputText>
-                        <h:outputLabel for="conteudo" value="Conteúdo:" />
-                        <h:inputText id="conteudo" value="#{CronogramaBean.conteudo}" label="Conteúdo">
-                        </h:inputText>
-                    </h:panelGrid>
+    <!DOCTYPE html>
+    <html  xmlns="http://www.w3.org/1999/xhtml"
+           xmlns:h="http://java.sun.com/jsf/html"
+           xmlns:f="http://java.sun.com/jsf/core"
+           xmlns:p="http://primefaces.org/ui">  
+        <h:head>
+            <meta charset="UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title>Cadastrar Cronograma de Atividades</title>
+            <h:outputStylesheet library="css" name="style.css"/>
+            <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet"/> 
+        </h:head>
+        <h:body>
+            <header>                         
+                    <h:form style="width:100%; border:none;"> 
+                        <h1 class="head">
+                     Sistema de Cadastro e Armazenamento de PPC                             
+                        </h1>
+                        <p:menubar>
+                            <p:menuitem value="Home" outcome="index" />
+                            <p:menuitem value="Sobre" outcome="sobre"/>
+                        </p:menubar>  
+                    </h:form> 
+            </header> 
+            <h:form id="cronogramaform">
+                <p:panel id="panel" header="Cadastrar Cronograma de Atividades ">
+                    <p:growl id="msg" showDetail="true" sticky="true" autoUpdate="true" />
+                    <p:panel>                 
+                        <h:panelGrid columns="2" cellpadding="8" cellspacing="12">
+                            <h:outputLabel for="aula" value="Aula:" />
+                            <h:inputText   id="aula" value="#{CronogramaBean.aula}" label="Aula">                           
+                            </h:inputText>
+                            <h:outputLabel for="conteudo" value="Conteúdo:" />
+                            <h:inputText id="conteudo" value="#{CronogramaBean.conteudo}" label="Conteúdo">
+                            </h:inputText>
+                        </h:panelGrid>
+                    </p:panel>
+                    <br/> 
+                    <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>              
+                    <p:commandButton class="salvar" value="Salvar"  
+                                     actionListener="#{CronogramaBean.cadastrarCronograma()}"
+                                     update=":cronogramaform:msg" />
                 </p:panel>
-                <br/> 
-                <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>              
-                <p:commandButton class="salvar" value="Salvar"  
-                                 actionListener="#{CronogramaBean.cadastrarCronograma()}"
-                                 update=":cronogramaform:msg" />
-            </p:panel>
-        </h:form>
-      <h:form id="form">
-          <p:growl autoUpdate="true" id="msg" /> 
+            </h:form>
+            <h:form id="form">
+                <p:growl autoUpdate="true" id="msg" showDetail="true" sticky="true"/> 
                 <p:panel header="Consultar Cronograma de Atividades ">          
                     <p:dataTable var="carregar" value="#{CronogramaBean.listaTodasCronograma}" editable="true" 
-                            scrollable="true" scrollHeight="350"
-                            rowKey="#{CronogramaBean.id}"
-                            filteredValue="#{CronogramaBean.filtroCronograma}"                          
-                            emptyMessage="Nenhuma conteúdo encontrado!">
-                        
+                                 scrollable="true" scrollHeight="350"
+                                 rowKey="#{CronogramaBean.id}"
+                                 filteredValue="#{CronogramaBean.filtroCronograma}"                          
+                                 emptyMessage="Nenhuma conteúdo encontrado!">
+
                         <p:ajax event="rowEdit" listener="#{carregar.alterarCronograma}"
                                 update=":form:msg"/>                   
-                    <p:column style="width:80px; ">
-                        <p:rowEditor/>
-                    </p:column>
-                    <p:column headerText="Id">                      
+                        <p:column style="width:80px; ">
+                            <p:rowEditor/>
+                        </p:column>
+                        <p:column headerText="Id">                      
                             <h:outputText value="#{carregar.id}" />                      
-                    </p:column>
+                        </p:column>
                         <p:column headerText="Aula">                   
-                        <p:cellEditor>
-                        <f:facet name="output"> 
-                            <h:outputText value="#{carregar.aula}" />
-                        </f:facet>
-                        <f:facet name="input">
-                            <h:inputText value="#{carregar.aula}" />
-                        </f:facet>
-                      </p:cellEditor>
-                    </p:column>                    
+                            <p:cellEditor>
+                                <f:facet name="output"> 
+                                    <h:outputText value="#{carregar.aula}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:inputText value="#{carregar.aula}" />
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>                    
                         <p:column headerText="Conteúdo" filterBy="#{carregar.conteudo}">
-                        <p:cellEditor>
-                        <f:facet name="output">
-                            <h:outputText value="#{carregar.conteudo}" />
-                        </f:facet>
-                        <f:facet name="input">
-                            <h:inputText value="#{carregar.conteudo}"/>
-                        </f:facet>
-                        </p:cellEditor>    
-                    </p:column>
-                    <p:column headerText="Excluir">
-                        <p:commandButton  class="cancelar" value="Excluir" update=":form:msg"
-                                          actionListener="#{carregar.excluirCronograma(carregar)}" />
-                    </p:column>                         
-                </p:dataTable>                   
-             </p:panel>
-        </h:form>   
-  </h:body>
-    <footer class="footer">iesb - centro universitário </footer>
-  </html>
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{carregar.conteudo}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:inputText value="#{carregar.conteudo}"/>
+                                </f:facet>
+                            </p:cellEditor>    
+                        </p:column>
+                        <p:column headerText="Excluir">
+                            <p:commandButton  class="cancelar" value="Excluir" update=":form:msg"
+                                              actionListener="#{carregar.excluirCronograma(carregar)}" />
+                        </p:column>                         
+                    </p:dataTable>                   
+                </p:panel>
+            </h:form>   
+        </h:body>
+        <footer class="footer">iesb - centro universitário </footer>
+    </html>
