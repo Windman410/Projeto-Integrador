@@ -58,14 +58,12 @@
 
         public List<CursoBean> getListaTodasCurso() {
             CursoBO bo = new CursoBO();
-            if (listaTodasCurso == null) {
                 try {
                     listaTodasCurso = bo.listar();
                 } catch (NegocioException ex) {
                     Logger.getLogger(CursoBean.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
-
+            
             return listaTodasCurso;
         }
 

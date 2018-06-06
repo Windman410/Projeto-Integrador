@@ -29,7 +29,9 @@
                         <h:panelGrid id="panelGridFormCadastroAta"  columns="2" cellpadding="8" cellspacing="12">            
 
                             <h:outputLabel for="data" value="Data de Reunião: " />
-                            <h:inputText   id="data" value="#{AtasBean.data}" label="Data"/>
+                            <h:inputText   id="data" value="#{AtasBean.data}" label="Data">
+                                <f:convertDateTime pattern="dd.mm.yyyy" />
+                            </h:inputText>
 
                             <h:outputLabel for="local" value="Local da Reunião: " />
                             <h:inputText  id="local" value="#{AtasBean.local}" label="Local da Reunião"  />

@@ -11,11 +11,12 @@
     import javax.faces.bean.ManagedBean;
     import javax.faces.bean.SessionScoped;
     import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
     import org.primefaces.event.RowEditEvent;
 
     @ManagedBean(name = "PPCBean")    // Using ManagedBean annotation  
     @SessionScoped
-
+    @ViewScoped
     public class PPCBean implements Serializable {
 
         private int ID;
@@ -43,13 +44,12 @@
 
         public List<PPCBean> getListaTodasPPC() {
             PPCBO bo = new PPCBO();
-            if (listaTodasPPC == null) {
                 try {
                     listaTodasPPC = bo.listar();
                 } catch (NegocioException ex) {
                     Logger.getLogger(PPCBean.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
+            
 
             return listaTodasPPC;
         }

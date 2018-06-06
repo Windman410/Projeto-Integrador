@@ -30,8 +30,8 @@
 
                             <h:outputLabel value="Curso:"/>
                             <h:selectOneMenu  value="#{PPCBean.cursoPPC}">
-                                <f:selectItems  value="#{CursoBean.carregarCurso()}" var="pais"
-                                                itemLabel="#{CursoBean.denominacao}" />
+                               <f:selectItems var="carregar" value="#{CursoBean.carregarCurso()}" 
+                                               itemLabel="#{carregar.denominacao}" />
                             </h:selectOneMenu>                                           
 
                             <h:outputLabel for="disciplina" value="Perfil do Curso:" />
@@ -64,7 +64,7 @@
                         </h:panelGrid>
                     </p:panel>
                     <br/>
-                    <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
+                    <p:commandButton class="cancelar" value="Voltar" update="panel" action="index" ajax="false"/>
                     <p:commandButton class="salvar" value="Salvar" update=":formCadastroPPC:msg" actionListener="#{PPCBean.cadastrarPPC()}"/>
                 </p:panel>
             </h:form>     

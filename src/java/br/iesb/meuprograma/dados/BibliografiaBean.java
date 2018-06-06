@@ -35,12 +35,10 @@ import java.util.logging.Logger;
 
     public List<BibliografiaBean> getListaTodasBibliografia() {
         BibliografiaBO bo = new BibliografiaBO();
-            if (listaTodasBibliografia == null) {
             try {
                 listaTodasBibliografia = bo.listar();
             } catch (NegocioException ex) {
                 Logger.getLogger(BibliografiaBean.class.getName()).log(Level.SEVERE, null, ex);
-            }
             }
             return listaTodasBibliografia;
     }

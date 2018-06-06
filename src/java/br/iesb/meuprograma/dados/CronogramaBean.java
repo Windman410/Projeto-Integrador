@@ -38,13 +38,11 @@
 
         public List<CronogramaBean> getListaTodasCronograma() {
             CronogramaDAO dao = new CronogramaDAO();
-            if (listaTodasCronograma == null) {
                 try {
                     listaTodasCronograma = dao.listar();
                 } catch (DadosException ex) {
                     Logger.getLogger(PPCBean.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
             return listaTodasCronograma;
         }
 

@@ -10,9 +10,7 @@ public class AtasBO implements BO<AtasBean>{
     
     @Override
     public void validar(AtasBean entidade) throws NegocioException {
-         if(entidade.getData()== -1){
-            throw new NegocioException("O campo Data é obrigatório!");
-        }
+         
         if(entidade.getLocal().isEmpty()){
             throw new NegocioException("O campo Local da Reunião é Obrigatório");
         }
@@ -22,10 +20,7 @@ public class AtasBO implements BO<AtasBean>{
         if(entidade.getDeliberacoes().isEmpty()){
             throw new NegocioException("O campo Deliberações é Obrigatório");
         }        
-          if(entidade.getData()== -2){
-            throw new NegocioException("O campo Data aceita apenas números!");
-        } else {
-        }
+         
     }
 
     @Override

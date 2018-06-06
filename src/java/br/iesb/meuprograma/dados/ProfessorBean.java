@@ -5,6 +5,8 @@
     import java.io.Serializable;
     import java.util.ArrayList;
     import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
     import javax.faces.application.FacesMessage;
     import javax.faces.bean.ManagedBean;
     import javax.faces.bean.RequestScoped;
@@ -73,7 +75,42 @@
         private int traducoesPublicadas;
         private int projetoTecnicaArtisticaCultural;
         private int producoesDidaticoPedagogico;
-        private List<ProfessorBean> carregarProfessor;
+        private List<ProfessorBean> carregarProfessor = new ArrayList<>();
+        private List<ProfessorBean> filtroProfessor;
+
+        public List<ProfessorBean> getCarregarProfessor() {
+            return carregarProfessor;
+        }
+
+        public void setCarregarProfessor(List<ProfessorBean> carregarProfessor) {
+            this.carregarProfessor = carregarProfessor;
+        }
+
+        public List<ProfessorBean> getFiltroProfessor() {
+            return filtroProfessor;
+        }
+
+        public void setFiltroProfessor(List<ProfessorBean> filtroProfessor) {
+            this.filtroProfessor = filtroProfessor;
+        }
+
+        private List<ProfessorBean> listaTodasProfessor;
+
+        public List<ProfessorBean> getListaTodasProfessor() {
+            ProfessorBO bo = new ProfessorBO();
+                try {
+                    listaTodasProfessor = bo.listar();
+                } catch (NegocioException ex) {
+                    Logger.getLogger(ProfessorBean.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            
+            return listaTodasProfessor;
+        }
+
+        public void setListaTodasProfessor(List<ProfessorBean> listaTodasProfessor) {
+            this.listaTodasProfessor = listaTodasProfessor;
+        }
+
 
         public int getDataInicialVinculoCurso() {
             return dataInicialVinculoCurso;

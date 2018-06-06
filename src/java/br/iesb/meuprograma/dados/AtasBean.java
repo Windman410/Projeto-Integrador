@@ -2,7 +2,7 @@
     import br.iesb.meuprograma.negocio.AtasBO;
     import br.iesb.meuprograma.negocio.NegocioException;
     import java.io.Serializable;
-    import java.util.ArrayList;
+    import java.util.Date;
     import java.util.List;
     import java.util.logging.Level;
     import java.util.logging.Logger;
@@ -19,7 +19,7 @@
     public class AtasBean implements Serializable {
 
         private int id;
-        private int data;
+        private Date data;
         private String local;
         private String participantes;
         private String deliberacoes;
@@ -36,11 +36,11 @@
             this.id = id;
         }
 
-        public int getData() {
+        public Date getData() {
             return data;
         }
 
-        public void setData(int data) {
+        public void setData(Date data) {
             this.data = data;
         }
 
@@ -108,9 +108,6 @@
             this.listaTodasAtas = listaTodasAtas;
         }
 
-        public Integer toInteger() {
-            return data;
-        }
 
         public List<AtasBean> carregarAtas() {
             AtasBO bo = new AtasBO();

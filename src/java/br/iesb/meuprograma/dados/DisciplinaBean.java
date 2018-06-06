@@ -35,13 +35,11 @@ import java.util.logging.Logger;
 
     public List<DisciplinaBean> getListaTodasDisciplina() {
         DisciplinaBO bo = new DisciplinaBO();
-            if (listaTodasDisciplina == null) {
                 try {
                     listaTodasDisciplina = bo.listar();
                 } catch (NegocioException ex) {
                     Logger.getLogger(AtasBean.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
             return listaTodasDisciplina;
     }
 

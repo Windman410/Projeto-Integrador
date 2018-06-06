@@ -1,5 +1,6 @@
 package br.iesb.meuprograma.dados;
 import java.sql.Connection;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,7 +19,7 @@ public class AtasDAO implements DAO<AtasBean>{
         
         try {
             PreparedStatement comando = conexao.prepareStatement(sql);
-            comando.setInt(1, entidade.getData());
+            comando.setDate(1, new java.sql.Date(entidade.getData().getTime())); 
             comando.setString(2, entidade.getLocal());
             comando.setString(3, entidade.getParticipantes());
             comando.setString(4, entidade.getDeliberacoes());
@@ -36,7 +37,7 @@ public class AtasDAO implements DAO<AtasBean>{
         String sql = "UPDATE tb_atas SET data=?, local=?, participantes=?, deliberacoes=? WHERE id_atas=?";
         try {
             PreparedStatement comando = conexao.prepareStatement(sql);
-            comando.setInt(1, entidade.getData());
+            comando.setDate(1, new java.sql.Date(entidade.getData().getTime()));
             comando.setString(2, entidade.getLocal());
             comando.setString(3, entidade.getParticipantes());
             comando.setString(4, entidade.getDeliberacoes());
@@ -73,10 +74,9 @@ public class AtasDAO implements DAO<AtasBean>{
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setInt(1, id);
             ResultSet resultado = comando.executeQuery();
-            
             if(resultado.next()){
                 atas.setId(resultado.getInt(1));
-                atas.setData(resultado.getInt(2));
+                atas.setData(resultado.getDate(2));
                 atas.setLocal(resultado.getString(3));
                 atas.setParticipantes(resultado.getString(4));
                 atas.setDeliberacoes(resultado.getString(5));
@@ -101,7 +101,7 @@ public class AtasDAO implements DAO<AtasBean>{
             while (resultado.next()){
                 AtasBean atas = new AtasBean();
                 atas.setId(resultado.getInt(1));
-                atas.setData(resultado.getInt(2));
+                atas.setData(resultado.getDate(2));
                 atas.setLocal(resultado.getString(3));
                 atas.setParticipantes(resultado.getString(4));
                 atas.setDeliberacoes(resultado.getString(5));

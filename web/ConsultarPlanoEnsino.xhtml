@@ -30,42 +30,39 @@
 
                     <p:dataTable var="carregar" value="#{PlanoDeEnsinoBean.listaTodasPlanoEnsino}" editable="true" 
                                  scrollable="true" scrollHeight="350"
-                                 rowKey="#{PlanoDeEnsinoBean.id}" filteredValue="#{PlanoDeEnsinoBean.filtroPlanoEnsino}"
-                                 emptyMessage="Nada encontrado!" widgetVar="planoTable">
-                        <f:facet name="header">
-                            <p:outputPanel>
-                                <h:outputText value="Pesquisar"/>
-                                <p:inputText id="globalFilter" onkeyup="PF('planoTable').filter()" 
-                                             placeholder="Pesquisar por Curso, Disciplina e Professor"/>
-                            </p:outputPanel>
-                        </f:facet>
-
-
+                                 rowKey="#{PlanoDeEnsinoBean.id}" emptyMessage="Nada encontrado!" widgetVar="planoTable">
+                        
                         <p:ajax event="rowEdit" listener="#{carregar.alterarPlanoEnsino}" 
                                 update=":form:msg"/>
-                        <p:column style="width:100px; ">
+                        <p:column headerText="Editar" style="width:100px; ">
                             <p:rowEditor/>
                         </p:column>
                         <p:column headerText="Id">                      
                             <h:outputText value="#{carregar.id}" />                      
                         </p:column> 
-                        <p:column headerText="Curso" filterBy="#{carregar.curso}">
+                        <p:column headerText="Curso">
                             <p:cellEditor>
                                 <f:facet name="output"> 
                                     <h:outputText value="#{carregar.curso}" />
                                 </f:facet>
                                 <f:facet name="input">
-                                    <h:inputText value="#{carregar.curso}" />
+                                    <h:selectOneMenu value="#{PlanoDeEnsinoBean.curso}">
+                                        <f:selectItems var="carregar" value="#{CursoBean.carregarCurso()}" 
+                                               itemLabel="#{carregar.denominacao}" />
+                                    </h:selectOneMenu>
                                 </f:facet>
                             </p:cellEditor>
                         </p:column>  
-                        <p:column headerText="Disciplina" filterBy="#{carregar.disciplinas}">
+                        <p:column headerText="Disciplina">
                             <p:cellEditor>
                                 <f:facet name="output"> 
                                     <h:outputText value="#{carregar.disciplinas}" />
                                 </f:facet>
                                 <f:facet name="input">
-                                    <h:inputText value="#{carregar.disciplinas}" />
+                                    <h:selectOneMenu value="#{PlanoDeEnsinoBean.disciplinas}">
+                                        <f:selectItems var="carregar" value="#{DisciplinaBean.carregarDisciplina()}" 
+                                               itemLabel="#{carregar.nome}" />
+                                    </h:selectOneMenu>
                                 </f:facet>
                             </p:cellEditor>
                         </p:column>
@@ -79,24 +76,27 @@
                                 </f:facet>
                             </p:cellEditor>
                         </p:column>
-                        <p:column headerText="Professor" filterBy="#{carregar.professor}">
+                        <p:column headerText="Professor">
                             <p:cellEditor>
                                 <f:facet name="output"> 
                                     <h:outputText value="#{carregar.professor}" />
                                 </f:facet>
                                 <f:facet name="input">
-                                    <h:inputText value="#{carregar.professor}" />
+                                    <h:selectOneMenu value="#{PlanoDeEnsinoBean.professor}">
+                                        <f:selectItems var="carregar" value="#{ProfessorBean.carregarProfessor()}" 
+                                               itemLabel="#{carregar.nome}" />
+                                    </h:selectOneMenu>
                                 </f:facet>
                             </p:cellEditor>
                         </p:column>
-                        <p:column>
+                        <p:column headerText="Excluir">
                             <p:commandButton class="cancelar" value="Excluir" 
                                              icon="ui-icon-trash"
                                              actionListener="#{carregar.excluirPlanoEnsino(carregar)}" />
                         </p:column>
 
                     </p:dataTable>               
-                    <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>
+                    <p:commandButton class="cancelar" value="Voltar" update="panel" action="index" ajax="false"/>
                 </p:panel>
             </h:form>
         </h:body>

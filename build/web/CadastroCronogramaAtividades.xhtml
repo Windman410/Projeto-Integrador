@@ -36,13 +36,13 @@
                         </h:panelGrid>
                     </p:panel>
                     <br/> 
-                    <p:commandButton class="cancelar" value="Cancelar" update="panel" action="index" ajax="false"/>              
+                    <p:commandButton class="cancelar" value="Voltar" update="panel" action="index" ajax="false"/>              
                     <p:commandButton class="salvar" value="Salvar"  
                                      actionListener="#{CronogramaBean.cadastrarCronograma()}"
                                      update=":cronogramaform:msg" />
                 </p:panel>
             </h:form>
-            <h:form id="form">
+            <!--<h:form id="form">
                 <p:growl autoUpdate="true" id="msg" showDetail="true" sticky="true"/> 
                 <p:panel header="Consultar Cronograma de Atividades ">          
                     <p:dataTable var="carregar" value="#{CronogramaBean.listaTodasCronograma}" editable="true" 
@@ -85,7 +85,7 @@
                         </p:column>                         
                     </p:dataTable>                   
                 </p:panel>
-            </h:form>   
+            </h:form> -->   
         </h:body>
         <footer class="footer">iesb - centro universitário </footer>
     </html>
