@@ -46,7 +46,10 @@
                                     <h:outputText value="#{carregar.cursoPPC}" />
                                 </f:facet>
                                 <f:facet name="input">
-                                    <h:inputText value="#{carregar.cursoPPC}" />
+                                     <h:selectOneMenu  value="#{PPCBean.cursoPPC}">
+                                        <f:selectItems var="carregar" value="#{CursoBean.carregarCurso()}" 
+                                               itemLabel="#{carregar.denominacao}" />
+                                    </h:selectOneMenu>    
                                 </f:facet>
                             </p:cellEditor>
                         </p:column>  
@@ -57,7 +60,7 @@
                                     <h:outputText value="#{carregar.perfilCurso}" />
                                 </f:facet>
                                 <f:facet name="input">
-                                    <h:inputText  value="#{carregar.perfilCurso}" />
+                                    <h:inputTextarea  value="#{carregar.perfilCurso}" />
                                 </f:facet>
                             </p:cellEditor>
                         </p:column>  
@@ -68,7 +71,7 @@
                                     <h:outputText value="#{carregar.perfilEgresso}" />
                                 </f:facet>
                                 <f:facet name="input">
-                                    <h:inputText  value="#{carregar.perfilEgresso}" />
+                                    <h:inputTextarea  value="#{carregar.perfilEgresso}" />
                                 </f:facet>
                             </p:cellEditor>
                         </p:column>  
@@ -79,7 +82,7 @@
                                     <h:outputText value="#{carregar.formaAcesso}" />
                                 </f:facet>
                                 <f:facet name="input">
-                                    <h:inputText  value="#{carregar.formaAcesso}" />
+                                    <h:inputTextarea  value="#{carregar.formaAcesso}" />
                                 </f:facet>
                             </p:cellEditor>
                         </p:column>  
@@ -90,7 +93,7 @@
                                     <h:outputText value="#{carregar.avaliacaoProcesso}" />
                                 </f:facet>
                                 <f:facet name="input">
-                                    <h:inputText value="#{carregar.avaliacaoProcesso}" />
+                                    <h:inputTextarea value="#{carregar.avaliacaoProcesso}" />
                                 </f:facet>
                             </p:cellEditor>
                         </p:column>
@@ -101,7 +104,7 @@
                                     <h:outputText value="#{carregar.avaliacaoProjeto}" />
                                 </f:facet>
                                 <f:facet name="input">
-                                    <h:inputText  value="#{carregar.avaliacaoProjeto}" />
+                                    <h:inputTextarea  value="#{carregar.avaliacaoProjeto}" />
                                 </f:facet>
                             </p:cellEditor>
                         </p:column>
@@ -111,7 +114,7 @@
                                     <h:outputText value="#{carregar.horasTCC}" />
                                 </f:facet>
                                 <f:facet name="input">
-                                    <h:inputText  value="#{carregar.horasTCC}" />
+                                    <h:inputTextarea  value="#{carregar.horasTCC}" />
                                 </f:facet>
                             </p:cellEditor>
                         </p:column>
@@ -122,7 +125,7 @@
                                     <h:outputText value="#{carregar.horasEstagio}" />
                                 </f:facet>
                                 <f:facet name="input">
-                                    <h:inputText  value="#{carregar.horasEstagio}" />
+                                    <h:inputTextarea  value="#{carregar.horasEstagio}" />
                                 </f:facet>
                             </p:cellEditor>
                         </p:column>  
@@ -133,7 +136,7 @@
                                     <h:outputText value="#{carregar.politicaDeAtendimento}" />
                                 </f:facet>
                                 <f:facet name="input">
-                                    <h:inputText  value="#{carregar.politicaDeAtendimento}" />
+                                    <h:inputTextarea  value="#{carregar.politicaDeAtendimento}" />
                                 </f:facet>
                             </p:cellEditor>
                         </p:column>  
@@ -141,7 +144,7 @@
                         <p:column headerText="Excluir">
                             <p:commandButton class="cancelar" value="Excluir" 
                                              icon="ui-icon-trash"
-                                             actionListener="#{carregar.excluirPPC(carregar)}" update=":form:panel" />
+                                             actionListener="#{carregar.excluirPPC(carregar)}" update=":form" />
                         </p:column>                  
                     </p:dataTable>
 

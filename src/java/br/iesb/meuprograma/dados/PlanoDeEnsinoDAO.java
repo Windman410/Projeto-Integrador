@@ -11,7 +11,7 @@ public class PlanoDeEnsinoDAO implements DAO<PlanoDeEnsinoBean>{
     @Override
     public void inserir(PlanoDeEnsinoBean entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
-        String sql = "INSERT INTO tb_planoensino (curso, ano, semestre, disciplinas, cargaHoraria, periodoCurso, professor, ementa, competenciasHabilidades, metodologiaEnsino, avaliacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO tb_planoensino (curso, ano, semestre, disciplina, cargaHoraria, periodoCurso, professor, ementa, competenciasHabilidades, metodologiaEnsino, avaliacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         try{
             PreparedStatement comando = conexao.prepareStatement(sql);
@@ -36,7 +36,7 @@ public class PlanoDeEnsinoDAO implements DAO<PlanoDeEnsinoBean>{
     @Override
     public void alterar(PlanoDeEnsinoBean entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
-        String sql = "UPDATE tb_planoensino SET curso=?, ano=?, semestre=?, disciplinas=?, cargaHoraria=?, periodoCurso=?, professor=?, ementa=?, competenciasHabilidades=?, metodologiaEnsino=?, avaliacao=? WHERE id_plano=?";
+        String sql = "UPDATE tb_planoensino SET curso=?, ano=?, semestre=?, disciplina=?, cargaHoraria=?, periodoCurso=?, professor=?, ementa=?, competenciasHabilidades=?, metodologiaEnsino=?, avaliacao=? WHERE id_plano=?";
         try {
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setString(1, entidade.getCurso());

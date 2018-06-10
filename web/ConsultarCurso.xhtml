@@ -99,7 +99,7 @@
                         <p:column headerText="Excluir">
                             <p:commandButton  class="cancelar" value="Excluir"
                                               icon="ui-icon-trash"
-                                              actionListener="#{carregar.excluirCurso(carregar)}" />
+                                              actionListener="#{carregar.excluirCurso(carregar)}" update=":form"/>
                         </p:column>                   
                     </p:dataTable>  
                     <p:commandButton class="cancelar" value="Voltar" update="panel" action="index" ajax="false"/>

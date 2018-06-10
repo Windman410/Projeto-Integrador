@@ -82,9 +82,8 @@
             this.carregarAtas = carregarAtas;
         }
         public AtasBean getAtas() {
-            if (this.atas == null) {
                 this.atas = new AtasBean();
-            }
+            
             return atas;
         }
 
@@ -94,13 +93,11 @@
 
         public List<AtasBean> getListaTodasAtas() {
             AtasBO bo = new AtasBO();
-            if (listaTodasAtas == null) {
                 try {
                     listaTodasAtas = bo.listar();
                 } catch (NegocioException ex) {
                     Logger.getLogger(AtasBean.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
             return listaTodasAtas;
         }
 

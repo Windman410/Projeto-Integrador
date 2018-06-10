@@ -47,14 +47,12 @@
 
         public List<PlanoDeEnsinoBean> getListaTodasPlanoEnsino() {
             PlanoDeEnsinoBO bo = new PlanoDeEnsinoBO();
-            if (listaTodasPlanoEnsino == null) {
                 try {
                     listaTodasPlanoEnsino = bo.listar();
                 } catch (NegocioException ex) {
                     Logger.getLogger(PlanoDeEnsinoBean.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
-
+            
             return listaTodasPlanoEnsino;
         }
 

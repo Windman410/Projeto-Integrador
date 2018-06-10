@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 20-Maio-2018 às 19:06
+-- Generation Time: 11-Jun-2018 às 01:46
 -- Versão do servidor: 10.1.28-MariaDB
 -- PHP Version: 7.1.8
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tb_atas` (
   `id_atas` int(8) NOT NULL,
-  `data` int(11) NOT NULL,
+  `data` date NOT NULL,
   `local` varchar(255) NOT NULL,
   `participantes` varchar(255) NOT NULL,
   `deliberacoes` varchar(1000) NOT NULL
@@ -41,9 +41,7 @@ CREATE TABLE `tb_atas` (
 --
 
 INSERT INTO `tb_atas` (`id_atas`, `data`, `local`, `participantes`, `deliberacoes`) VALUES
-(1, 172384182, 'Brasília', 'Nome de Verdade', 'kasdbfkjabskd'),
-(2, 1341, 'jadkfklasdf', 'kajdskljfladsjfas', 'ajdskfjaklsdjfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'),
-(3, 1, '1', '1', '1');
+(6, '2018-01-04', 'IESB Norte', 'Coordenador João, Professor Pedro, Professora Maria', 'Foi deliberado que todos projetos de Projeto Integrador III na turma de 2018/01 foram excelentes.');
 
 -- --------------------------------------------------------
 
@@ -67,10 +65,8 @@ CREATE TABLE `tb_bibliografia` (
 --
 
 INSERT INTO `tb_bibliografia` (`id_bibliografia`, `cursos`, `disciplinas`, `titulo`, `autor`, `ano`, `isbn`, `editora`) VALUES
-(1, 'Tipo', 'adfadsf', 'Blá blá', 'Autor', 1995, 'kahdfads', 'TK'),
-(2, 'Tipo', 'adfadsf', 'jaksdjfldskjf', 'lajsdkfjalds', 123, 'alsdjfka', 'lajsdfklas'),
-(4, 'Tipo', 'adfadsf', '1', '1', 1, '1', '1'),
-(5, 'Curso de Verdade', 'Matemática', '1', '11', 1, '1', '1');
+(6, 'Curso de Verdade', 'Banco de Dados90', 'Livro de Banco de Dados', 'Professor João', 1998, '978', 'Editora Informática'),
+(7, 'Analise e Desenvolvimento de Sistemas', 'Lógica de Programação120', 'Lógica de Programação Crie seus primeiros programas usando Javascript e HTML', 'Paulo Silveira, Adriano Almeida', 2016, '978-85-66250-22-0', 'Casa do Código');
 
 -- --------------------------------------------------------
 
@@ -90,8 +86,7 @@ CREATE TABLE `tb_cronograma` (
 
 INSERT INTO `tb_cronograma` (`id_cronograma`, `aula`, `conteudo`) VALUES
 (1, 4, 'Windows'),
-(2, 4, '1'),
-(3, 5, 'asdasd');
+(2, 1, 'Lógica utilizando a Torre de Hanoi');
 
 -- --------------------------------------------------------
 
@@ -124,10 +119,7 @@ CREATE TABLE `tb_curso` (
 --
 
 INSERT INTO `tb_curso` (`id_curso`, `tipo`, `modalidade`, `denominacao`, `habilitacao`, `localOferta`, `matutino`, `vespertino`, `noturno`, `vagasTurno`, `cargaHoraria`, `regimeLetivo`, `periodo`, `nomeProfessor`, `cpf`, `titulacao`, `tempoDedicacao`) VALUES
-(1, '1', '1', 'Curso de Verdade', '1', '1', 1, 1, 1, 1, 1, '1', '1', 'Item 1', 1, '1', '1'),
-(3, '1', '1', 'Curso de Verdade tambem', '1', '1', 1, 1, 0, 1, 1, '1', '11', 'Item 2', 1, '1', '1'),
-(4, '1', '1', 'Nome Dele', '1', '1', 1, 1, 0, 1, 1, '1', '1', 'Item 1', 1, '1', '1'),
-(7, '1', '1', '1', '1', '1', 1, 0, 0, 0, 1, '1', '1', '1', 1, '1', '1');
+(4, 'Tecnólogo', 'EAD', 'Analise e Desenvolvimento de Sistemas', '?', 'IESB Sul', 1, 1, 0, 30, 2000, 'Semestral', '5', 'João Paulo Souza', 1010, 'Mestrado', '?');
 
 -- --------------------------------------------------------
 
@@ -151,7 +143,7 @@ CREATE TABLE `tb_disciplinas` (
 INSERT INTO `tb_disciplinas` (`id_disciplinas`, `nome`, `cod`, `descricao`, `semestre`, `cargaHoraria`) VALUES
 (1, 'Banco de Dados', 123, 'asdfasd', 2, 90),
 (2, 'Matemática', 12341, 'nasdfasdfasdk', 3, 90),
-(3, 'Procrastinação', 42069, 'Bla', 2, 200);
+(4, 'Lógica de Programação', 154, 'Evidentemente, a hegemonia do ambiente político estimula a padronização dos modos de operação convencionais. ', 1, 120);
 
 -- --------------------------------------------------------
 
@@ -180,7 +172,7 @@ CREATE TABLE `tb_planoensino` (
 
 INSERT INTO `tb_planoensino` (`id_plano`, `curso`, `ano`, `semestre`, `disciplina`, `cargaHoraria`, `periodoCurso`, `professor`, `ementa`, `competenciasHabilidades`, `metodologiaEnsino`, `avaliacao`) VALUES
 (1, 'Curso previamente cadastrado', 2017, 3, 'Disciplina previamente cadastrada', 90, 'Noite', 'Professor previamente cadastrado', 'Descreva a ementa do curso!', 'Descreva as competências e habilidades a serem adquiridas no curso!', 'Descreva as técnicas e recursos de metodologia do curso!', 'Critérios de avaliação!'),
-(2, 'Curso previamente cadastrado', 2, 2, 'Disciplina previamente cadastrada', 999, '2', 'Professor previamente cadastrado', 'Descreva a ementa do curso!', 'Descreva as competências e habilidades a serem adquiridas no curso!', 'Descreva as técnicas e recursos de metodologia do curso!', 'Critérios de avaliação!');
+(3, 'Analise e Desenvolvimento de Sistemas', 2018, 1, 'Banco de Dados90', 120, 'EAD', 'João Paulo Souza', 'As experiências acumuladas demonstram que o surgimento do comércio virtual assume importantes posições no estabelecimento dos índices pretendidos. O incentivo ao avanço tecnológico, assim como a execução dos pontos do programa exige a precisão e a definição das diretrizes de desenvolvimento para o futuro.\r\n\r\nNão obstante, o novo modelo estrutural aqui preconizado pode nos levar a considerar a reestruturação dos relacionamentos verticais entre as hierarquias. No entanto, não podemos esquecer que a valorização de fatores subjetivos representa uma abertura para a melhoria do processo de comunicação como um todo. \r\n', ' Por outro lado;\r\nRevolução dos costumes;\r\nAlavancagem dos níveis;\r\nMotivação departamental;', 'Gostaria de enfatizar que o aumento do diálogo entre os diferentes setores produtivos maximiza as possibilidades por conta das novas proposições. Todavia, a mobilidade dos capitais internacionais prepara-nos para enfrentar situações atípicas decorrentes do retorno esperado a longo prazo. O empenho em analisar a necessidade de renovação processual acarreta um processo de reformulação e modernização de todos os recursos funcionais envolvidos. Assim mesmo, a percepção das dificuldades oferece uma interessante oportunidade para verificação das regras de conduta normativas. \r\n', 'Percebemos, cada vez mais, que a determinação clara de objetivos causa impacto indireto na reavaliação das direções preferenciais no sentido do progresso. O cuidado em identificar pontos críticos no fenômeno da Internet facilita a criação dos procedimentos normalmente adotados. Caros amigos, a competitividade nas transações comerciais desafia a capacidade de equalização do fluxo de informações. Pensando mais a longo prazo, o desafiador cenário globalizado possibilita uma melhor visão global do levantamento das variáveis envolvidas. \r\n');
 
 -- --------------------------------------------------------
 
@@ -208,10 +200,7 @@ CREATE TABLE `tb_ppc` (
 
 INSERT INTO `tb_ppc` (`id_ppc`, `cursoPPC`, `perfilCurso`, `perfilEgresso`, `formaAcesso`, `representacao`, `avaliacaoProcesso`, `avaliacaoProjeto`, `horasTCC`, `horasEstagio`, `politicaDeAtendimento`) VALUES
 (2, 'Item 1', 'Algo', 'Esta', 'Escrito', 'Aqui', 'Diferente', 'de', 2000, 150, 'Antes'),
-(3, 'Item 1', '1	1	', '11', '1', '1', '1', '1', 1, 1, '1'),
-(4, 'Item 1', '1	1	1', '1', '1', '1', '1', '1', 1, 1, '1'),
-(5, 'Curso de Verdade', '78', '6876', '876', '876', '876', '876', 876, 876, '876'),
-(6, 'Curso de Verdade', '1', '1', '1', '1', '1', '1', 1, 1, '1');
+(4, 'Analise e Desenvolvimento de Sistemas', 'É importante questionar o quanto o desenvolvimento contínuo de distintas formas de atuação faz parte de um processo de gerenciamento das condições inegavelmente apropriadas.', 'Neste sentido, a complexidade dos estudos efetuados apresenta tendências no sentido de aprovar a manutenção das formas de ação. ', 'Do mesmo modo, o início da atividade geral de formação de atitudes não pode mais se dissociar do orçamento setorial. ', 'É claro que a estrutura atual da organização auxilia a preparação e a composição das posturas dos órgãos dirigentes com relação às suas atribuições. \r\n', 'A prática cotidiana prova que a contínua expansão de nossa atividade garante a contribuição de um grupo importante na determinação das condições financeiras e administrativas exigidas. ', 'Desta maneira, a crescente influência da mídia nos obriga à análise dos paradigmas corporativos. ', 360, 100, 'Nunca é demais lembrar o peso e o significado destes problemas, uma vez que a constante divulgação das informações obstaculiza a apreciação da importância do remanejamento dos quadros funcionais.');
 
 -- --------------------------------------------------------
 
@@ -272,8 +261,7 @@ CREATE TABLE `tb_professor` (
 --
 
 INSERT INTO `tb_professor` (`id_professor`, `nome`, `cpf`, `maiorTitulacao`, `areaFormacao`, `curriculo`, `dataAtualizacao`, `matricula`, `dataAdimissao`, `horasNDE`, `horasOrientacaoTCC`, `horasCordenacaoCurso`, `horasCordenacaoOutrosCurso`, `horasPesquisa`, `horasExtraClasseCurso`, `horasExtraClasseOutrosCurso`, `horasCurso`, `horasOutrosCurso`, `disciplinaCurso`, `cargaHorariaCurso`, `disciplinaOutrosCurso`, `cargaHorariaOutrosCurso`, `membroNDE`, `membroColegiado`, `experienciaPedagogia`, `dataInicialVinculoCurso`, `tempoVinculoCurso`, `dataInicialMagisterioSuperior`, `experienciaMagisterioSuperior`, `dataInicialCursoDistancia`, `experienciaCursoDistancia`, `dataInicialExperienciaProfissional`, `experienciaProfissional`, `participacaoEventos`, `artigoCientificoArea`, `artigoCientificoOutrasArea`, `livrosCapitulosArea`, `livrosCapitulosOutrasArea`, `trabalhoAnaisArea`, `trabalhoAnaisOutrasArea`, `propriedadeIntelectualArea`, `propriedadeIntelectualOutrasArea`, `traducoesPublicadas`, `projetoTecnicaArtisticaCultural`, `producoesDidaticoPedagogico`) VALUES
-(1, '1', 1, '1', '1', '1', '1', 1, '1', 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 'DD/MM/AAAA1', 0, 'DD/MM/AAAA12', 0, 'DD/MM/AAAA3', 0, 'DD/MM/AAAA4', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-(2, '1', 1, '1', '1', '1', '1', 1, '1', 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, '1', 1, '1', 1, '1', 1, '1', 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1);
+(4, 'João Paulo Souza', 1101, 'Mestrado', 'Informatica', 'curriculo.com/joao', '2018', 1245752, '2010', 20, 10, 50, 0, 20, 4, 8, 16, 20, 0, 0, 0, 0, 1, 0, 1, 2010, '8', 2010, '8', 2014, '4', 2002, '16', 53, 2, 1, 0, 0, 32, 13, 5, 2, 0, 0, 3);
 
 --
 -- Indexes for dumped tables
@@ -335,42 +323,42 @@ ALTER TABLE `tb_professor`
 -- AUTO_INCREMENT for table `tb_atas`
 --
 ALTER TABLE `tb_atas`
-  MODIFY `id_atas` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_atas` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `tb_bibliografia`
 --
 ALTER TABLE `tb_bibliografia`
-  MODIFY `id_bibliografia` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_bibliografia` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `tb_cronograma`
 --
 ALTER TABLE `tb_cronograma`
-  MODIFY `id_cronograma` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_cronograma` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tb_curso`
 --
 ALTER TABLE `tb_curso`
-  MODIFY `id_curso` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_curso` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tb_disciplinas`
 --
 ALTER TABLE `tb_disciplinas`
-  MODIFY `id_disciplinas` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_disciplinas` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tb_planoensino`
 --
 ALTER TABLE `tb_planoensino`
-  MODIFY `id_plano` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_plano` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tb_ppc`
 --
 ALTER TABLE `tb_ppc`
-  MODIFY `id_ppc` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_ppc` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tb_professor`
 --
 ALTER TABLE `tb_professor`
-  MODIFY `id_professor` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;COMMIT;
+  MODIFY `id_professor` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
